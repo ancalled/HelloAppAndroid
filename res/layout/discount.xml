@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="#2E2E2E" android:baselineAligned="false">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="200dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ddPlace" android:layout_gravity="right" android:text="Place"
+                android:gravity="center_horizontal" android:textColor="#FFFFFF" android:textSize="20dp"
+                android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+                android:layout_marginTop="36dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ddDiscount" android:text="Discount"
+                android:layout_gravity="center_horizontal" android:textColor="#ffffff"
+                android:layout_alignRight="@+id/ddPlace" android:layout_alignParentTop="true"
+                android:layout_marginTop="69dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20%"
+                android:id="@+id/ddDiscountRate" android:textColor="#FFFFFF" android:textSize="22dp"
+                android:layout_alignParentRight="true" android:layout_alignParentTop="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/ddExpires"
+                android:layout_alignParentLeft="true" android:layout_marginLeft="236dp"
+                android:layout_alignParentTop="true" android:layout_marginTop="160dp"/>
+    </RelativeLayout>
+
+    <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="200dp" android:background="@drawable/discount_top">-->
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/ddPlace" android:layout_gravity="right" android:text="Place"-->
+                <!--android:gravity="center_horizontal" android:textColor="#FFFFFF" android:textSize="20dp"-->
+                <!--android:paddingTop="30dp"/>-->
+        <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/ddDiscount" android:text="Discount"-->
+                <!--android:layout_gravity="center_horizontal" android:textColor="#ffffff"/>-->
+    <!--</LinearLayout>-->
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:id="@+id/imageView" android:background="@drawable/dashed_line"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp" android:layout_gravity="center"
+            android:background="@drawable/discount_bottom">
+        <Button
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:text="@string/apply_disсount"
+                android:id="@+id/ddApplyBtn" android:layout_gravity="center_horizontal" android:layout_marginTop="30dp"
+                android:textSize="22dp" android:textStyle="bold"/>
+        <ProgressBar
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ddApplyResult" android:gravity="center_horizontal" android:textSize="16dp"
+                android:text="Скидка активирована!" android:paddingTop="50dp"/>
+        <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="3451004"
+                android:id="@+id/ddApplyResultNumber" android:gravity="center_horizontal" android:textSize="20dp"
+                android:textColor="#ffffff"/>
+    </LinearLayout>
+
+</LinearLayout>

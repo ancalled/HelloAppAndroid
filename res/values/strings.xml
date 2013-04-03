@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HelloApp</string><string name="main_page_title">Скидки</string><string name="filter_button">Фильтр</string><string name="apply_disсount">Использовать скидку</string>
+    <string name="internet_access">Интернет не доступен на данном девайсе!</string>
+</resources>
