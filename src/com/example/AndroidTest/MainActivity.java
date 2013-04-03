@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        System.out.println("MainActivity.onResume");
 
         if (isNetworkAvailable()) {
 
@@ -38,6 +39,7 @@ public class MainActivity extends Activity {
             LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
 
             client.retreiveDiscounts(listView, this, listView);
+
 
         } else {
             String text = getResources().getString(R.string.internet_access);
