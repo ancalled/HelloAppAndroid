@@ -1,4 +1,4 @@
-package com.example.AndroidTest;
+package net.microcosmus.helloapp;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.AndroidTest.R;
 
 public class MainActivity extends Activity {
 

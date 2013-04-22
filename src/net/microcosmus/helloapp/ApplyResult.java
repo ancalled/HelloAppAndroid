@@ -1,4 +1,4 @@
-package com.example.AndroidTest;
+package net.microcosmus.helloapp;
 
 public class ApplyResult {
 

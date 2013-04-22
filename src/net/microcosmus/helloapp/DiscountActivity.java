@@ -1,11 +1,15 @@
-package com.example.AndroidTest;
+package net.microcosmus.helloapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.example.AndroidTest.R;
+import net.microcosmus.helloapp.scanner.QRScannerActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,31 +46,33 @@ public class DiscountActivity extends Activity {
                 expiresView.setText("");
 //                expiresView.setText(DATE_FORMAT.format(discount.getGoodThrough()));
 
-                final Button applyButton = (Button) findViewById(R.id.ddApplyBtn);
+                final Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
                 final TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
                 final TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
                 final ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
-                applyButton.setVisibility(View.VISIBLE);
+                confirmBtn.setVisibility(View.VISIBLE);
                 messageView.setVisibility(View.GONE);
                 numberView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
 
-                applyButton.setOnClickListener(new View.OnClickListener() {
+                final Context ctx = this;
+                confirmBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        applyButton.setVisibility(View.GONE);
+//                        progressBar.setVisibility(View.VISIBLE);
+//                        confirmBtn.setVisibility(View.GONE);
+//
+//                        long userId = 1L;
+//                        client.applyDiscount(userId, discount.getId(), messageView, numberView, progressBar);
 
-                        long userId = 1L;
-                        client.applyDiscount(userId, discount.getId(), messageView, numberView, progressBar);
+                        showQRScanner(ctx, discount);
                     }
                 });
 
             }
         }
     }
-
 
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -83,6 +89,13 @@ public class DiscountActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void showQRScanner(Context context, Discount d) {
+        Intent intent = new Intent(context, QRScannerActivity.class);
+        intent.putExtra("discount", d);
+        context.startActivity(intent);
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.AndroidTest;
+package net.microcosmus.helloapp;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -34,8 +34,8 @@ import java.util.List;
 public class HelloClient {
 
 
-    //    public static final String SERVER_URL = "http://10.0.2.2:8080/helloapp";
-    public static final String SERVER_URL = "http://helloapp.microcosmus.net/helloapp";
+    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
+//        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
     public static final String DISCOUNTS_URL = SERVER_URL + "/discounts";
 
     public static final String DISCOUNT_ICON_URL = SERVER_URL + "/resources/icons/%d.png";
@@ -107,13 +107,16 @@ public class HelloClient {
             List<Discount> result = new ArrayList<Discount>();
 
             for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject obj = jsonArray.getJSONObject(i);
+                JSONObject discountObj = jsonArray.getJSONObject(i);
                 Discount d = new Discount();
-                d.setId(obj.getLong("id"));
-                d.setTitle(obj.getString("title"));
-                d.setPlace(obj.getString("place"));
-                d.setRate(obj.getInt("rate"));
+                d.setId(discountObj.getLong("id"));
+                d.setTitle(discountObj.getString("title"));
+                d.setRate(discountObj.getInt("rate"));
 //            d.setGoodThrough(obj.getString("goodThrough"));
+
+                JSONObject placeObj = discountObj.getJSONObject("place");
+                d.setPlace(placeObj.getString("name"));
+
                 result.add(d);
             }
 

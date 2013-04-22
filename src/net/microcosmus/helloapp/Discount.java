@@ -1,4 +1,4 @@
-package com.example.AndroidTest;
+package net.microcosmus.helloapp;
 
 import android.os.Parcelable;
 
