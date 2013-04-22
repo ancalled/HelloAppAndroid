@@ -74,6 +74,7 @@ public class QRScannerActivity extends Activity {
                     SymbolSet syms = scanner.getResults();
                     for (Symbol sym : syms) {
 
+
 //                    scanText.setText("barcode result " + sym.getData());
                         String text = sym.getData();
                         if (checkCode(text)) {
