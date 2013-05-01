@@ -11,14 +11,19 @@ import android.hardware.Camera.PreviewCallback;
 import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import com.example.AndroidTest.R;
-import net.microcosmus.helloapp.Discount;
 import net.sourceforge.zbar.*;
 
 /* Import ZBar Class files */
 
 public class QRScannerActivity extends Activity {
+
+    public static final boolean DEBUG = true;
 
     private Camera camera;
     private Handler autoFocusHandler;
@@ -41,8 +46,56 @@ public class QRScannerActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         ctx = this;
-        setContentView(R.layout.scanner);
 
+        if (!DEBUG) {
+            setContentView(R.layout.scanner);
+            startScanner();
+
+        } else {
+
+            setContentView(R.layout.fake_scanner);
+            startFakeScanner();
+        }
+
+    }
+
+    private void startFakeScanner() {
+        Log.d("QRScanner", "Starting fake scanner");
+
+
+        final TextView scanText = (TextView) findViewById(R.id.scanText);
+        scanText.setText("");
+
+        Button scanButton = (Button) findViewById(R.id.ScanButton);
+
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if (!barcodeScanned) {
+
+                    scanText.setText("Scanning...");
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    scanText.setText("Done.");
+
+                    String text = "fake number";
+
+                    Log.d("QRScanner", "Detected: " + text);
+
+                    barcodeScanned = true;
+                    backToDiscount(ctx, text);
+                }
+
+
+            }
+        });
+    }
+
+
+    private void startScanner() {
+        Log.d("QRScanner", "Starting scanner...");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         autoFocusHandler = new Handler();
@@ -56,6 +109,7 @@ public class QRScannerActivity extends Activity {
 
         PreviewCallback previewCb = new PreviewCallback() {
             public void onPreviewFrame(byte[] data, Camera camera) {
+                Log.d("QRScanner", "onPreview");
                 Camera.Parameters parameters = camera.getParameters();
                 Size size = parameters.getPreviewSize();
 
@@ -63,6 +117,9 @@ public class QRScannerActivity extends Activity {
                 barcode.setData(data);
 
                 int result = scanner.scanImage(barcode);
+
+                Log.d("QRScanner", "got result: " + result);
+
 
                 if (result != 0) {
                     previewing = false;
@@ -77,8 +134,11 @@ public class QRScannerActivity extends Activity {
 
 //                    scanText.setText("barcode result " + sym.getData());
                         String text = sym.getData();
+
+                        Log.d("QRScanner", "text: " + text);
+
                         if (checkCode(text)) {
-                            backToDiscount(ctx, null,  text);
+                            backToDiscount(ctx, text);
                         }
                     }
 
@@ -106,6 +166,7 @@ public class QRScannerActivity extends Activity {
 //                }
 //            }
 //        });
+
     }
 
     public void onPause() {
@@ -143,7 +204,6 @@ public class QRScannerActivity extends Activity {
     };
 
 
-
     // Mimic continuous auto-focusing
     AutoFocusCallback autoFocusCB = new AutoFocusCallback() {
         public void onAutoFocus(boolean success, Camera camera) {
@@ -152,11 +212,13 @@ public class QRScannerActivity extends Activity {
     };
 
 
-    private void backToDiscount(Context context, Discount d, String text) {
+    private void backToDiscount(Context context, String text) {
+        Log.d("QRScanner", "Back to discount activity...");
+
         Intent intent = new Intent(context, QRScannerActivity.class);
-        intent.putExtra("discount", d);
         intent.putExtra("text", text);
-        context.startActivity(intent);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 

@@ -34,8 +34,8 @@ import java.util.List;
 public class HelloClient {
 
 
-    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
-//        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
+//    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
+        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
     public static final String DISCOUNTS_URL = SERVER_URL + "/discounts";
 
     public static final String DISCOUNT_ICON_URL = SERVER_URL + "/resources/icons/%d.png";

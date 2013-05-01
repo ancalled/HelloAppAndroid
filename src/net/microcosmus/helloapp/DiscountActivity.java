@@ -17,7 +17,11 @@ import java.text.SimpleDateFormat;
 
 public class DiscountActivity extends Activity {
 
+    public static final int INTENT_REQUEST_REF = 100;
+
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM");
+
+    private boolean qrDetected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,11 @@ public class DiscountActivity extends Activity {
                 final Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
                 final TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
                 final TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+                final TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
                 final ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
                 confirmBtn.setVisibility(View.VISIBLE);
+                scanResult.setVisibility(View.GONE);
                 messageView.setVisibility(View.GONE);
                 numberView.setVisibility(View.GONE);
                 progressBar.setVisibility(View.GONE);
@@ -95,7 +101,27 @@ public class DiscountActivity extends Activity {
     private void showQRScanner(Context context, Discount d) {
         Intent intent = new Intent(context, QRScannerActivity.class);
         intent.putExtra("discount", d);
-        context.startActivity(intent);
+        startActivityForResult(intent, INTENT_REQUEST_REF);
+    }
+
+    // Function to read the result from newly created activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == INTENT_REQUEST_REF) {
+            qrDetected = true;
+            String text = (String) data.getExtras().get("text");
+
+            Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+            TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+
+            confirmBtn.setVisibility(View.GONE);
+            scanResult.setVisibility(View.VISIBLE);
+
+            scanResult.setText(text);
+        }
+
     }
 
 
