@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="signpost">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/signpost/signpost-commonshttp4-1.2.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/signpost/signpost-core-1.2.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/libs/signpost/commons-codec-1.8-bin.zip!/commons-codec-1.8/apidocs" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

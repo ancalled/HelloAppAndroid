@@ -12,6 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.User;
+import oauth.signpost.OAuthConsumer;
+import oauth.signpost.basic.DefaultOAuthConsumer;
+import oauth.signpost.exception.OAuthCommunicationException;
+import oauth.signpost.exception.OAuthExpectationFailedException;
+import oauth.signpost.exception.OAuthMessageSignerException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -24,39 +31,84 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HelloClient {
 
+    public static final String SCHEME = "http";
+    public static final String HOST = "10.0.2.2";
+    public static final int PORT = 8080;
+//    public static final String HOST = "helloapp.microcosmus.net";
+//    public static final int PORT = 80;
 
-//    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
-        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
-    public static final String DISCOUNTS_URL = SERVER_URL + "/discounts";
 
-    public static final String DISCOUNT_ICON_URL = SERVER_URL + "/resources/icons/%d.png";
-    public static final String APPLY_DISCOUNT_URL = SERVER_URL + "/apply-discount?userId=%d&discountId=%d";
+    public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
 
-    public void retreiveDiscounts(LinearLayout layout, Context context, ViewGroup parent) {
+    //    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
+//        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
+    public static final String CAMPAIGNS_URL = SERVER_URL + "/customer/api/campaigns";
+
+    public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
+    public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
+
+    private static User user;
+
+    public static void retrieveCampaigns(LinearLayout layout, Context context, ViewGroup parent) {
         DiscountsTask task = new DiscountsTask(/*adapter*/layout, context, parent);
-        task.execute(DISCOUNTS_URL);
+        task.execute(CAMPAIGNS_URL);
     }
 
-    public void applyDiscount(long userId, long discountId, TextView messageView, TextView numberView, ProgressBar progressBar) {
+    public static void applyDiscount(long discountId, String confirmCode, TextView messageView, TextView numberView, ProgressBar progressBar) {
         ApplyDiscountsTask task = new ApplyDiscountsTask(messageView, numberView, progressBar);
-        task.execute(String.format(APPLY_DISCOUNT_URL, userId, discountId));
+        String url = null;
+        try {
+            URI uri = new URI(
+                    SCHEME,
+                    null,
+                    HOST,
+                    PORT,
+                    "/helloapp/customer/api/apply-campaign",
+                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", user.getId(), discountId, confirmCode),
+                    null
+            );
+            url = uri.toURL().toString();
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("HelloClient", "Url: " + url);
+
+        if (url != null) {
+            task.execute(url);
+        }
     }
 
 
-    public void downloadBitmap(String url, ImageView imageView) {
+    public static void downloadBitmap(String url, ImageView imageView) {
         BitmapDownloaderTask task = new BitmapDownloaderTask(imageView);
         task.execute(url);
     }
 
+    private HelloClient() {
+    }
+
+    public static void authorize() {
+        //todo auth request
+
+        user = new User();
+        user.setId(1L);
+        user.setName("testuser1");
+    }
 
     public static class DiscountsTask extends AsyncTask<String, Void, List<Discount>> {
 
@@ -94,7 +146,7 @@ public class HelloClient {
                 if (context != null && layout != null && parent != null) {
                     for (Discount d : discounts) {
                         Log.i("Client", "Disc: " + d.getTitle() + "\t" + d.getPlace());
-                        View view = MainActivity.createDiscountRow(d, context, parent);
+                        View view = MainActivity.createDiscountRow(d, user, context, parent);
                         layout.addView(view);
                     }
                 }
@@ -114,8 +166,8 @@ public class HelloClient {
                 d.setRate(discountObj.getInt("rate"));
 //            d.setGoodThrough(obj.getString("goodThrough"));
 
-                JSONObject placeObj = discountObj.getJSONObject("place");
-                d.setPlace(placeObj.getString("name"));
+                JSONObject companyObj = discountObj.getJSONObject("company");
+                d.setPlace(companyObj.getString("name"));
 
                 result.add(d);
             }
@@ -177,9 +229,13 @@ public class HelloClient {
             JSONObject jsonObject = new JSONObject(json);
 
             ApplyResult result = new ApplyResult();
-            result.setAppliedId(jsonObject.getLong("appliedId"));
             String strStatus = jsonObject.getString("status");
-            result.setStatus(ApplyResult.Status.valueOf(strStatus));
+            ApplyResult.Status status = ApplyResult.Status.valueOf(strStatus);
+
+            result.setStatus(status);
+            if (status == ApplyResult.Status.OK) {
+                result.setAppliedId(jsonObject.getLong("appliedId"));
+            }
 
             return result;
         }
@@ -311,6 +367,34 @@ public class HelloClient {
         }
 
         return null;
+    }
+
+
+    public static final String CONSUMER_KEY = "1243";
+    public static final String CONSUMER_SECRET = "abgb";
+    public static final String ACCESS_TOKEN = "12434";
+    public static final String TOKEN_SECRET = "3535";
+
+
+    public static void signWithOAuth() throws IOException,
+            OAuthCommunicationException,
+            OAuthExpectationFailedException,
+            OAuthMessageSignerException {
+
+        // create a consumer object and configure it with the access
+        // token and token secret obtained from the service provider
+        OAuthConsumer consumer = new DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+        consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
+
+        // create an HTTP request to a protected resource
+        URL url = new URL("http://example.com/protected");
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+
+        // sign the request
+        consumer.sign(request);
+
+        // send the request
+        request.connect();
     }
 
 }

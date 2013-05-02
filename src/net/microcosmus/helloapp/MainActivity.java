@@ -12,8 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.AndroidTest.R;
+import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.User;
 
 public class MainActivity extends Activity {
+
 
 
     /**
@@ -26,7 +29,11 @@ public class MainActivity extends Activity {
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.main);
+
+        HelloClient.authorize();
     }
+
+
 
     @Override
     protected void onResume() {
@@ -35,11 +42,9 @@ public class MainActivity extends Activity {
 
         if (isNetworkAvailable()) {
 
-            HelloClient client = new HelloClient();
-
             LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
+            HelloClient.retrieveCampaigns(listView, this, listView);
 
-            client.retreiveDiscounts(listView, this, listView);
 
 
         } else {
@@ -57,7 +62,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public static View createDiscountRow(final Discount d, final Context context, ViewGroup parent) {
+    public static View createDiscountRow(final Discount d, final User u, final Context context, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.discount_row, parent, false);
@@ -78,6 +83,8 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(context, DiscountActivity.class);
                 intent.putExtra("discount", d);
+                intent.putExtra("user", u);
+
                 context.startActivity(intent);
             }
         });
@@ -99,8 +106,7 @@ public class MainActivity extends Activity {
         });
 
 
-        HelloClient client = new HelloClient();
-        client.downloadBitmap(String.format(HelloClient.DISCOUNT_ICON_URL,
+        HelloClient.downloadBitmap(String.format(HelloClient.CAMPAIGN_ICON_URL,
                 d.getId()), imageView);
 
         return view;

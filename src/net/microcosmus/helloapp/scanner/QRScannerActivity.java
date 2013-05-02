@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.example.AndroidTest.R;
+import net.microcosmus.helloapp.domain.Discount;
 import net.sourceforge.zbar.*;
 
 /* Import ZBar Class files */
@@ -37,6 +38,7 @@ public class QRScannerActivity extends Activity {
     private boolean previewing = true;
 
     private Context ctx;
+    private Discount discount;
 
     static {
         System.loadLibrary("iconv");
@@ -44,6 +46,11 @@ public class QRScannerActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            discount = (Discount) extras.getSerializable("discount");
+        }
 
         ctx = this;
 
@@ -80,7 +87,8 @@ public class QRScannerActivity extends Activity {
                     }
                     scanText.setText("Done.");
 
-                    String text = "fake number";
+                    String text = "100" + discount.getId();
+
 
                     Log.d("QRScanner", "Detected: " + text);
 

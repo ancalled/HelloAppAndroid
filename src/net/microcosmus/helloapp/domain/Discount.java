@@ -1,6 +1,4 @@
-package net.microcosmus.helloapp;
-
-import android.os.Parcelable;
+package net.microcosmus.helloapp.domain;
 
 import java.io.Serializable;
 import java.util.Date;

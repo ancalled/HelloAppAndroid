@@ -42,31 +42,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/fake_scanner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/commons-codec-1.8-bin.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/signpost-commonshttp4-1.2.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/signpost-core-1.2.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/TestUriParser.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/signpost.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/Discount.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/Discount.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidTest.iml" afterPath="$PROJECT_DIR$/AndroidTest.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/discount.xml" afterPath="$PROJECT_DIR$/res/layout/discount.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367334667848" ignored="false" />
+    <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421965657" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
-    <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333367511" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367285348796" ignored="false" />
+    <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419238605" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367458001792" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
-    <file path="$PROJECT_DIR$/../HelloAppServer/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364643447527" ignored="false" />
-    <file path="/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364643429151" ignored="false" />
-    <file path="/DiscountActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367343452838" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421521838" ignored="false" />
+    <file path="/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421505865" ignored="false" />
+    <file path="/DiscountActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419120371" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366595184410" ignored="false" />
-    <file path="/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365471893463" ignored="false" />
+    <file path="/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367382118759" ignored="false" />
     <file path="/Discount.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333093391" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/com/mcsm/hellapp/view/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364615512612" ignored="false" />
-    <file path="/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364615498416" ignored="false" />
+    <file path="/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407258508" ignored="false" />
     <file path="/strings.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364780568649" ignored="false" />
     <file path="/textlines.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364621098941" ignored="false" />
     <file path="/sample_left_btn.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364625750363" ignored="false" />
@@ -77,7 +83,7 @@
     <file path="$PROJECT_DIR$/../HelloAppServer/src/com/mcsm/hellapp/model/service/HelloAppCatalog.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364713267739" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/com/mcsm/hellapp/model/service/HelloAppBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364713152745" ignored="false" />
     <file path="/HelloAppBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364713152745" ignored="false" />
-    <file path="/ApplyDiscountServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364637229319" ignored="false" />
+    <file path="/ApplyDiscountServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386998117" ignored="false" />
     <file path="/ApplyResult.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364636095793" ignored="false" />
     <file path="/main.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365469358807" ignored="false" />
     <file path="/discount_bottom.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364649373394" ignored="false" />
@@ -89,22 +95,22 @@
     <file path="$PROJECT_DIR$/../adt-bundle-mac-x86_64/sdk/tools/ant/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365325633324" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/domain/Place.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333441466" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/domain/Discount.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333121372" ignored="false" />
-    <file path="/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365339869270" ignored="false" />
+    <file path="/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367423375628" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/web/WEB-INF/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333459687" ignored="false" />
-    <file path="$PROJECT_DIR$/../HelloAppServer/admin/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333763813" ignored="false" />
-    <file path="$PROJECT_DIR$/../HelloAppServer/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333929257" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/admin/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385862775" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367425801258" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/add-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340221472" ignored="false" />
     <file path="/add-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341334454" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365339869270" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/view/AddCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341495833" ignored="false" />
-    <file path="/header.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340612445" ignored="false" />
+    <file path="/header.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421339220" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/header.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340612445" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/view/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340623793" ignored="false" />
-    <file path="/new-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341102678" ignored="false" />
+    <file path="/new-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406661710" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/new-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341334454" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/view/BusinessAuthFilter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340728461" ignored="false" />
     <file path="/BusinessAuthFilter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340728461" ignored="false" />
-    <file path="/AddCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341369963" ignored="false" />
+    <file path="/AddCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407677314" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloBurnAndroid/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365473301410" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloBurnAndroid/res/layout/main.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365472940488" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloBurnAndroid/res/layout/place.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365472444044" ignored="false" />
@@ -113,13 +119,103 @@
     <file path="$PROJECT_DIR$/../HelloBurnAndroid/src/com/mcsm/helloburn/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365472388533" ignored="false" />
     <file path="/place.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365471828024" ignored="false" />
     <file path="/QRScanner.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366854186900" ignored="false" />
-    <file path="/QRScannerActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367344005838" ignored="false" />
+    <file path="/QRScannerActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419058797" ignored="false" />
     <file path="$USER_HOME$/Downloads/ZBarAndroidSDK-0.1/examples/CameraTest/project.properties" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366515683525" ignored="false" />
     <file path="/project.properties" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366515683525" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/test/QRGeneratorTest.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366517145222" ignored="false" />
     <file path="/QRGeneratorTest.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366517127871" ignored="false" />
     <file path="$PROJECT_DIR$/gen/com/example/AndroidTest/BuildConfig.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367337320687" ignored="false" />
     <file path="$APPLICATION_HOME_DIR$/plugins/android/lib/android.jar!/org/jetbrains/android/android.xsd" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367341492469" ignored="false" />
+    <file path="/User.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367381989006" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/domain/Confirmer.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386235756" ignored="false" />
+    <file path="/Confirmer.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386114899" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/model/domain/Confirmer.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385678982" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/model/service/BusinessService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386135630" ignored="false" />
+    <file path="/BusinessService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385542352" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/business/src/com/mcsm/hellapp/business/model/service/BusinessBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386235756" ignored="false" />
+    <file path="/BusinessBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385571905" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/view/ApplyDiscountServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367387003346" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/business/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385851436" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/admin/src/com/mcsm/hellapp/admin/model/domain/Confirmer.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385881151" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/business/model/service/BusinessService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386039279" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/service/CustomerService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386502493" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/service/CustomerBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386571968" ignored="false" />
+    <file path="/CustomerService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414879486" ignored="false" />
+    <file path="/CustomerBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414935781" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/src/com/mcsm/hellapp/customer/model/domain/DiscountStat.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386734095" ignored="false" />
+    <file path="/DiscountStat.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367386720496" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/admin/src/com/mcsm/hellapp/admin/model/domain/CampaignStat.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367387181603" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367423414821" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/ApplyCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367404890374" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367404903147" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/AddCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367420840203" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/AuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407707120" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422195585" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/admin/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367408022056" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/admin/AuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407806745" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/login.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367404993596" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/admin/AdminAuthFilter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367404983241" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/PartnerAuthFilter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367405004070" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/login-admin.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367405750588" ignored="false" />
+    <file path="/login-admin.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367405733233" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/login-partner.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367405745143" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/partner/index.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367405719396" ignored="false" />
+    <file path="/index.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406536827" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/partner/campaigns.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406571686" ignored="false" />
+    <file path="/campaigns.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406390089" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/customer/index.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406494239" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/admin/index.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406542605" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/partner/new-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406661710" ignored="false" />
+    <file path="/reports.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406675593" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/partner/reports.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406675594" ignored="false" />
+    <file path="/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/admin/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406874869" ignored="false" />
+    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406860901" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407598822" ignored="false" />
+    <file path="/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422142138" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407746775" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/ApplyCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419171881" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407264577" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/AuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414030459" ignored="false" />
+    <file path="/AuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415258630" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/CustomerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407605653" ignored="false" />
+    <file path="/CustomerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407978591" ignored="false" />
+    <file path="/ApplyCampaignServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415304748" ignored="false" />
+    <file path="/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407619047" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/PartnerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407992592" ignored="false" />
+    <file path="/PartnerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407990731" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/CustomerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407978591" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/admin/AdminServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407958593" ignored="false" />
+    <file path="/AdminServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407954551" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/Consts.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367408046980" ignored="false" />
+    <file path="/Consts.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407918568" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/LoginPassAuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415294472" ignored="false" />
+    <file path="/LoginPassAuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415207543" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/TokenAuthServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414135958" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/service/CustomerService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415274998" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/service/CustomerBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414939964" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/HashUtil.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414731635" ignored="false" />
+    <file path="/HashUtil.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414692362" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/domain/CustomerUser.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414845918" ignored="false" />
+    <file path="/CustomerUser.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414836384" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/domain/AuthToken.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367415274998" ignored="false" />
+    <file path="/AuthToken.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367414816374" ignored="false" />
+    <file path="/TestUriParser.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367418462000" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/AddConfirmerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367420848421" ignored="false" />
+    <file path="/AddConfirmerServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367420400280" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/service/PartnerService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421026662" ignored="false" />
+    <file path="/PartnerService.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367420958719" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/model/service/PartnerBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424160031" ignored="false" />
+    <file path="/PartnerBean.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424156346" ignored="false" />
+    <file path="/confirmers.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424494034" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/partner/confirmers.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367425725505" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/partner/header.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421339216" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/GenerateQRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422008964" ignored="false" />
+    <file path="/GenerateQRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421997021" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/QRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424505120" ignored="false" />
+    <file path="/QRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424437500" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/web/js/jquery.bpopup.min.js" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422891516" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,48 +277,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="scanner.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="24" selection-start="291" selection-end="291" vertical-scroll-proportion="-2.3076923">
+            <state line="34" column="0" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="41" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scanner.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
+          <provider selected="true" editor-type-id="android-designer">
             <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state line="8" column="24" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="fake_scanner.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/fake_scanner.xml">
-          <provider editor-type-id="text-editor">
-            <state line="26" column="11" selection-start="1004" selection-end="1004" vertical-scroll-proportion="-12.0">
-              <folding />
-            </state>
-          </provider>
           <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HelloClient.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="0" selection-start="4061" selection-end="4061" vertical-scroll-proportion="0.0">
+          <provider editor-type-id="text-editor">
+            <state line="26" column="11" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QRScannerActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="HelloClient.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="234" column="0" selection-start="8849" selection-end="8849" vertical-scroll-proportion="0.024232633">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestUriParser.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/TestUriParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="20" selection-start="515" selection-end="515" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QRScannerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="43" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.6962617">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1691#2340#0" expanded="true" />
-                <element signature="e#2329#2330#0" expanded="true" />
-              </folding>
+            <state line="89" column="58" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -230,7 +349,7 @@
       <file leaf-file-name="DiscountActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="35" selection-start="4444" selection-end="4444" vertical-scroll-proportion="0.0">
+            <state line="125" column="28" selection-start="4566" selection-end="4566" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -238,13 +357,13 @@
       </file>
       <file leaf-file-name="discount.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/discount.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider editor-type-id="text-editor">
             <state line="61" column="23" selection-start="2447" selection-end="3407" vertical-scroll-proportion="0.0">
               <folding />
             </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -266,10 +385,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/example/AndroidTest/DiscountActivity.java" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/AndroidTest/MainActivity.java" />
-        <option value="$PROJECT_DIR$/src/com/example/AndroidTest/HelloClient.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloap/HelloClient.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/CameraPreview.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/CameraPreview.java" />
@@ -277,11 +392,15 @@
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity2.java" />
         <option value="$PROJECT_DIR$/res/layout/scanner.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
         <option value="$PROJECT_DIR$/res/layout/fake_scanner.xml" />
         <option value="$PROJECT_DIR$/res/layout/discount.xml" />
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/Discount.java" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/test/TestUriParser.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
       </list>
     </option>
   </component>
@@ -316,8 +435,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -400,6 +517,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helloapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloAppAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -424,18 +563,20 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="OverrideImplement.combined" value="false" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="preferences.sourceCode.XML" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/zbar.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/signpost/commons-codec-1.8-bin.zip!/" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
@@ -449,6 +590,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -461,6 +603,23 @@
     </key>
   </component>
   <component name="RunManager" selected="Android Application.AndroidTest">
+    <configuration default="false" name="TestUriParser" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TestUriParser" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="AndroidTest" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -604,9 +763,15 @@
       <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android Application.AndroidTest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestUriParser" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.TestUriParser" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -653,18 +818,19 @@
       <created>1366596096612</created>
       <updated>1366596096612</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе">
+      <created>1367380637445</created>
+      <updated>1367380637445</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="790" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855093" sideWeight="0.67164177" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26183644" sideWeight="0.67164177" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -674,21 +840,24 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5641791" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5639881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21664275" sideWeight="0.4358209" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21664275" sideWeight="0.4358209" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855093" sideWeight="0.67164177" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26183644" sideWeight="0.67164177" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.67164177" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -735,7 +904,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пуш" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -752,6 +921,7 @@
     <MESSAGE value="Test commit" />
     <MESSAGE value="Добавил сканер QR-кодов" />
     <MESSAGE value="Пуш" />
+    <MESSAGE value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -761,51 +931,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/drawable/black_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="3" selection-start="672" selection-end="672" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/discount_row.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="42" selection-start="240" selection-end="246" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="74" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="1174" selection-end="1174" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="80" selection-start="1847" selection-end="1862" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/discount_row.xml">
-      <provider editor-type-id="text-editor">
-        <state line="18" column="44" selection-start="981" selection-end="981" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
       <provider editor-type-id="text-editor">
         <state line="8" column="44" selection-start="332" selection-end="365" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/CameraPreview.java">
@@ -823,64 +956,96 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="24" selection-start="291" selection-end="291" vertical-scroll-proportion="-2.3076923">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/fake_scanner.xml">
-      <provider editor-type-id="text-editor">
-        <state line="26" column="11" selection-start="1004" selection-end="1004" vertical-scroll-proportion="-12.0">
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+      <provider editor-type-id="text-editor">
+        <state line="8" column="24" selection-start="291" selection-end="291" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="0" selection-start="4061" selection-end="4061" vertical-scroll-proportion="0.0">
+    <entry file="file://$PROJECT_DIR$/res/layout/fake_scanner.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state line="26" column="11" selection-start="1004" selection-end="1004" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/discount.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state line="61" column="23" selection-start="2447" selection-end="3407" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/../adt-bundle-mac-x86_64/sdk/platforms/android-10/android.jar!/java/net/InetAddress.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="0" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.65909094">
+        <state line="56" column="0" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.65909094" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/Discount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="108" selection-end="108" vertical-scroll-proportion="0.093457945">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="35" selection-start="4444" selection-end="4444" vertical-scroll-proportion="0.0">
+        <state line="5" column="41" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../adt-bundle-mac-x86_64/sdk/platforms/android-10/android.jar!/java/util/concurrent/ThreadPoolExecutor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="0" selection-start="5032" selection-end="5032" vertical-scroll-proportion="0.8569157" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../adt-bundle-mac-x86_64/sdk/platforms/android-10/android.jar!/java/net/URI.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="11" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/TestUriParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="515" selection-end="515" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="43" selection-start="2090" selection-end="2090" vertical-scroll-proportion="0.6962617">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1691#2340#0" expanded="true" />
-            <element signature="e#2329#2330#0" expanded="true" />
-          </folding>
+        <state line="89" column="58" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="28" selection-start="4566" selection-end="4566" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="234" column="0" selection-start="8849" selection-end="8849" vertical-scroll-proportion="0.024232633">
+          <folding />
         </state>
       </provider>
     </entry>
@@ -963,7 +1128,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>zbar</last-edited>
+          <last-edited>signpost</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

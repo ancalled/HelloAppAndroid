@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.AndroidTest.R;
+import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.scanner.QRScannerActivity;
 
 import java.text.DateFormat;
@@ -22,6 +23,7 @@ public class DiscountActivity extends Activity {
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM");
 
     private boolean qrDetected = false;
+    private Discount discount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,11 @@ public class DiscountActivity extends Activity {
 
         setContentView(R.layout.discount);
 
-        final HelloClient client = new HelloClient();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            final Discount discount = (Discount) extras.getSerializable("discount");
+            discount = (Discount) extras.getSerializable("discount");
+
             if (discount != null) {
 
                 TextView placeView = (TextView) findViewById(R.id.ddPlace);
@@ -66,12 +68,6 @@ public class DiscountActivity extends Activity {
                 confirmBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        confirmBtn.setVisibility(View.GONE);
-//
-//                        long userId = 1L;
-//                        client.applyDiscount(userId, discount.getId(), messageView, numberView, progressBar);
-
                         showQRScanner(ctx, discount);
                     }
                 });
@@ -111,15 +107,23 @@ public class DiscountActivity extends Activity {
 
         if (requestCode == INTENT_REQUEST_REF) {
             qrDetected = true;
-            String text = (String) data.getExtras().get("text");
+            String confirmCode = (String) data.getExtras().get("text");
 
             Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+            TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
+            TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
             TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+            ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
             confirmBtn.setVisibility(View.GONE);
             scanResult.setVisibility(View.VISIBLE);
 
-            scanResult.setText(text);
+            scanResult.setText(confirmCode);
+
+
+            progressBar.setVisibility(View.VISIBLE);
+            confirmBtn.setVisibility(View.GONE);
+            HelloClient.applyDiscount(discount.getId(), confirmCode, messageView, numberView, progressBar);
         }
 
     }
