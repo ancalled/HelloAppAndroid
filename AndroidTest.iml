@@ -16,6 +16,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="zbar" level="project" />
     <orderEntry type="library" name="signpost" level="project" />
+    <orderEntry type="library" name="bugsense3.2.2" level="project" />
+    <orderEntry type="library" name="libGoogleAnalyticsV2" level="project" />
   </component>
 </module>
 

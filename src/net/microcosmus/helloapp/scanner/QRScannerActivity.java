@@ -13,10 +13,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.example.AndroidTest.R;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.sourceforge.zbar.*;
 
@@ -25,6 +28,10 @@ import net.sourceforge.zbar.*;
 public class QRScannerActivity extends Activity {
 
     public static final boolean DEBUG = true;
+
+    private Tracker mGaTracker;
+    private GoogleAnalytics mGaInstance;
+
 
     private Camera camera;
     private Handler autoFocusHandler;
@@ -47,6 +54,12 @@ public class QRScannerActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        mGaInstance = GoogleAnalytics.getInstance(this);
+        mGaTracker = mGaInstance.getTracker("UA-40626076-1");
+
+
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             discount = (Discount) extras.getSerializable("discount");
@@ -63,6 +76,14 @@ public class QRScannerActivity extends Activity {
             setContentView(R.layout.fake_scanner);
             startFakeScanner();
         }
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mGaTracker.sendView("QRScannerActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
 
     }
 
@@ -222,6 +243,8 @@ public class QRScannerActivity extends Activity {
 
     private void backToDiscount(Context context, String text) {
         Log.d("QRScanner", "Back to discount activity...");
+
+        mGaTracker.sendEvent("events", "qr_detected", text, null);
 
         Intent intent = new Intent(context, QRScannerActivity.class);
         intent.putExtra("text", text);

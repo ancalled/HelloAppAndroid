@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.AndroidTest.R;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.scanner.QRScannerActivity;
 
@@ -22,6 +24,11 @@ public class DiscountActivity extends Activity {
 
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM");
 
+
+    private Tracker mGaTracker;
+    private GoogleAnalytics mGaInstance;
+
+
     private boolean qrDetected = false;
     private Discount discount;
 
@@ -29,6 +36,9 @@ public class DiscountActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        mGaInstance = GoogleAnalytics.getInstance(this);
+        mGaTracker = mGaInstance.getTracker("UA-40626076-1");
 
         setContentView(R.layout.discount);
 
@@ -76,6 +86,11 @@ public class DiscountActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGaTracker.sendView("DiscountActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
+    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -100,7 +115,8 @@ public class DiscountActivity extends Activity {
         startActivityForResult(intent, INTENT_REQUEST_REF);
     }
 
-    // Function to read the result from newly created activity
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -123,6 +139,7 @@ public class DiscountActivity extends Activity {
 
             progressBar.setVisibility(View.VISIBLE);
             confirmBtn.setVisibility(View.GONE);
+
             HelloClient.applyDiscount(discount.getId(), confirmCode, messageView, numberView, progressBar);
         }
 

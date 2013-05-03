@@ -42,13 +42,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/commons-codec-1.8-bin.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/signpost-commonshttp4-1.2.1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/signpost/signpost-core-1.2.1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/TestUriParser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/signpost.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/Discount.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/Discount.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/bugsense3.2.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/GoogleAnalyticsAndroid_2.0beta5/javadocs.zip" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/GoogleAnalyticsAndroid_2.0beta5/libGoogleAnalyticsV2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/GoogleAnalyticsAndroid_2.0beta5/Changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/GoogleAnalyticsAndroid_2.0beta5/Readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/values/analytics.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/bugsense3_2_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/libGoogleAnalyticsV2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidTest.iml" afterPath="$PROJECT_DIR$/AndroidTest.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
@@ -58,18 +59,18 @@
     </list>
     <ignored path="AndroidTest.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421965657" ignored="false" />
+    <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504229517" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419238605" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367458001792" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367544576700" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421521838" ignored="false" />
     <file path="/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421505865" ignored="false" />
-    <file path="/DiscountActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419120371" ignored="false" />
+    <file path="/DiscountActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367546506034" ignored="false" />
     <file path="/AndroidManifest.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366595184410" ignored="false" />
-    <file path="/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367382118759" ignored="false" />
+    <file path="/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367544265391" ignored="false" />
     <file path="/Discount.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333093391" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/com/mcsm/hellapp/view/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364615512612" ignored="false" />
     <file path="/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407258508" ignored="false" />
@@ -98,7 +99,7 @@
     <file path="/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367423375628" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/cusomer-api/web/WEB-INF/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333459687" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/admin/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367385862775" ignored="false" />
-    <file path="$PROJECT_DIR$/../HelloAppServer/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367425801258" ignored="false" />
+    <file path="$PROJECT_DIR$/../HelloAppServer/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367546813435" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/add-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365340221472" ignored="false" />
     <file path="/add-campaign.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365341334454" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/web/WEB-INF/web.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365339869270" ignored="false" />
@@ -119,7 +120,7 @@
     <file path="$PROJECT_DIR$/../HelloBurnAndroid/src/com/mcsm/helloburn/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365472388533" ignored="false" />
     <file path="/place.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365471828024" ignored="false" />
     <file path="/QRScanner.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366854186900" ignored="false" />
-    <file path="/QRScannerActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367419058797" ignored="false" />
+    <file path="/QRScannerActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367546779022" ignored="false" />
     <file path="$USER_HOME$/Downloads/ZBarAndroidSDK-0.1/examples/CameraTest/project.properties" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366515683525" ignored="false" />
     <file path="/project.properties" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366515683525" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/business/test/QRGeneratorTest.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1366517145222" ignored="false" />
@@ -216,6 +217,16 @@
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/partner/QRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424505120" ignored="false" />
     <file path="/QRCodeServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367424437500" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/web/js/jquery.bpopup.min.js" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422891516" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/data/queries.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074258" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/src/kz/bgm/platform/utils/LuceneUtil.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074258" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/src/kz/bgm/platform/BgmServer.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074670" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/test/kz/bgm/platform/test/lucene/LuceneSearchTest.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074670" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/src/kz/bgm/platform/model/service/LuceneSearch.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074670" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074670" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/data/sample-data.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504074670" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/src/kz/bgm/platform/utils/LuceneIndexRebuildUtil.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504428214" ignored="false" />
+    <file path="/LuceneIndexRebuildUtil.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504419997" ignored="false" />
+    <file path="$PROJECT_DIR$/../BGM/.idea/workspace.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504449515" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,7 +291,18 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
+            <state line="21" column="0" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="analytics.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/analytics.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="46" selection-start="232" selection-end="245" vertical-scroll-proportion="-3.0">
               <folding />
             </state>
           </provider>
@@ -322,7 +344,7 @@
       <file leaf-file-name="HelloClient.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="234" column="0" selection-start="8849" selection-end="8849" vertical-scroll-proportion="0.024232633">
+            <state line="189" column="100" selection-start="7016" selection-end="7016" vertical-scroll-proportion="0.18739903">
               <folding />
             </state>
           </provider>
@@ -340,7 +362,7 @@
       <file leaf-file-name="QRScannerActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="89" column="58" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+            <state line="246" column="43" selection-start="6927" selection-end="6927" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -349,7 +371,7 @@
       <file leaf-file-name="DiscountActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="28" selection-start="4566" selection-end="4566" vertical-scroll-proportion="0.0">
+            <state line="29" column="0" selection-start="789" selection-end="859" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -385,7 +407,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloap/HelloClient.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/CameraPreview.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/CameraPreview.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScanner.java" />
@@ -396,8 +417,9 @@
         <option value="$PROJECT_DIR$/res/layout/discount.xml" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/Discount.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/User.java" />
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/test/TestUriParser.java" />
+        <option value="$PROJECT_DIR$/res/values/analytics.xml" />
+        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
@@ -542,6 +564,24 @@
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloAppAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -561,6 +601,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloAppAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -576,7 +630,7 @@
     <property name="options.lastSelected" value="preferences.sourceCode.XML" />
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/signpost/commons-codec-1.8-bin.zip!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/GoogleAnalyticsAndroid_2.0beta5/javadocs.zip!/" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
@@ -822,12 +876,16 @@
       <created>1367380637445</created>
       <updated>1367380637445</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Взаимодействие активитис с qr">
+      <created>1367458062544</created>
+      <updated>1367458062544</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="790" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -840,14 +898,15 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5639881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56268656" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21664275" sideWeight="0.4358209" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21664275" sideWeight="0.43731344" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855093" sideWeight="0.67164177" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -857,7 +916,6 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3283582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Colour Chooser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.67164177" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -904,7 +962,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
+    <option name="LAST_COMMIT_MESSAGE" value="Взаимодействие активитис с qr" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -922,6 +980,7 @@
     <MESSAGE value="Добавил сканер QR-кодов" />
     <MESSAGE value="Пуш" />
     <MESSAGE value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
+    <MESSAGE value="Взаимодействие активитис с qr" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -931,16 +990,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state line="8" column="44" selection-start="332" selection-end="365" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/CameraPreview.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="54" column="0" selection-start="1904" selection-end="1904" vertical-scroll-proportion="0.0">
@@ -1004,13 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="988" selection-end="988" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../adt-bundle-mac-x86_64/sdk/platforms/android-10/android.jar!/java/util/concurrent/ThreadPoolExecutor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="104" column="0" selection-start="5032" selection-end="5032" vertical-scroll-proportion="0.8569157" />
@@ -1028,23 +1070,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="654" selection-end="654" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/analytics.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="46" selection-start="232" selection-end="245" vertical-scroll-proportion="-3.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/scanner/QRScannerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="58" selection-start="2393" selection-end="2393" vertical-scroll-proportion="0.0">
+        <state line="246" column="43" selection-start="6927" selection-end="6927" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="28" selection-start="4566" selection-end="4566" vertical-scroll-proportion="0.0">
+        <state line="29" column="0" selection-start="789" selection-end="859" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="234" column="0" selection-start="8849" selection-end="8849" vertical-scroll-proportion="0.024232633">
+        <state line="189" column="100" selection-start="7016" selection-end="7016" vertical-scroll-proportion="0.18739903">
           <folding />
         </state>
       </provider>
@@ -1128,7 +1186,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>signpost</last-edited>
+          <last-edited>libGoogleAnalyticsV2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -11,13 +11,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.bugsense.trace.BugSenseHandler;
 import com.example.AndroidTest.R;
+import com.google.analytics.tracking.android.EasyTracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.domain.User;
 
 public class MainActivity extends Activity {
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance().activityStart(this);
+        BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
+
+    }
 
     /**
      * Called when the activity is first created.
@@ -28,11 +38,12 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 //        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        EasyTracker.getInstance().setContext(this);
+
         setContentView(R.layout.main);
 
         HelloClient.authorize();
     }
-
 
 
     @Override
@@ -44,7 +55,6 @@ public class MainActivity extends Activity {
 
             LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
             HelloClient.retrieveCampaigns(listView, this, listView);
-
 
 
         } else {
@@ -113,5 +123,12 @@ public class MainActivity extends Activity {
     }
 
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        EasyTracker.getInstance().activityStop(this);
+        BugSenseHandler.closeSession(MainActivity.this);
+    }
 }
 

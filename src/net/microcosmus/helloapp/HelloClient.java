@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.domain.User;
 import oauth.signpost.OAuthConsumer;
@@ -183,10 +185,14 @@ public class HelloClient {
         private final WeakReference<TextView> numberViewRef;
         private final WeakReference<ProgressBar> progressBarRef;
 
+
+
         public ApplyDiscountsTask(TextView messageView, TextView numberView, ProgressBar progressBar) {
             this.messageViewRef = new WeakReference<TextView>(messageView);
             this.numberViewRef = new WeakReference<TextView>(numberView);
             this.progressBarRef = new WeakReference<ProgressBar>(progressBar);
+
+
         }
 
         @Override
