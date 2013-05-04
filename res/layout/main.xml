@@ -27,6 +27,10 @@
                 android:layout_alignParentLeft="true" android:layout_marginLeft="244dp"
                 android:layout_alignTop="@+id/textView" android:layout_marginTop="3dp"/>
     </RelativeLayout>
+    <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/progressBar" android:layout_gravity="center_horizontal" android:layout_marginTop="100dp"/>
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

@@ -1,8 +1,7 @@
-package net.microcosmus.helloapp.scanner;
+package net.microcosmus.helloapp;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
@@ -12,39 +11,31 @@ import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
-import net.sourceforge.zbar.*;
+import net.sourceforge.zbar.Config;
+import net.sourceforge.zbar.Image;
+import net.sourceforge.zbar.ImageScanner;
+import net.sourceforge.zbar.SymbolSet;
 
-/* Import ZBar Class files */
 
 public class QRScannerActivity extends Activity {
 
-    public static final boolean DEBUG = true;
 
     private Tracker mGaTracker;
-    private GoogleAnalytics mGaInstance;
 
 
     private Camera camera;
     private Handler autoFocusHandler;
 
-//    TextView scanText;
-//    Button scanButton;
-
     ImageScanner scanner;
 
-    private boolean barcodeScanned = false;
     private boolean previewing = true;
 
-    private Context ctx;
     private Discount discount;
 
     static {
@@ -56,70 +47,22 @@ public class QRScannerActivity extends Activity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        mGaInstance = GoogleAnalytics.getInstance(this);
+        GoogleAnalytics mGaInstance = GoogleAnalytics.getInstance(this);
         mGaTracker = mGaInstance.getTracker("UA-40626076-1");
-
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             discount = (Discount) extras.getSerializable("discount");
         }
 
-        ctx = this;
-
-        if (!DEBUG) {
-            setContentView(R.layout.scanner);
-            startScanner();
-
-        } else {
-
-            setContentView(R.layout.fake_scanner);
-            startFakeScanner();
-        }
-
+        setContentView(R.layout.scanner);
+        startScanner();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
         mGaTracker.sendView("QRScannerActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
-
-    }
-
-    private void startFakeScanner() {
-        Log.d("QRScanner", "Starting fake scanner");
-
-
-        final TextView scanText = (TextView) findViewById(R.id.scanText);
-        scanText.setText("");
-
-        Button scanButton = (Button) findViewById(R.id.ScanButton);
-
-        scanButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (!barcodeScanned) {
-
-                    scanText.setText("Scanning...");
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    scanText.setText("Done.");
-
-                    String text = "100" + discount.getId();
-
-
-                    Log.d("QRScanner", "Detected: " + text);
-
-                    barcodeScanned = true;
-                    backToDiscount(ctx, text);
-                }
-
-
-            }
-        });
     }
 
 
@@ -135,7 +78,6 @@ public class QRScannerActivity extends Activity {
         scanner.setConfig(0, Config.X_DENSITY, 3);
         scanner.setConfig(0, Config.Y_DENSITY, 3);
 
-
         PreviewCallback previewCb = new PreviewCallback() {
             public void onPreviewFrame(byte[] data, Camera camera) {
                 Log.d("QRScanner", "onPreview");
@@ -146,28 +88,20 @@ public class QRScannerActivity extends Activity {
                 barcode.setData(data);
 
                 int result = scanner.scanImage(barcode);
-
                 Log.d("QRScanner", "got result: " + result);
-
 
                 if (result != 0) {
                     previewing = false;
                     QRScannerActivity.this.camera.setPreviewCallback(null);
                     QRScannerActivity.this.camera.stopPreview();
 
-                    barcodeScanned = true;
-
                     SymbolSet syms = scanner.getResults();
-                    for (Symbol sym : syms) {
-
-
-//                    scanText.setText("barcode result " + sym.getData());
-                        String text = sym.getData();
-
+                    if (!syms.isEmpty()) {
+                        String text = syms.iterator().next().getData();
                         Log.d("QRScanner", "text: " + text);
 
                         if (checkCode(text)) {
-                            backToDiscount(ctx, text);
+                            backToDiscount(text);
                         }
                     }
 
@@ -175,27 +109,20 @@ public class QRScannerActivity extends Activity {
             }
         };
 
-        CameraPreview preview = new CameraPreview(this, camera, previewCb, autoFocusCB);
+        CameraPreview preview = new CameraPreview(this, camera, previewCb, new AutoFocusCallback() {
+            public void onAutoFocus(boolean success, final Camera camera) {
+                // Mimic continuous auto-focusing
+                final AutoFocusCallback autoFocusCB = this;
+                autoFocusHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        if (previewing) camera.autoFocus(autoFocusCB);
+                    }
+                }, 1000);
+            }
+        });
+
         FrameLayout layout = (FrameLayout) findViewById(R.id.cameraPreview);
         layout.addView(preview);
-
-//        scanText = (TextView) findViewById(R.id.scanText);
-//
-//        scanButton = (Button) findViewById(R.id.ScanButton);
-//
-//        scanButton.setOnClickListener(new OnClickListener() {
-//            public void onClick(View v) {
-//                if (barcodeScanned) {
-//                    barcodeScanned = false;
-//                    scanText.setText("Scanning...");
-//                    camera.setPreviewCallback(previewCb);
-//                    camera.startPreview();
-//                    previewing = true;
-//                    camera.autoFocus(autoFocusCB);
-//                }
-//            }
-//        });
-
     }
 
     public void onPause() {
@@ -225,30 +152,14 @@ public class QRScannerActivity extends Activity {
         }
     }
 
-    private Runnable doAutoFocus = new Runnable() {
-        public void run() {
-            if (previewing)
-                camera.autoFocus(autoFocusCB);
-        }
-    };
-
-
-    // Mimic continuous auto-focusing
-    AutoFocusCallback autoFocusCB = new AutoFocusCallback() {
-        public void onAutoFocus(boolean success, Camera camera) {
-            autoFocusHandler.postDelayed(doAutoFocus, 1000);
-        }
-    };
-
-
-    private void backToDiscount(Context context, String text) {
+    private void backToDiscount(String text) {
         Log.d("QRScanner", "Back to discount activity...");
-
         mGaTracker.sendEvent("events", "qr_detected", text, null);
 
-        Intent intent = new Intent(context, QRScannerActivity.class);
+        Intent intent = new Intent(this, QRScannerActivity.class);
         intent.putExtra("text", text);
         setResult(RESULT_OK, intent);
+
         finish();
     }
 

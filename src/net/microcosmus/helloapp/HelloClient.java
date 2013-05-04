@@ -1,19 +1,9 @@
 package net.microcosmus.helloapp;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.google.analytics.tracking.android.GoogleAnalytics;
-import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.domain.User;
 import oauth.signpost.OAuthConsumer;
@@ -36,8 +26,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,10 +35,11 @@ import java.util.List;
 public class HelloClient {
 
     public static final String SCHEME = "http";
-    public static final String HOST = "10.0.2.2";
-    public static final int PORT = 8080;
-//    public static final String HOST = "helloapp.microcosmus.net";
-//    public static final int PORT = 80;
+    //    public static final String HOST
+// = "10.0.2.2";
+//    public static final int PORT = 8080;
+    public static final String HOST = "helloapp.microcosmus.net";
+    public static final int PORT = 80;
 
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
@@ -62,41 +53,6 @@ public class HelloClient {
 
     private static User user;
 
-
-
-    public static void applyDiscount(long discountId, String confirmCode, TextView messageView, TextView numberView, ProgressBar progressBar) {
-        ApplyDiscountsTask task = new ApplyDiscountsTask(messageView, numberView, progressBar);
-        String url = null;
-        try {
-            URI uri = new URI(
-                    SCHEME,
-                    null,
-                    HOST,
-                    PORT,
-                    "/helloapp/customer/api/apply-campaign",
-                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", user.getId(), discountId, confirmCode),
-                    null
-            );
-            url = uri.toURL().toString();
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        Log.d("HelloClient", "Url: " + url);
-
-        if (url != null) {
-            task.execute(url);
-        }
-    }
-
-
-    public static void downloadBitmap(String url, ImageView imageView) {
-        BitmapDownloaderTask task = new BitmapDownloaderTask(imageView);
-        task.execute(url);
-    }
 
     private HelloClient() {
     }
@@ -113,144 +69,89 @@ public class HelloClient {
         return user;
     }
 
-    public static class ApplyDiscountsTask extends AsyncTask<String, Void, ApplyResult> {
 
-        private final WeakReference<TextView> messageViewRef;
-        private final WeakReference<TextView> numberViewRef;
-        private final WeakReference<ProgressBar> progressBarRef;
+//    --------------------------------------------------------------
 
 
+    public static Bitmap downloadBitmap(String url) {
+        final AndroidHttpClient client = AndroidHttpClient.newInstance("Android");
+        final HttpGet getRequest = new HttpGet(url);
 
-        public ApplyDiscountsTask(TextView messageView, TextView numberView, ProgressBar progressBar) {
-            this.messageViewRef = new WeakReference<TextView>(messageView);
-            this.numberViewRef = new WeakReference<TextView>(numberView);
-            this.progressBarRef = new WeakReference<ProgressBar>(progressBar);
-
-
-        }
-
-        @Override
-        // Actual download method, run in the task thread
-        protected ApplyResult doInBackground(String... params) {
-            // params comes from the execute() call: params[0] is the url.
-            String response = doPost(params[0]);
-            try {
-                return parseResult(response);
-            } catch (JSONException e) {
-                e.printStackTrace();
+        try {
+            HttpResponse response = client.execute(getRequest);
+            final int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                Log.w("ImageDownloader", "Error " + statusCode + " while retrieving bitmap from " + url);
+                return null;
             }
-            return null;
-        }
 
-        @Override
-        // Once the image is downloaded, associates it to the imageView
-        protected void onPostExecute(ApplyResult result) {
-            if (result != null) {
-
-                TextView messageView = messageViewRef.get();
-                TextView numberView = numberViewRef.get();
-                ProgressBar progressBar = progressBarRef.get();
-
-                if (messageView != null && numberView != null && progressBar != null) {
-
-                    messageView.clearComposingText();
-                    if (result.getStatus() == ApplyResult.Status.OK) {
-                        progressBar.setVisibility(View.GONE);
-                        messageView.setVisibility(View.VISIBLE);
-                        numberView.setVisibility(View.VISIBLE);
-
-                        numberView.setText(Long.toString(result.getAppliedId()));
+            final HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                InputStream inputStream = null;
+                try {
+                    inputStream = entity.getContent();
+                    final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    Log.i("ImageDownloader", "Got bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
+                    return bitmap;
+                } finally {
+                    if (inputStream != null) {
+                        inputStream.close();
                     }
+                    entity.consumeContent();
                 }
             }
-        }
-
-        static ApplyResult parseResult(String json) throws JSONException {
-            JSONObject jsonObject = new JSONObject(json);
-
-            ApplyResult result = new ApplyResult();
-            String strStatus = jsonObject.getString("status");
-            ApplyResult.Status status = ApplyResult.Status.valueOf(strStatus);
-
-            result.setStatus(status);
-            if (status == ApplyResult.Status.OK) {
-                result.setAppliedId(jsonObject.getLong("appliedId"));
+        } catch (Exception e) {
+            // Could provide a more explicit error message for IOException or IllegalStateException
+            getRequest.abort();
+            Log.w("ImageDownloader", "Error while retrieving bitmap from " + url);
+        } finally {
+            if (client != null) {
+                client.close();
             }
-
-            return result;
         }
+        return null;
+    }
+
+    public static List<Discount> parseDiscount(String json) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+
+        List<Discount> result = new ArrayList<Discount>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject discountObj = jsonArray.getJSONObject(i);
+            Discount d = new Discount();
+            d.setId(discountObj.getLong("id"));
+            d.setTitle(discountObj.getString("title"));
+            d.setRate(discountObj.getInt("rate"));
+//            d.setGoodThrough(obj.getString("goodThrough"));
+
+            JSONObject companyObj = discountObj.getJSONObject("company");
+            d.setPlace(companyObj.getString("name"));
+
+            result.add(d);
+        }
+
+        return result;
+    }
+
+    public static ApplyResult parseApplyResult(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        ApplyResult result = new ApplyResult();
+        String strStatus = jsonObject.getString("status");
+        ApplyResult.Status status = ApplyResult.Status.valueOf(strStatus);
+
+        result.setStatus(status);
+        if (status == ApplyResult.Status.OK) {
+            result.setAppliedId(jsonObject.getLong("appliedId"));
+        }
+
+        return result;
     }
 
 
-    public static class BitmapDownloaderTask extends AsyncTask<String, Void, Bitmap> {
+    //    --------------------------------------------------------------
 
-        private final WeakReference<ImageView> imageViewReference;
-
-        public BitmapDownloaderTask(ImageView imageView) {
-            imageViewReference = new WeakReference<ImageView>(imageView);
-        }
-
-        @Override
-        // Actual download method, run in the task thread
-        protected Bitmap doInBackground(String... params) {
-            // params comes from the execute() call: params[0] is the url.
-            return downloadBitmap(params[0]);
-        }
-
-        @Override
-        // Once the image is downloaded, associates it to the imageView
-        protected void onPostExecute(Bitmap bitmap) {
-            if (isCancelled()) {
-                bitmap = null;
-            }
-
-            if (imageViewReference != null) {
-                ImageView imageView = imageViewReference.get();
-                if (imageView != null) {
-                    imageView.setImageBitmap(bitmap);
-                }
-            }
-        }
-
-        static Bitmap downloadBitmap(String url) {
-            final AndroidHttpClient client = AndroidHttpClient.newInstance("Android");
-            final HttpGet getRequest = new HttpGet(url);
-
-            try {
-                HttpResponse response = client.execute(getRequest);
-                final int statusCode = response.getStatusLine().getStatusCode();
-                if (statusCode != HttpStatus.SC_OK) {
-                    Log.w("ImageDownloader", "Error " + statusCode + " while retrieving bitmap from " + url);
-                    return null;
-                }
-
-                final HttpEntity entity = response.getEntity();
-                if (entity != null) {
-                    InputStream inputStream = null;
-                    try {
-                        inputStream = entity.getContent();
-                        final Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        Log.i("ImageDownloader", "Got bitmap: " + bitmap.getWidth() + "x" + bitmap.getHeight());
-                        return bitmap;
-                    } finally {
-                        if (inputStream != null) {
-                            inputStream.close();
-                        }
-                        entity.consumeContent();
-                    }
-                }
-            } catch (Exception e) {
-                // Could provide a more explicit error message for IOException or IllegalStateException
-                getRequest.abort();
-                Log.w("ImageDownloader", "Error while retrieving bitmap from " + url);
-            } finally {
-                if (client != null) {
-                    client.close();
-                }
-            }
-            return null;
-        }
-    }
 
     public static enum RequestType {
         GET, POST
@@ -310,27 +211,7 @@ public class HelloClient {
     }
 
 
-    public static List<Discount> parseDiscount(String json) throws JSONException {
-        JSONArray jsonArray = new JSONArray(json);
-
-        List<Discount> result = new ArrayList<Discount>();
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject discountObj = jsonArray.getJSONObject(i);
-            Discount d = new Discount();
-            d.setId(discountObj.getLong("id"));
-            d.setTitle(discountObj.getString("title"));
-            d.setRate(discountObj.getInt("rate"));
-//            d.setGoodThrough(obj.getString("goodThrough"));
-
-            JSONObject companyObj = discountObj.getJSONObject("company");
-            d.setPlace(companyObj.getString("name"));
-
-            result.add(d);
-        }
-
-        return result;
-    }
+//------------------------------------------------------------
 
 
     public static final String CONSUMER_KEY = "1243";
@@ -359,8 +240,6 @@ public class HelloClient {
         // send the request
         request.connect();
     }
-
-
 
 
 }

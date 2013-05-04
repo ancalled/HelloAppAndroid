@@ -1,4 +1,4 @@
-package net.microcosmus.helloapp.scanner;
+package net.microcosmus.helloapp;
 
 import android.content.Context;
 import android.hardware.Camera;

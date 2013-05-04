@@ -14,8 +14,7 @@
         <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/fakeView" android:layout_gravity="center_horizontal|top" android:longClickable="true"
-                android:background="@drawable/fake_detection"/>
+                android:id="@+id/fakeView" android:layout_gravity="center_horizontal|top" android:longClickable="true"/>
     </LinearLayout>
 
     <TextView

@@ -3,8 +3,16 @@ package net.microcosmus.helloapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.*;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -12,79 +20,72 @@ import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Discount;
-import net.microcosmus.helloapp.scanner.QRScannerActivity;
+import org.json.JSONException;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 public class DiscountActivity extends Activity {
 
     public static final int INTENT_REQUEST_REF = 100;
 
-    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("dd MMM");
-
-
     private Tracker mGaTracker;
-    private GoogleAnalytics mGaInstance;
 
 
-    private boolean qrDetected = false;
     private Discount discount;
+    private boolean debugMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        mGaInstance = GoogleAnalytics.getInstance(this);
+        GoogleAnalytics mGaInstance = GoogleAnalytics.getInstance(this);
         mGaTracker = mGaInstance.getTracker("UA-40626076-1");
+        debugMode = getIsDebug();
+        Log.d("DiscountActivity", "Debug: " + debugMode);
 
         setContentView(R.layout.discount);
 
-
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            discount = (Discount) extras.getSerializable("discount");
+        discount = (Discount) extras.getSerializable("discount");
+        if (discount == null) return;
 
-            if (discount != null) {
+        TextView placeView = (TextView) findViewById(R.id.ddPlace);
+        placeView.setText(discount.getPlace());
 
-                TextView placeView = (TextView) findViewById(R.id.ddPlace);
-                placeView.setText(discount.getPlace());
+        TextView descrView = (TextView) findViewById(R.id.ddDiscount);
+        descrView.setText(discount.getTitle());
 
-                TextView descrView = (TextView) findViewById(R.id.ddDiscount);
-                descrView.setText(discount.getTitle());
+        TextView rateView = (TextView) findViewById(R.id.ddDiscountRate);
+        rateView.setText("-" + discount.getRate() + "%");
 
-                TextView rateView = (TextView) findViewById(R.id.ddDiscountRate);
-                rateView.setText("-" + discount.getRate() + "%");
+//        TextView expiresView = (TextView) findViewById(R.id.ddExpires);
+//        expiresView.setText("");
 
-                TextView expiresView = (TextView) findViewById(R.id.ddExpires);
-                expiresView.setText("");
-//                expiresView.setText(DATE_FORMAT.format(discount.getGoodThrough()));
+        Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+        TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
+        TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+        TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
-                final Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-                final TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
-                final TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-                final TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
-                final ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+        confirmBtn.setVisibility(View.VISIBLE);
+        scanResult.setVisibility(View.GONE);
+        messageView.setVisibility(View.GONE);
+        numberView.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
 
-                confirmBtn.setVisibility(View.VISIBLE);
-                scanResult.setVisibility(View.GONE);
-                messageView.setVisibility(View.GONE);
-                numberView.setVisibility(View.GONE);
-                progressBar.setVisibility(View.GONE);
-
-                final Context ctx = this;
-                confirmBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        showQRScanner(ctx, discount);
-                    }
-                });
-
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showQRScanner(DiscountActivity.this, discount, debugMode);
             }
-        }
+        });
+
     }
+
 
     @Override
     protected void onStart() {
@@ -92,11 +93,12 @@ public class DiscountActivity extends Activity {
         mGaTracker.sendView("DiscountActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
     }
 
+
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.discount_menu, menu);
+        getMenuInflater().inflate(R.menu.discount_menu, menu);
         return true;
     }
+
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -109,12 +111,13 @@ public class DiscountActivity extends Activity {
     }
 
 
-    private void showQRScanner(Context context, Discount d) {
-        Intent intent = new Intent(context, QRScannerActivity.class);
+    private void showQRScanner(Context context, Discount d, boolean debugMode) {
+        Intent intent = new Intent(context, debugMode ?
+                FakeScannerActivity.class :
+                QRScannerActivity.class);
         intent.putExtra("discount", d);
         startActivityForResult(intent, INTENT_REQUEST_REF);
     }
-
 
 
     @Override
@@ -122,28 +125,96 @@ public class DiscountActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == INTENT_REQUEST_REF) {
-            qrDetected = true;
             String confirmCode = (String) data.getExtras().get("text");
 
             Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-            TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
-            TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
             TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
             confirmBtn.setVisibility(View.GONE);
             scanResult.setVisibility(View.VISIBLE);
-
             scanResult.setText(confirmCode);
-
-
             progressBar.setVisibility(View.VISIBLE);
             confirmBtn.setVisibility(View.GONE);
 
-            HelloClient.applyDiscount(discount.getId(), confirmCode, messageView, numberView, progressBar);
+            applyDiscount(discount.getId(), confirmCode);
         }
 
     }
 
+    private boolean getIsDebug() {
+        PackageManager pm = getPackageManager();
+        final PackageInfo pinfo;
+        try {
+            pinfo = pm.getPackageInfo(getPackageName(), 0);
+            return (pinfo.applicationInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+    private void applyDiscount(long discountId, String confirmCode) {
+
+        new AsyncTask<String, Void, ApplyResult>() {
+
+            @Override
+            protected ApplyResult doInBackground(String... params) {
+                String response = HelloClient.doPost(params[0]);
+                try {
+                    return HelloClient.parseApplyResult(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(ApplyResult result) {
+                if (result == null) return;
+
+                TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
+                TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                messageView.clearComposingText();
+
+                if (result.getStatus() == ApplyResult.Status.OK) {
+                    progressBar.setVisibility(View.GONE);
+                    messageView.setVisibility(View.VISIBLE);
+                    numberView.setVisibility(View.VISIBLE);
+
+                    numberView.setText(Long.toString(result.getAppliedId()));
+                }
+            }
+
+        }.execute(buildUrl(HelloClient.getUser().getId(),
+                discountId, confirmCode));
+    }
+
+
+    private static String buildUrl(long userId, long discountId, String confirmCode) {
+        try {
+            URI uri = new URI(
+                    HelloClient.SCHEME,
+                    null,
+                    HelloClient.HOST,
+                    HelloClient.PORT,
+                    "/helloapp/customer/api/apply-campaign",
+                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, discountId, confirmCode),
+                    null
+            );
+            return uri.toURL().toString();
+
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }
