@@ -89,4 +89,29 @@
     <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml"/>
 
+
+    <property name="major-version"/>
+    <property name="minor-version"/>
+    <property name="build.number"/>
+    <property name="build.time"/>
+
+    <target name="build-download-page">
+        <property name="bin" value="./bin"/>
+        <property name="page-home" value="./data/download-page"/>
+        <property name="app-version" value="${major-version}.${minor-version}.${build.number}"/>
+        <property name="app-file" value="AndroidTest-debug.apk"/>
+
+        <delete dir="${page-home}/out"/>
+        <mkdir dir="${page-home}/out"/>
+        <copydir src="${page-home}/resources" dest="${page-home}/out"/>
+        <copy file="${bin}/${app-file}" todir="${page-home}/out" failonerror="false"/>
+
+        <xslt in="data/download-page/index.xml"
+              style="${page-home}/index.xsl"
+              out="${page-home}/out/index.html">
+            <param name="version" expression="${app-version}"/>
+            <param name="app-file" expression="${app-file}"/>
+        </xslt>
+    </target>
+
 </project>
