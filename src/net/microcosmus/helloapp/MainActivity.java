@@ -14,7 +14,7 @@ import android.widget.*;
 import com.bugsense.trace.BugSenseHandler;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.EasyTracker;
-import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.Campaign;
 import org.json.JSONException;
 
 import java.util.List;
@@ -81,24 +81,24 @@ public class MainActivity extends Activity {
         waiter.setVisibility(View.GONE);
     }
 
-    private void addDiscounts(List<Discount> discounts) {
-        if (discounts == null) return;
+    private void addCampaigns(List<Campaign> campaigns) {
+        if (campaigns == null) return;
 
         LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
-        for (Discount d : discounts) {
-            Log.i("MainActivity", "Discount: " + d.getTitle() + "\t" + d.getPlace());
-            View view = createDiscountRow(d, listView);
+        for (Campaign c : campaigns) {
+            Log.i("MainActivity", "Discount: " + c.getTitle() + "\t" + c.getPlace());
+            View view = createCampaign(c, listView);
             listView.addView(view);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.discountIcon);
-            downloadIcon(d, imageView);
+            downloadIcon(c, imageView);
         }
     }
 
 
-    private View createDiscountRow(final Discount d, ViewGroup parent) {
+    private View createCampaign(final Campaign d, ViewGroup parent) {
 
-        View view = inflater.inflate(R.layout.discount_row, parent, false);
+        View view = inflater.inflate(R.layout.campaign, parent, false);
 
         TextView titleView = (TextView) view.findViewById(R.id.discountTitle);
         TextView placeView = (TextView) view.findViewById(R.id.discountPlace);
@@ -139,12 +139,12 @@ public class MainActivity extends Activity {
 
 
     private void retrieveDiscounts() {
-        new AsyncTask<String, Void, List<Discount>>() {
+        new AsyncTask<String, Void, List<Campaign>>() {
             @Override
-            protected List<Discount> doInBackground(String... params) {
+            protected List<Campaign> doInBackground(String... params) {
                 String response = HelloClient.doGet(params[0]);
                 try {
-                    return HelloClient.parseDiscount(response);
+                    return HelloClient.parseCampaigns(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -152,16 +152,16 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            protected void onPostExecute(List<Discount> discounts) {
+            protected void onPostExecute(List<Campaign> campaigns) {
                 hideWaiter();
-                addDiscounts(discounts);
+                addCampaigns(campaigns);
             }
 
         }.execute(HelloClient.CAMPAIGNS_URL);
     }
 
 
-    private void downloadIcon(Discount d, final ImageView imageView) {
+    private void downloadIcon(Campaign d, final ImageView imageView) {
         String url = String.format(HelloClient.CAMPAIGN_ICON_URL, d.getId());
 
         new AsyncTask<String, Void, Bitmap>() {
@@ -182,9 +182,9 @@ public class MainActivity extends Activity {
     }
 
 
-    private void showDiscountActivity(Discount d) {
+    private void showDiscountActivity(Campaign c) {
         Intent intent = new Intent(this, DiscountActivity.class);
-        intent.putExtra("discount", d);
+        intent.putExtra("campaign", c);
         startActivity(intent);
     }
 

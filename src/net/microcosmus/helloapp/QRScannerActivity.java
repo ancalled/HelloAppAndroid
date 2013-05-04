@@ -16,7 +16,7 @@ import android.widget.FrameLayout;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
-import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.Campaign;
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
 import net.sourceforge.zbar.ImageScanner;
@@ -36,7 +36,7 @@ public class QRScannerActivity extends Activity {
 
     private boolean previewing = true;
 
-    private Discount discount;
+    private Campaign campaign;
 
     static {
         System.loadLibrary("iconv");
@@ -52,7 +52,7 @@ public class QRScannerActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            discount = (Discount) extras.getSerializable("discount");
+            campaign = (Campaign) extras.getSerializable("campaign");
         }
 
         setContentView(R.layout.scanner);
@@ -62,7 +62,7 @@ public class QRScannerActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        mGaTracker.sendView("QRScannerActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
+        mGaTracker.sendView("QRScannerActivity: id: " + campaign.getId() + ", place: " + campaign.getPlace());
     }
 
 

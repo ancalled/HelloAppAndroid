@@ -2,7 +2,6 @@ package net.microcosmus.helloapp;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,14 +10,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import com.example.AndroidTest.R;
-import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.Campaign;
 
 
 public class FakeScannerActivity extends Activity {
 
     private boolean barcodeScanned = false;
 
-    private Discount discount;
+    private Campaign campaign;
 
 
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class FakeScannerActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            discount = (Discount) extras.getSerializable("discount");
+            campaign = (Campaign) extras.getSerializable("campaign");
         }
 
         setContentView(R.layout.fake_scanner);
@@ -55,7 +54,7 @@ public class FakeScannerActivity extends Activity {
                     }
                     scanText.setText("Done.");
 
-                    String text = "100" + discount.getId();
+                    String text = "100" + campaign.getId();
 
                     Log.d("QRScanner", "Detected: " + text);
 

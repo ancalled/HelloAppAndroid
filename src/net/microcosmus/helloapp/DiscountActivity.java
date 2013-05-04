@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
-import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.Campaign;
 import org.json.JSONException;
 
 import java.net.MalformedURLException;
@@ -34,7 +34,7 @@ public class DiscountActivity extends Activity {
     private Tracker mGaTracker;
 
 
-    private Discount discount;
+    private Campaign campaign;
     private boolean debugMode;
 
     @Override
@@ -50,17 +50,17 @@ public class DiscountActivity extends Activity {
         setContentView(R.layout.discount);
 
         Bundle extras = getIntent().getExtras();
-        discount = (Discount) extras.getSerializable("discount");
-        if (discount == null) return;
+        campaign = (Campaign) extras.getSerializable("campaign");
+        if (campaign == null) return;
 
         TextView placeView = (TextView) findViewById(R.id.ddPlace);
-        placeView.setText(discount.getPlace());
+        placeView.setText(campaign.getPlace());
 
         TextView descrView = (TextView) findViewById(R.id.ddDiscount);
-        descrView.setText(discount.getTitle());
+        descrView.setText(campaign.getTitle());
 
         TextView rateView = (TextView) findViewById(R.id.ddDiscountRate);
-        rateView.setText("-" + discount.getRate() + "%");
+        rateView.setText("-" + campaign.getRate() + "%");
 
 //        TextView expiresView = (TextView) findViewById(R.id.ddExpires);
 //        expiresView.setText("");
@@ -80,7 +80,7 @@ public class DiscountActivity extends Activity {
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showQRScanner(DiscountActivity.this, discount, debugMode);
+                showQRScanner(DiscountActivity.this, campaign, debugMode);
             }
         });
 
@@ -90,7 +90,7 @@ public class DiscountActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        mGaTracker.sendView("DiscountActivity: id: " + discount.getId() + ", place: " + discount.getPlace());
+        mGaTracker.sendView("DiscountActivity: id: " + campaign.getId() + ", place: " + campaign.getPlace());
     }
 
 
@@ -111,11 +111,11 @@ public class DiscountActivity extends Activity {
     }
 
 
-    private void showQRScanner(Context context, Discount d, boolean debugMode) {
+    private void showQRScanner(Context context, Campaign d, boolean debugMode) {
         Intent intent = new Intent(context, debugMode ?
                 FakeScannerActivity.class :
                 QRScannerActivity.class);
-        intent.putExtra("discount", d);
+        intent.putExtra("campaign", d);
         startActivityForResult(intent, INTENT_REQUEST_REF);
     }
 
@@ -125,7 +125,7 @@ public class DiscountActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == INTENT_REQUEST_REF) {
-            String confirmCode = (String) data.getExtras().get("text");
+            String confCode = (String) data.getExtras().get("text");
 
             Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
             TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
@@ -133,11 +133,11 @@ public class DiscountActivity extends Activity {
 
             confirmBtn.setVisibility(View.GONE);
             scanResult.setVisibility(View.VISIBLE);
-            scanResult.setText(confirmCode);
+            scanResult.setText(confCode);
             progressBar.setVisibility(View.VISIBLE);
             confirmBtn.setVisibility(View.GONE);
 
-            applyDiscount(discount.getId(), confirmCode);
+            applyDiscount(campaign.getId(), confCode);
         }
 
     }
@@ -148,7 +148,6 @@ public class DiscountActivity extends Activity {
         try {
             pinfo = pm.getPackageInfo(getPackageName(), 0);
             return (pinfo.applicationInfo.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
-
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
@@ -157,15 +156,15 @@ public class DiscountActivity extends Activity {
     }
 
 
-    private void applyDiscount(long discountId, String confirmCode) {
+    private void applyDiscount(long campaignId, String confirmCode) {
 
-        new AsyncTask<String, Void, ApplyResult>() {
+        new AsyncTask<String, Void, DiscountApplyResult>() {
 
             @Override
-            protected ApplyResult doInBackground(String... params) {
+            protected DiscountApplyResult doInBackground(String... params) {
                 String response = HelloClient.doPost(params[0]);
                 try {
-                    return HelloClient.parseApplyResult(response);
+                    return HelloClient.parseDiscountApplyResult(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -173,7 +172,7 @@ public class DiscountActivity extends Activity {
             }
 
             @Override
-            protected void onPostExecute(ApplyResult result) {
+            protected void onPostExecute(DiscountApplyResult result) {
                 if (result == null) return;
 
                 TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
@@ -181,21 +180,23 @@ public class DiscountActivity extends Activity {
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
                 messageView.clearComposingText();
 
-                if (result.getStatus() == ApplyResult.Status.OK) {
+                if (result.getStatus() == DiscountApplyResult.Status.OK) {
                     progressBar.setVisibility(View.GONE);
                     messageView.setVisibility(View.VISIBLE);
                     numberView.setVisibility(View.VISIBLE);
-
-                    numberView.setText(Long.toString(result.getAppliedId()));
+                    numberView.setText(Long.toString(result.getId()));
                 }
             }
 
-        }.execute(buildUrl(HelloClient.getUser().getId(),
-                discountId, confirmCode));
+        }.execute(buildUrl(
+                HelloClient.getUser().getId(),
+                campaignId,
+                confirmCode
+        ));
     }
 
 
-    private static String buildUrl(long userId, long discountId, String confirmCode) {
+    private static String buildUrl(long userId, long campaignId, String confirmerCode) {
         try {
             URI uri = new URI(
                     HelloClient.SCHEME,
@@ -203,7 +204,7 @@ public class DiscountActivity extends Activity {
                     HelloClient.HOST,
                     HelloClient.PORT,
                     "/helloapp/customer/api/apply-campaign",
-                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, discountId, confirmCode),
+                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, campaignId, confirmerCode),
                     null
             );
             return uri.toURL().toString();

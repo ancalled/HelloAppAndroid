@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
 import android.util.Log;
-import net.microcosmus.helloapp.domain.Discount;
+import net.microcosmus.helloapp.domain.Campaign;
 import net.microcosmus.helloapp.domain.User;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -112,38 +112,39 @@ public class HelloClient {
         return null;
     }
 
-    public static List<Discount> parseDiscount(String json) throws JSONException {
+    public static List<Campaign> parseCampaigns(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
 
-        List<Discount> result = new ArrayList<Discount>();
+        List<Campaign> result = new ArrayList<Campaign>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject discountObj = jsonArray.getJSONObject(i);
-            Discount d = new Discount();
-            d.setId(discountObj.getLong("id"));
-            d.setTitle(discountObj.getString("title"));
-            d.setRate(discountObj.getInt("rate"));
-//            d.setGoodThrough(obj.getString("goodThrough"));
+            Campaign с = new Campaign();
+            с.setId(discountObj.getLong("id"));
+            с.setTitle(discountObj.getString("title"));
+            с.setRate(discountObj.getInt("rate"));
+//            с.setGoodThrough(obj.getString("goodThrough"));
 
             JSONObject companyObj = discountObj.getJSONObject("company");
-            d.setPlace(companyObj.getString("name"));
+            с.setPlace(companyObj.getString("name"));
 
-            result.add(d);
+            result.add(с);
         }
 
         return result;
     }
 
-    public static ApplyResult parseApplyResult(String json) throws JSONException {
-        JSONObject jsonObject = new JSONObject(json);
+    public static DiscountApplyResult parseDiscountApplyResult(String json) throws JSONException {
+        JSONObject obj = new JSONObject(json);
 
-        ApplyResult result = new ApplyResult();
-        String strStatus = jsonObject.getString("status");
-        ApplyResult.Status status = ApplyResult.Status.valueOf(strStatus);
+        DiscountApplyResult result = new DiscountApplyResult();
 
+        String strStatus = obj.getString("status");
+        DiscountApplyResult.Status status = DiscountApplyResult.Status.valueOf(strStatus);
         result.setStatus(status);
-        if (status == ApplyResult.Status.OK) {
-            result.setAppliedId(jsonObject.getLong("appliedId"));
+
+        if (status == DiscountApplyResult.Status.OK) {
+            result.setId(obj.getLong("appliedId"));
         }
 
         return result;

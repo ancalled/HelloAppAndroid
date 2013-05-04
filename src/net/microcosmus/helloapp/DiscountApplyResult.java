@@ -1,21 +1,21 @@
 package net.microcosmus.helloapp;
 
-public class ApplyResult {
+public class DiscountApplyResult {
 
     public static enum Status {
         OK, ERRORS
     }
 
-    private Long appliedId;
+    private Long id;
 
     private Status status;
 
-    public Long getAppliedId() {
-        return appliedId;
+    public Long getId() {
+        return id;
     }
 
-    public void setAppliedId(Long appliedId) {
-        this.appliedId = appliedId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Status getStatus() {
