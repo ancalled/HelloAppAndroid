@@ -65,8 +65,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/img/glyphicons-halflings-white.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/img/glyphicons-halflings.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -74,14 +73,14 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367646783551" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367657146218" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367667329207" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367668082013" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421521838" ignored="false" />
     <file path="/import.sql" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367421505865" ignored="false" />
     <file path="/DiscountActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367657042371" ignored="false" />
-    <file path="/AndroidManifest.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367647592073" ignored="false" />
+    <file path="/AndroidManifest.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367668391429" ignored="false" />
     <file path="/MainActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367656833252" ignored="false" />
     <file path="/Discount.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1365333093391" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/com/mcsm/hellapp/view/ImageToBaseTool.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364615512612" ignored="false" />
@@ -308,10 +307,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.xsl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.xsl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/download-page/index.xsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="23" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.44596443">
+            <state line="81" column="23" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="112" selection-start="719" selection-end="719" vertical-scroll-proportion="0.24623802">
               <folding />
             </state>
           </provider>
@@ -373,7 +381,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/FakeScannerActivity.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/QRScannerActivity.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/ApplyResult.java" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountApplyResult.java" />
@@ -389,6 +396,7 @@
         <option value="$PROJECT_DIR$/data/download-page/index.xml" />
         <option value="$PROJECT_DIR$/data/download-page/index.xsl" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
       </list>
     </option>
   </component>
@@ -1099,7 +1107,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data/download-page/index.xsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="23" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.44596443">
+        <state line="81" column="23" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="112" selection-start="719" selection-end="719" vertical-scroll-proportion="0.24623802">
           <folding />
         </state>
       </provider>
