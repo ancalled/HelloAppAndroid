@@ -65,17 +65,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/test.jks" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/adb-connect.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/css/bootstrap-responsive.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/css/docs.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/index.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/index.xsl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/process-xslt.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ant.xml" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -83,7 +73,7 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367646783551" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367657146218" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367665638503" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367666820640" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
@@ -192,7 +182,7 @@
     <file path="/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/admin/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406874869" ignored="false" />
-    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367666774635" ignored="false" />
+    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367667306162" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407598822" ignored="false" />
     <file path="/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422142138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407746775" ignored="false" />
@@ -311,7 +301,7 @@
       <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="77" selection-start="4287" selection-end="4287" vertical-scroll-proportion="0.5194986">
+            <state line="95" column="37" selection-start="4088" selection-end="4088" vertical-scroll-proportion="0.43593314">
               <folding />
             </state>
           </provider>
@@ -918,7 +908,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Подправил либы, чтобы работали с build.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сборщик странички загрузки" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -937,6 +927,7 @@
     <MESSAGE value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
     <MESSAGE value="Подправил всю структуру проекта" />
     <MESSAGE value="Подправил либы, чтобы работали с build.xml" />
+    <MESSAGE value="Сборщик странички загрузки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1054,7 +1045,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="77" selection-start="4287" selection-end="4287" vertical-scroll-proportion="0.5194986">
+        <state line="95" column="37" selection-start="4088" selection-end="4088" vertical-scroll-proportion="0.43593314">
           <folding />
         </state>
       </provider>
