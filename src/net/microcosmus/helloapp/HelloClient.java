@@ -62,10 +62,7 @@ public class HelloClient {
 
     private static User user;
 
-    public static void retrieveCampaigns(LinearLayout layout, Context context, ViewGroup parent) {
-        DiscountsTask task = new DiscountsTask(/*adapter*/layout, context, parent);
-        task.execute(CAMPAIGNS_URL);
-    }
+
 
     public static void applyDiscount(long discountId, String confirmCode, TextView messageView, TextView numberView, ProgressBar progressBar) {
         ApplyDiscountsTask task = new ApplyDiscountsTask(messageView, numberView, progressBar);
@@ -112,72 +109,9 @@ public class HelloClient {
         user.setName("testuser1");
     }
 
-    public static class DiscountsTask extends AsyncTask<String, Void, List<Discount>> {
-
-        private final WeakReference<LinearLayout> layoutRef;
-        private final WeakReference<Context> contextRef;
-        private final WeakReference<ViewGroup> parentRef;
-
-        public DiscountsTask(LinearLayout layout, Context context, ViewGroup parent) {
-            this.layoutRef = new WeakReference<LinearLayout>(layout);
-            this.contextRef = new WeakReference<Context>(context);
-            this.parentRef = new WeakReference<ViewGroup>(parent);
-        }
-
-        @Override
-        // Actual download method, run in the task thread
-        protected List<Discount> doInBackground(String... params) {
-            // params comes from the execute() call: params[0] is the url.
-            String response = doGet(params[0]);
-            try {
-                return parseDiscount(response);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        // Once the image is downloaded, associates it to the imageView
-        protected void onPostExecute(List<Discount> discounts) {
-            if (discounts != null) {
-                LinearLayout layout = layoutRef.get();
-                Context context = contextRef.get();
-                ViewGroup parent = parentRef.get();
-
-                if (context != null && layout != null && parent != null) {
-                    for (Discount d : discounts) {
-                        Log.i("Client", "Disc: " + d.getTitle() + "\t" + d.getPlace());
-                        View view = MainActivity.createDiscountRow(d, user, context, parent);
-                        layout.addView(view);
-                    }
-                }
-            }
-        }
-
-        static List<Discount> parseDiscount(String json) throws JSONException {
-            JSONArray jsonArray = new JSONArray(json);
-
-            List<Discount> result = new ArrayList<Discount>();
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject discountObj = jsonArray.getJSONObject(i);
-                Discount d = new Discount();
-                d.setId(discountObj.getLong("id"));
-                d.setTitle(discountObj.getString("title"));
-                d.setRate(discountObj.getInt("rate"));
-//            d.setGoodThrough(obj.getString("goodThrough"));
-
-                JSONObject companyObj = discountObj.getJSONObject("company");
-                d.setPlace(companyObj.getString("name"));
-
-                result.add(d);
-            }
-
-            return result;
-        }
+    public static User getUser() {
+        return user;
     }
-
 
     public static class ApplyDiscountsTask extends AsyncTask<String, Void, ApplyResult> {
 
@@ -376,6 +310,29 @@ public class HelloClient {
     }
 
 
+    public static List<Discount> parseDiscount(String json) throws JSONException {
+        JSONArray jsonArray = new JSONArray(json);
+
+        List<Discount> result = new ArrayList<Discount>();
+
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject discountObj = jsonArray.getJSONObject(i);
+            Discount d = new Discount();
+            d.setId(discountObj.getLong("id"));
+            d.setTitle(discountObj.getString("title"));
+            d.setRate(discountObj.getInt("rate"));
+//            d.setGoodThrough(obj.getString("goodThrough"));
+
+            JSONObject companyObj = discountObj.getJSONObject("company");
+            d.setPlace(companyObj.getString("name"));
+
+            result.add(d);
+        }
+
+        return result;
+    }
+
+
     public static final String CONSUMER_KEY = "1243";
     public static final String CONSUMER_SECRET = "abgb";
     public static final String ACCESS_TOKEN = "12434";
@@ -402,5 +359,8 @@ public class HelloClient {
         // send the request
         request.connect();
     }
+
+
+
 
 }

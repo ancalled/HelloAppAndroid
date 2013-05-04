@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.*;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,6 +18,10 @@ import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.EasyTracker;
 import net.microcosmus.helloapp.domain.Discount;
 import net.microcosmus.helloapp.domain.User;
+import org.json.JSONException;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -53,8 +59,7 @@ public class MainActivity extends Activity {
 
         if (isNetworkAvailable()) {
 
-            LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
-            HelloClient.retrieveCampaigns(listView, this, listView);
+            retrieveDiscounts();
 
 
         } else {
@@ -129,6 +134,49 @@ public class MainActivity extends Activity {
 
         EasyTracker.getInstance().activityStop(this);
         BugSenseHandler.closeSession(MainActivity.this);
+    }
+
+    private void retrieveDiscounts() {
+
+        LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
+
+        final WeakReference<LinearLayout> layoutRef = new WeakReference<LinearLayout>(listView);
+        final WeakReference<Context> contextRef = new WeakReference<Context>(this);
+        final WeakReference<ViewGroup> parentRef = new WeakReference<ViewGroup>(listView);
+
+        new AsyncTask<String, Void, List<Discount>>() {
+            @Override
+            protected List<Discount> doInBackground(String... params) {
+                String response = HelloClient.doGet(params[0]);
+                try {
+                    return HelloClient.parseDiscount(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(List<Discount> discounts) {
+
+                if (discounts != null) {
+                    LinearLayout layout = layoutRef.get();
+                    Context context = contextRef.get();
+                    ViewGroup parent = parentRef.get();
+
+                    User user = HelloClient.getUser();
+
+                    if (context != null && layout != null && parent != null) {
+                        for (Discount d : discounts) {
+                            Log.i("Client", "Disc: " + d.getTitle() + "\t" + d.getPlace());
+                            View view = MainActivity.createDiscountRow(d, user, context, parent);
+                            layout.addView(view);
+                        }
+                    }
+                }
+
+            }
+        }.execute(HelloClient.CAMPAIGNS_URL);
     }
 }
 
