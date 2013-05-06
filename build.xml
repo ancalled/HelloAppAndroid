@@ -92,8 +92,8 @@
 
     <property name="major-version" value="0"/>
     <property name="minor-version" value="5"/>
-    <!--<property name="build.number" value="21"/>-->
-    <property name="build.number"/>
+    <property name="build.number" value="0"/>
+    <!--<property name="build.number"/>-->
     <!--<property name="build.time"/>-->
 
     <target name="pre.build">
