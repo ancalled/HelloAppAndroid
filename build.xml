@@ -92,8 +92,20 @@
 
     <property name="major-version" value="0"/>
     <property name="minor-version" value="5"/>
-    <!--<property name="build.number"/>-->
-    <!--<property name="build.time"/>-->
+    <!--<property name="build.number" value="21"/>-->
+    <property name="build.time"/>
+
+    <target name="pre.build">
+        <replaceregexp file="AndroidManifest.xml">
+            <regexp pattern="android:versionCode=&quot;.*&quot;"/>
+            <substitution expression="android:versionCode=&quot;${build.number}&quot;"/>
+        </replaceregexp>
+        <replaceregexp file="AndroidManifest.xml">
+            <regexp pattern="android:versionName=&quot;.*&quot;"/>
+            <substitution expression="android:versionName=&quot;${major-version}.${minor-version}&quot;"/>
+        </replaceregexp>
+
+    </target>
 
     <target name="build-download-page">
         <property name="bin" value="./bin"/>
