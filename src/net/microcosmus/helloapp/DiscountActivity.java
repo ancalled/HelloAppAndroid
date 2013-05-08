@@ -126,19 +126,21 @@ public class DiscountActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == INTENT_REQUEST_REF) {
-            String confCode = (String) data.getExtras().get("text");
+            if (resultCode == RESULT_OK) {
+                String confCode = (String) data.getExtras().get("text");
 
-            Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-            TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
-            ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+                TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
 
-            confirmBtn.setVisibility(View.GONE);
-            scanResult.setVisibility(View.VISIBLE);
-            scanResult.setText(confCode);
-            progressBar.setVisibility(View.VISIBLE);
-            confirmBtn.setVisibility(View.GONE);
+                confirmBtn.setVisibility(View.GONE);
+                scanResult.setVisibility(View.VISIBLE);
+                scanResult.setText(confCode);
+                progressBar.setVisibility(View.VISIBLE);
+                confirmBtn.setVisibility(View.GONE);
 
-            applyDiscount(campaign.getId(), confCode);
+                applyDiscount(campaign.getId(), confCode);
+            }
         }
 
     }

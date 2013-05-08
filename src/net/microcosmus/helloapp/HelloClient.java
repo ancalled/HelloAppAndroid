@@ -161,9 +161,12 @@ public class HelloClient {
         AppVersion result = new AppVersion();
 
         int version = obj.getInt("version");
+        int minVersion = obj.getInt("minVersion");
         String name = obj.getString("versionName");
 
+
         result.setVersion(version);
+        result.setMinVersion(minVersion);
         result.setVersionName(name);
 
         return result;

@@ -217,9 +217,16 @@ public class MainActivity extends Activity {
 
             @Override
             protected void onPostExecute(AppVersion version) {
+                if (version == null) {
+                    Log.e(CAT, "Version is null");
+                    return;
+                }
+
                 Log.d(CAT, "Available app version: " + version.getVersion() + " (" + version.getVersionName() + ")");
 
-                if (version.getVersion() > appVersion.getVersion()) {
+                if (version.getMinVersion() > appVersion.getVersion()) {
+                    showForceDownloadNewerVersion(appVersion.getVersionName());
+                } else if (version.getVersion() > appVersion.getVersion()) {
                     showDownloadNewerVersion(appVersion.getVersionName());
                 }
 
@@ -246,6 +253,7 @@ public class MainActivity extends Activity {
         return null;
     }
 
+
     private void showDownloadNewerVersion(String newVersionName) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String mes = getResources().getString(R.string.update_to_newer_version);
@@ -265,6 +273,29 @@ public class MainActivity extends Activity {
                 // User cancelled the dialog
             }
         });
+
+        builder.create().show();
+    }
+
+    private void showForceDownloadNewerVersion(String newVersionName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String mes = getResources().getString(R.string.force_update_to_newer_version);
+        mes = String.format(mes, newVersionName);
+
+        builder.setTitle(R.string.updater_title)
+                .setMessage(mes);
+
+        builder.setPositiveButton(R.string.updater_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(HelloClient.APPLICATION_DOWNLOAD_URL));
+                startActivity(intent);
+            }
+        });
+//        builder.setNegativeButton(R.string.updater_canacel, new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int id) {
+//                // User cancelled the dialog
+//            }
+//        });
 
         builder.create().show();
     }
