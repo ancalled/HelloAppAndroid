@@ -4,7 +4,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
 import android.util.Log;
+import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
+import net.microcosmus.helloapp.domain.DiscountApplyResult;
 import net.microcosmus.helloapp.domain.User;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -36,8 +38,8 @@ public class HelloClient {
 
     public static final String SCHEME = "http";
     //    public static final String HOST
-// = "10.0.2.2";
-//    public static final int PORT = 8080;
+    // = "10.0.2.2";
+    //    public static final int PORT = 8080;
     public static final String HOST = "helloapp.microcosmus.net";
     public static final int PORT = 80;
 
@@ -45,11 +47,14 @@ public class HelloClient {
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
 
     //    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
-//        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
+    //        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
     public static final String CAMPAIGNS_URL = SERVER_URL + "/customer/api/campaigns";
 
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
     public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
+
+    public static final String APPLICATION_VERSION = "http://kinok.org/helloapp/version.json";
+    public static final String APPLICATION_DOWNLOAD_URL = "http://kinok.org/helloapp";
 
     private static User user;
 
@@ -146,6 +151,20 @@ public class HelloClient {
         if (status == DiscountApplyResult.Status.OK) {
             result.setId(obj.getLong("appliedId"));
         }
+
+        return result;
+    }
+
+    public static AppVersion parseVersion(String json) throws JSONException {
+        JSONObject obj = new JSONObject(json);
+
+        AppVersion result = new AppVersion();
+
+        int version = obj.getInt("version");
+        String name = obj.getString("versionName");
+
+        result.setVersion(version);
+        result.setVersionName(name);
 
         return result;
     }

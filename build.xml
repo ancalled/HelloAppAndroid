@@ -118,6 +118,10 @@
         <mkdir dir="${page-home}/out"/>
         <copydir src="${page-home}/resources" dest="${page-home}/out"/>
         <copy file="${bin}/${app-file}" todir="${page-home}/out" failonerror="false"/>
+        <replace file="${page-home}/out/version.json">
+            <replacefilter token="@version@" value="${build.number}"/>
+            <replacefilter token="@versionName@" value="${app-version}"/>
+        </replace>
 
         <xslt in="data/download-page/index.xml"
               style="${page-home}/index.xsl"

@@ -1,11 +1,16 @@
 package net.microcosmus.helloapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +19,15 @@ import android.widget.*;
 import com.bugsense.trace.BugSenseHandler;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.EasyTracker;
+import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
 import org.json.JSONException;
 
 import java.util.List;
 
 public class MainActivity extends Activity {
+
+    public static final String CAT = "MainActivity";
 
     private LayoutInflater inflater;
 
@@ -44,6 +52,8 @@ public class MainActivity extends Activity {
         BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
 
         if (isNetworkAvailable()) {
+            checkNewerVersion();
+
             clearDiscountView();
             showWaiter();
             retrieveDiscounts();
@@ -86,7 +96,7 @@ public class MainActivity extends Activity {
 
         LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
         for (Campaign c : campaigns) {
-            Log.i("MainActivity", "Discount: " + c.getTitle() + "\t" + c.getPlace());
+            Log.i(CAT, "Discount: " + c.getTitle() + "\t" + c.getPlace());
             View view = createCampaign(c, listView);
             listView.addView(view);
 
@@ -187,6 +197,78 @@ public class MainActivity extends Activity {
         intent.putExtra("campaign", c);
         startActivity(intent);
     }
+
+
+    private void checkNewerVersion() {
+        final AppVersion appVersion = getAppVersion();
+        Log.d(CAT, "Current app version: " + appVersion.getVersion() + " (" + appVersion.getVersionName() + ")");
+
+        new AsyncTask<String, Void, AppVersion>() {
+            @Override
+            protected AppVersion doInBackground(String... params) {
+                String response = HelloClient.doGet(params[0]);
+                try {
+                    return HelloClient.parseVersion(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(AppVersion version) {
+                Log.d(CAT, "Available app version: " + version.getVersion() + " (" + version.getVersionName() + ")");
+
+                if (version.getVersion() > appVersion.getVersion()) {
+                    showDownloadNewerVersion(appVersion.getVersionName());
+                }
+
+            }
+
+        }.execute(HelloClient.APPLICATION_VERSION);
+    }
+
+
+    private AppVersion getAppVersion() {
+        PackageManager pm = getPackageManager();
+        final PackageInfo pinfo;
+        try {
+            pinfo = pm.getPackageInfo(getPackageName(), 0);
+
+            AppVersion version = new AppVersion();
+            version.setVersion(pinfo.versionCode);
+            version.setVersionName(pinfo.versionName);
+            return version;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private void showDownloadNewerVersion(String newVersionName) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        String mes = getResources().getString(R.string.update_to_newer_version);
+        mes = String.format(mes, newVersionName);
+
+        builder.setTitle(R.string.updater_title)
+                .setMessage(mes);
+
+        builder.setPositiveButton(R.string.updater_ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(HelloClient.APPLICATION_DOWNLOAD_URL));
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton(R.string.updater_canacel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+            }
+        });
+
+        builder.create().show();
+    }
+
 
 
 }

@@ -1,4 +1,4 @@
-package net.microcosmus.helloapp;
+package net.microcosmus.helloapp.domain;
 
 public class DiscountApplyResult {
 

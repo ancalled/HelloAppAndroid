@@ -20,6 +20,7 @@ import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.domain.Campaign;
+import net.microcosmus.helloapp.domain.DiscountApplyResult;
 import org.json.JSONException;
 
 import java.net.MalformedURLException;

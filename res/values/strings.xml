@@ -6,4 +6,12 @@
     <string name="apply_disсount">Использовать скидку</string>
     <string name="internet_access">Интернет не доступен на данном девайсе!</string>
     <string name="confirm_discount">Получить скидку!</string>
+    <string name="updater_title">Обновления</string>
+    <string name="updater_ok">Обновить</string>
+    <string name="updater_canacel">Позже</string>
+    <string name="update_to_newer_version">
+        Доступна новая версия приложения: %1$s.
+        Хотите обновиться?
+    </string>
+
 </resources>
