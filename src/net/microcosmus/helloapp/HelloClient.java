@@ -53,7 +53,7 @@ public class HelloClient {
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
     public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
 
-    public static final String APPLICATION_VERSION = "http://kinok.org/helloapp/version.json";
+    public static final String APPLICATION_VERSION = "http://kinok.org/helloapp/builds/version.json";
     public static final String APPLICATION_DOWNLOAD_URL = "http://kinok.org/helloapp";
 
     private static User user;

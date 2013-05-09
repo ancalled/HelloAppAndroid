@@ -93,8 +93,7 @@
     <property name="major-version" value="0"/>
     <property name="minor-version" value="5"/>
     <property name="build.number" value="0"/>
-    <!--<property name="build.number"/>-->
-    <!--<property name="build.time"/>-->
+    <property name="min.build.number" value="0"/>
 
     <target name="pre.build">
         <replaceregexp file="AndroidManifest.xml">
@@ -124,6 +123,7 @@
 
         <replace file="${page-home}/out/version.json">
             <replacefilter token="@version@" value="${build.number}"/>
+            <replacefilter token="@minCersion@" value="${min.build.number}"/>
             <replacefilter token="@versionName@" value="${app-version}"/>
         </replace>
         <replace file="${page-home}/out/redirect-index.html">
