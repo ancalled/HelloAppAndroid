@@ -113,7 +113,7 @@
         <property name="app-version" value="${major-version}.${minor-version}.${build.number}"/>
         <property name="app-file" value="AndroidTest-debug.apk"/>
         <tstamp>
-            <format property="now" pattern="yyyy-MM-dd hh:mm:ss"/>
+            <format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
         </tstamp>
 
         <delete dir="${page-home}/out"/>
