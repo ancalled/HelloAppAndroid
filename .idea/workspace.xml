@@ -91,8 +91,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/download-page/resources/redirect-index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/download-page/index.xsl" afterPath="$PROJECT_DIR$/data/download-page/index.xsl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -100,7 +100,7 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367504229517" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368031990824" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368073665948" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368083820651" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
@@ -209,7 +209,7 @@
     <file path="/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/admin/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406874869" ignored="false" />
-    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368083682278" ignored="false" />
+    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368084558595" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407598822" ignored="false" />
     <file path="/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422142138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407746775" ignored="false" />
@@ -271,6 +271,7 @@
     <file path="/3.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368038724240" ignored="false" />
     <file path="/last-build.xsl" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368039291130" ignored="false" />
     <file path="/index.xsl" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368083449861" ignored="false" />
+    <file path="/redirect-index.html" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368084533980" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -377,19 +378,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.xsl" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="index.xsl" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/download-page/index.xsl">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="30" selection-start="471" selection-end="480" vertical-scroll-proportion="-1.5375">
+            <state line="13" column="30" selection-start="471" selection-end="480" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="133" column="53" selection-start="5865" selection-end="5865" vertical-scroll-proportion="0.0">
+            <state line="130" column="0" selection-start="5677" selection-end="5677" vertical-scroll-proportion="0.581876">
               <folding />
             </state>
           </provider>
@@ -399,15 +400,6 @@
         <entry file="file://$PROJECT_DIR$/data/2.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="10" column="107" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="33" selection-start="185" selection-end="185" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -440,8 +432,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/data/download-page/index.xml" />
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/DiscountApplyResult.java" />
         <option value="$PROJECT_DIR$/local.properties" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
@@ -455,7 +445,9 @@
         <option value="$PROJECT_DIR$/data/3.xml" />
         <option value="$PROJECT_DIR$/data/last-build.xsl" />
         <option value="$PROJECT_DIR$/data/download-page/index.xsl" />
+        <option value="$PROJECT_DIR$/data/redirect-index.html" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/data/download-page/resources/redirect-index.html" />
       </list>
     </option>
   </component>
@@ -612,6 +604,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AndroidTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloAppAndroid" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="download-page" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -629,6 +643,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out" />
     <property name="AndroidLayoutSelectedEditor" value="android-designer" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="192.168.56.101:5555" />
     <property name="MemberChooser.copyJavadoc" value="false" />
@@ -651,6 +666,9 @@
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="com.example.AndroidTest.MainActivity" />
       <recent name="com.example.AndroidTest.HelloClient" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data/download-page/resources" />
     </key>
   </component>
   <component name="RunManager" selected="XSLT.index.xsl">
@@ -959,7 +977,11 @@
       <created>1368073341781</created>
       <updated>1368073341781</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="На страницу загрузки добавилось время сборки">
+      <created>1368083823494</created>
+      <updated>1368083823494</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -987,7 +1009,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21664275" sideWeight="0.6731343" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32686567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32686567" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855093" sideWeight="0.67164177" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1042,7 +1064,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Проверим крон - деплоер" />
+    <option name="LAST_COMMIT_MESSAGE" value="На страницу загрузки добавилось время сборки" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1066,6 +1088,7 @@
     <MESSAGE value="Проверка новой версии приложения с сайта: если есть новеее, показываем диалог подтверждения и переходим по ссылке на страницу обновления" />
     <MESSAGE value="Исправил ошибку с Nullpointer-ом на возвращении в DiscountActivity" />
     <MESSAGE value="Проверим крон - деплоер" />
+    <MESSAGE value="На страницу загрузки добавилось время сборки" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1082,14 +1105,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/discount.xml">
-      <provider editor-type-id="text-editor">
-        <state line="61" column="23" selection-start="2447" selection-end="3407" vertical-scroll-proportion="0.0" />
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/QRScannerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="160" column="27" selection-start="4969" selection-end="4978" vertical-scroll-proportion="0.0">
@@ -1181,16 +1196,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/data/download-page/resources/redirect-index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="53" selection-start="5865" selection-end="5865" vertical-scroll-proportion="0.0">
+        <state line="9" column="73" selection-start="290" selection-end="290" vertical-scroll-proportion="0.22689076">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/download-page/index.xsl">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="30" selection-start="471" selection-end="480" vertical-scroll-proportion="-1.5375">
+        <state line="13" column="30" selection-start="471" selection-end="480" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="130" column="0" selection-start="5677" selection-end="5677" vertical-scroll-proportion="0.581876">
           <folding />
         </state>
       </provider>
