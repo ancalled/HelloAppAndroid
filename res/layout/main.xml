@@ -3,29 +3,35 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#2E2E2E">
+              android:background="#565656">
 
     <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="32dp" android:background="#2E2E2E">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="@string/main_page_title"
-                android:textSize="18dp" android:typeface="sans"
-                android:gravity="center_vertical|center_horizontal" android:textColor="#ffffff"
-                android:id="@+id/textView"
-                android:layout_centerHorizontal="true" android:layout_alignParentTop="true"/>
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:text="Фильтр"
-                android:id="@+id/button"
-                android:background="@drawable/sample_button" android:textColor="#FFFFFF" android:paddingLeft="10dp"
-                android:paddingTop="5dp" android:paddingRight="10dp" android:paddingBottom="5dp"
-                android:layout_alignParentLeft="true" android:layout_marginLeft="244dp"
-                android:layout_alignTop="@+id/textView" android:layout_marginTop="3dp"/>
+            android:layout_height="48dp" android:background="#389ED2">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp" android:background="#3594C4"
+                android:gravity="center_horizontal" android:id="@+id/linearLayout"
+                android:layout_alignParentLeft="true" android:layout_alignBottom="@+id/helloIcon">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/main_page_title"
+                    android:textSize="14dp" android:typeface="sans"
+                    android:gravity="center_vertical|center_horizontal" android:textColor="#ffffff"
+                    android:id="@+id/textView"
+                    android:layout_centerHorizontal="true" android:layout_alignParentTop="true"/>
+        </LinearLayout>
+        <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:id="@+id/helloIcon"
+                android:longClickable="true"
+                android:background="@drawable/hello_logo" android:baselineAlignBottom="true"
+                android:layout_alignParentLeft="true" android:layout_marginLeft="34dp"
+                android:layout_alignParentTop="true"/>
     </RelativeLayout>
     <ProgressBar
             android:layout_width="50dp"

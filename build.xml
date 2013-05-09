@@ -123,7 +123,7 @@
 
         <replace file="${page-home}/out/version.json">
             <replacefilter token="@version@" value="${build.number}"/>
-            <replacefilter token="@minCersion@" value="${min.build.number}"/>
+            <replacefilter token="@minVersion@" value="${min.build.number}"/>
             <replacefilter token="@versionName@" value="${app-version}"/>
         </replace>
         <replace file="${page-home}/out/redirect-index.html">

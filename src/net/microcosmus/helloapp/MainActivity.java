@@ -7,7 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
+import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -42,14 +43,6 @@ public class MainActivity extends Activity {
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
         HelloClient.authorize();
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        EasyTracker.getInstance().activityStart(this);
-        BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
 
         if (isNetworkAvailable()) {
             checkNewerVersion();
@@ -63,6 +56,16 @@ public class MainActivity extends Activity {
             Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
             toast.show();
         }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        EasyTracker.getInstance().activityStart(this);
+        BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
+
+
 
     }
 
@@ -100,8 +103,12 @@ public class MainActivity extends Activity {
             View view = createCampaign(c, listView);
             listView.addView(view);
 
-            ImageView imageView = (ImageView) view.findViewById(R.id.discountIcon);
-            downloadIcon(c, imageView);
+            ImageView campaignThumbs = (ImageView) view.findViewById(R.id.campaignThumbnail);
+            ImageView discountIcon = (ImageView) view.findViewById(R.id.discountIcon);
+
+            buildIconImage(discountIcon, c.getRate());
+            downloadIcon(c, campaignThumbs);
+
         }
     }
 
@@ -112,19 +119,19 @@ public class MainActivity extends Activity {
 
         TextView titleView = (TextView) view.findViewById(R.id.discountTitle);
         TextView placeView = (TextView) view.findViewById(R.id.discountPlace);
-        TextView rateView = (TextView) view.findViewById(R.id.discountRate);
+//        TextView rateView = (TextView) view.findViewById(R.id.discountRate);
 
         titleView.setText(d.getTitle());
         placeView.setText(d.getPlace());
-        rateView.setText("-" + d.getRate() + "%");
+//        rateView.setText("-" + d.getRate() + "%");
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                view.setBackgroundResource(
-                        motionEvent.getAction() == MotionEvent.ACTION_DOWN ?
-                                R.drawable.discount_row_touched :
-                                R.drawable.discount_row);
+//                view.setBackgroundResource(
+//                        motionEvent.getAction() == MotionEvent.ACTION_DOWN ?
+//                                R.drawable.discount_row_touched :
+//                                R.drawable.discount_row);
                 return false;
             }
         });
@@ -191,6 +198,45 @@ public class MainActivity extends Activity {
         }.execute(url);
     }
 
+
+    private void buildIconImage(ImageView img, int rate) {
+        img.setBackgroundColor(Color.TRANSPARENT);
+
+        int width = 42;
+        int height = 42;
+        int x = width / 2;
+        int y = height / 2;
+        int rad1 = width / 2;
+        int rad2 = width / 2 - 2;
+
+        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bmp);
+
+        Paint p0 = new Paint();
+        p0.setARGB(256, 255, 255, 255);
+        RectF rectF = new RectF();
+        rectF.set(0,0, width, height);
+        c.drawRoundRect(rectF, 0, 0, p0);
+
+        Paint p1 = new Paint();
+        p1.setColor(Color.WHITE);
+        p1.setAntiAlias(true);
+        c.drawCircle(x, y, rad1, p1);
+
+        Paint p2 = new Paint();
+        p2.setColor(Color.parseColor("#DD3E53"));
+        p2.setAntiAlias(true);
+        c.drawCircle(x, y, rad2, p2);
+
+        float textHeight = 14;
+        p1.setTextSize(textHeight);
+        String rateText = rate + "%";
+        float textWidth = p1.measureText(rateText);
+        c.drawText(rateText, x - textWidth / 2, y + 5, p1);
+
+        img.setBackgroundDrawable(new BitmapDrawable(bmp));
+
+    }
 
     private void showDiscountActivity(Campaign c) {
         Intent intent = new Intent(this, DiscountActivity.class);
