@@ -11,6 +11,7 @@
 
     <xsl:param name="version"/>
     <xsl:param name="app-file"/>
+    <xsl:param name="whenBuilt"/>
 
     <xsl:template match="/build">
         <xsl:text disable-output-escaping='yes'>&lt;!DOCTYPE html></xsl:text>
@@ -75,6 +76,8 @@
                                     <dl class="dl-horizontal">
                                         <dt>Версия</dt>
                                         <dd><xsl:value-of select="$version"/></dd>
+                                        <dt>Собрана</dt>
+                                        <dd><xsl:value-of select="$whenBuilt"/></dd>
                                     </dl>
                                 </p>
                                 <p class="centered top-padded">

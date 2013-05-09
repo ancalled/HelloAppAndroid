@@ -113,6 +113,9 @@
         <property name="page-home" value="./data/download-page"/>
         <property name="app-version" value="${major-version}.${minor-version}.${build.number}"/>
         <property name="app-file" value="AndroidTest-debug.apk"/>
+        <tstamp>
+            <format property="now" pattern="yyyy-MM-dd hh:mm:ss"/>
+        </tstamp>
 
         <delete dir="${page-home}/out"/>
         <mkdir dir="${page-home}/out"/>
@@ -128,6 +131,7 @@
               out="${page-home}/out/index.html">
             <param name="version" expression="${app-version}"/>
             <param name="app-file" expression="${app-file}"/>
+            <param name="whenBuilt" expression="${now}"/>
         </xslt>
 
         <zip basedir="${page-home}/out" destfile="./bin/download-page.zip"/>
