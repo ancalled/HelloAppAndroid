@@ -278,9 +278,10 @@ public class MainActivity extends Activity {
                 Log.d(CAT, "Available app version: " + version.getVersion() + " (" + version.getVersionName() + ")");
 
                 if (version.getMinVersion() > appVersion.getVersion()) {
-                    showForceDownloadNewerVersion(appVersion.getVersionName());
+                    showForceDownloadNewerVersion(version.getVersionName());
+
                 } else if (version.getVersion() > appVersion.getVersion()) {
-                    showDownloadNewerVersion(appVersion.getVersionName());
+                    showDownloadNewerVersion(version.getVersionName());
                 }
 
             }
