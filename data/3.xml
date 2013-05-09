@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<builds count="8">
+    <build id="93" number="12" status="SUCCESS" buildTypeId="bt5" startDate="20130509T002135+0600"
+           href="/httpAuth/app/rest/builds/id:93"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=93&amp;buildTypeId=bt5"/>
+    <build id="92" number="11" status="SUCCESS" buildTypeId="bt5" startDate="20130508T075920+0600"
+           href="/httpAuth/app/rest/builds/id:92"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=92&amp;buildTypeId=bt5"/>
+    <build id="90" number="10" status="SUCCESS" buildTypeId="bt5" startDate="20130506T152412+0600"
+           href="/httpAuth/app/rest/builds/id:90"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=90&amp;buildTypeId=bt5"/>
+    <build id="84" number="6" status="SUCCESS" buildTypeId="bt5" startDate="20130504T175501+0600"
+           href="/httpAuth/app/rest/builds/id:84"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=84&amp;buildTypeId=bt5"/>
+    <build id="83" number="5" status="SUCCESS" buildTypeId="bt5" startDate="20130504T174901+0600"
+           href="/httpAuth/app/rest/builds/id:83"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=83&amp;buildTypeId=bt5"/>
+    <build id="82" number="4" status="SUCCESS" buildTypeId="bt5" startDate="20130504T173820+0600"
+           href="/httpAuth/app/rest/builds/id:82"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=82&amp;buildTypeId=bt5"/>
+    <build id="81" number="3" status="SUCCESS" buildTypeId="bt5" startDate="20130504T173713+0600"
+           href="/httpAuth/app/rest/builds/id:81"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=81&amp;buildTypeId=bt5"/>
+    <build id="79" number="1" status="SUCCESS" buildTypeId="bt5" startDate="20130504T153936+0600"
+           href="/httpAuth/app/rest/builds/id:79"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=79&amp;buildTypeId=bt5"/>
+</builds>

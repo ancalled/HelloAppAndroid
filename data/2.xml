@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<builds count="92">
+    <build id="93" number="12" status="SUCCESS" buildTypeId="bt5" startDate="20130509T002135+0600"
+           href="/httpAuth/app/rest/builds/id:93"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=93&amp;buildTypeId=bt5"/>
+    <build id="92" number="11" status="SUCCESS" buildTypeId="bt5" startDate="20130508T075920+0600"
+           href="/httpAuth/app/rest/builds/id:92"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=92&amp;buildTypeId=bt5"/>
+    <build id="91" number="105" status="SUCCESS" buildTypeId="bt2" startDate="20130507T020819+0600"
+           href="/httpAuth/app/rest/builds/id:91"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=91&amp;buildTypeId=bt2"/>
+    <build id="90" number="10" status="SUCCESS" buildTypeId="bt5" startDate="20130506T152412+0600"
+           href="/httpAuth/app/rest/builds/id:90"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=90&amp;buildTypeId=bt5"/>
+    <build id="89" number="9" status="FAILURE" buildTypeId="bt5" startDate="20130506T152214+0600"
+           href="/httpAuth/app/rest/builds/id:89"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=89&amp;buildTypeId=bt5"/>
+    <build id="88" number="8" status="FAILURE" buildTypeId="bt5" startDate="20130506T150800+0600"
+           href="/httpAuth/app/rest/builds/id:88"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=88&amp;buildTypeId=bt5"/>
+    <build id="87" number="7" status="FAILURE" buildTypeId="bt5" startDate="20130506T144432+0600"
+           href="/httpAuth/app/rest/builds/id:87"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=87&amp;buildTypeId=bt5"/>
+    <build id="86" number="104" status="SUCCESS" buildTypeId="bt2" startDate="20130506T142348+0600"
+           href="/httpAuth/app/rest/builds/id:86"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=86&amp;buildTypeId=bt2"/>
+    <build id="85" number="103" status="SUCCESS" buildTypeId="bt2" startDate="20130506T142247+0600"
+           href="/httpAuth/app/rest/builds/id:85"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=85&amp;buildTypeId=bt2"/>
+    <build id="84" number="6" status="SUCCESS" buildTypeId="bt5" startDate="20130504T175501+0600"
+           href="/httpAuth/app/rest/builds/id:84"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=84&amp;buildTypeId=bt5"/>
+    <build id="83" number="5" status="SUCCESS" buildTypeId="bt5" startDate="20130504T174901+0600"
+           href="/httpAuth/app/rest/builds/id:83"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=83&amp;buildTypeId=bt5"/>
+    <build id="82" number="4" status="SUCCESS" buildTypeId="bt5" startDate="20130504T173820+0600"
+           href="/httpAuth/app/rest/builds/id:82"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=82&amp;buildTypeId=bt5"/>
+    <build id="81" number="3" status="SUCCESS" buildTypeId="bt5" startDate="20130504T173713+0600"
+           href="/httpAuth/app/rest/builds/id:81"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=81&amp;buildTypeId=bt5"/>
+    <build id="80" number="2" status="FAILURE" buildTypeId="bt5" startDate="20130504T173302+0600"
+           href="/httpAuth/app/rest/builds/id:80"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=80&amp;buildTypeId=bt5"/>
+    <build id="79" number="1" status="SUCCESS" buildTypeId="bt5" startDate="20130504T153936+0600"
+           href="/httpAuth/app/rest/builds/id:79"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=79&amp;buildTypeId=bt5"/>
+    <build id="78" number="102" status="SUCCESS" buildTypeId="bt2" startDate="20130503T032532+0600"
+           href="/httpAuth/app/rest/builds/id:78"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=78&amp;buildTypeId=bt2"/>
+    <build id="77" number="101" status="SUCCESS" buildTypeId="bt2" startDate="20130503T015450+0600"
+           href="/httpAuth/app/rest/builds/id:77"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=77&amp;buildTypeId=bt2"/>
+    <build id="76" number="100" status="SUCCESS" buildTypeId="bt2" startDate="20130503T005429+0600"
+           href="/httpAuth/app/rest/builds/id:76"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=76&amp;buildTypeId=bt2"/>
+    <build id="75" number="99" status="SUCCESS" buildTypeId="bt2" startDate="20130503T005348+0600"
+           href="/httpAuth/app/rest/builds/id:75"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=75&amp;buildTypeId=bt2"/>
+    <build id="74" number="98" status="SUCCESS" buildTypeId="bt2" startDate="20130503T005307+0600"
+           href="/httpAuth/app/rest/builds/id:74"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=74&amp;buildTypeId=bt2"/>
+    <build id="73" number="97" status="SUCCESS" buildTypeId="bt2" startDate="20130502T202144+0600"
+           href="/httpAuth/app/rest/builds/id:73"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=73&amp;buildTypeId=bt2"/>
+    <build id="72" number="17" status="SUCCESS" buildTypeId="bt3" startDate="20130502T072735+0600"
+           href="/httpAuth/app/rest/builds/id:72"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=72&amp;buildTypeId=bt3"/>
+    <build id="71" number="16" status="SUCCESS" buildTypeId="bt3" startDate="20130501T173542+0600"
+           href="/httpAuth/app/rest/builds/id:71"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=71&amp;buildTypeId=bt3"/>
+    <build id="70" number="15" status="SUCCESS" buildTypeId="bt3" startDate="20130501T171701+0600"
+           href="/httpAuth/app/rest/builds/id:70"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=70&amp;buildTypeId=bt3"/>
+    <build id="69" number="14" status="FAILURE" buildTypeId="bt3" startDate="20130501T171537+0600"
+           href="/httpAuth/app/rest/builds/id:69"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=69&amp;buildTypeId=bt3"/>
+    <build id="68" number="13" status="FAILURE" buildTypeId="bt3" startDate="20130501T171432+0600"
+           href="/httpAuth/app/rest/builds/id:68"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=68&amp;buildTypeId=bt3"/>
+    <build id="66" number="12" status="SUCCESS" buildTypeId="bt3" startDate="20130430T180702+0600"
+           href="/httpAuth/app/rest/builds/id:66"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=66&amp;buildTypeId=bt3"/>
+    <build id="65" number="1" status="SUCCESS" buildTypeId="bt3" startDate="20130430T175705+0600"
+           href="/httpAuth/app/rest/builds/id:65"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=65&amp;buildTypeId=bt3"/>
+    <build id="64" number="96" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175622+0600"
+           href="/httpAuth/app/rest/builds/id:64"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=64&amp;buildTypeId=bt2"/>
+    <build id="63" number="95" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175541+0600"
+           href="/httpAuth/app/rest/builds/id:63"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=63&amp;buildTypeId=bt2"/>
+    <build id="62" number="94" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175500+0600"
+           href="/httpAuth/app/rest/builds/id:62"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=62&amp;buildTypeId=bt2"/>
+    <build id="61" number="93" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175419+0600"
+           href="/httpAuth/app/rest/builds/id:61"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=61&amp;buildTypeId=bt2"/>
+    <build id="60" number="92" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175330+0600"
+           href="/httpAuth/app/rest/builds/id:60"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=60&amp;buildTypeId=bt2"/>
+    <build id="59" number="91" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175249+0600"
+           href="/httpAuth/app/rest/builds/id:59"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=59&amp;buildTypeId=bt2"/>
+    <build id="58" number="90" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175209+0600"
+           href="/httpAuth/app/rest/builds/id:58"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=58&amp;buildTypeId=bt2"/>
+    <build id="57" number="89" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175127+0600"
+           href="/httpAuth/app/rest/builds/id:57"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=57&amp;buildTypeId=bt2"/>
+    <build id="56" number="88" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175045+0600"
+           href="/httpAuth/app/rest/builds/id:56"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=56&amp;buildTypeId=bt2"/>
+    <build id="55" number="87" status="SUCCESS" buildTypeId="bt2" startDate="20130430T175003+0600"
+           href="/httpAuth/app/rest/builds/id:55"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=55&amp;buildTypeId=bt2"/>
+    <build id="54" number="86" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174921+0600"
+           href="/httpAuth/app/rest/builds/id:54"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=54&amp;buildTypeId=bt2"/>
+    <build id="53" number="85" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174836+0600"
+           href="/httpAuth/app/rest/builds/id:53"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=53&amp;buildTypeId=bt2"/>
+    <build id="52" number="84" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174753+0600"
+           href="/httpAuth/app/rest/builds/id:52"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=52&amp;buildTypeId=bt2"/>
+    <build id="51" number="83" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174708+0600"
+           href="/httpAuth/app/rest/builds/id:51"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=51&amp;buildTypeId=bt2"/>
+    <build id="50" number="82" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174624+0600"
+           href="/httpAuth/app/rest/builds/id:50"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=50&amp;buildTypeId=bt2"/>
+    <build id="49" number="81" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174537+0600"
+           href="/httpAuth/app/rest/builds/id:49"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=49&amp;buildTypeId=bt2"/>
+    <build id="48" number="80" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174455+0600"
+           href="/httpAuth/app/rest/builds/id:48"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=48&amp;buildTypeId=bt2"/>
+    <build id="47" number="79" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174409+0600"
+           href="/httpAuth/app/rest/builds/id:47"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=47&amp;buildTypeId=bt2"/>
+    <build id="46" number="78" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174324+0600"
+           href="/httpAuth/app/rest/builds/id:46"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=46&amp;buildTypeId=bt2"/>
+    <build id="45" number="77" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174239+0600"
+           href="/httpAuth/app/rest/builds/id:45"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=45&amp;buildTypeId=bt2"/>
+    <build id="44" number="76" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174156+0600"
+           href="/httpAuth/app/rest/builds/id:44"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=44&amp;buildTypeId=bt2"/>
+    <build id="43" number="75" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174112+0600"
+           href="/httpAuth/app/rest/builds/id:43"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=43&amp;buildTypeId=bt2"/>
+    <build id="42" number="74" status="SUCCESS" buildTypeId="bt2" startDate="20130430T174025+0600"
+           href="/httpAuth/app/rest/builds/id:42"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=42&amp;buildTypeId=bt2"/>
+    <build id="41" number="73" status="FAILURE" buildTypeId="bt2" startDate="20130430T173934+0600"
+           href="/httpAuth/app/rest/builds/id:41"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=41&amp;buildTypeId=bt2"/>
+    <build id="40" number="72" status="FAILURE" buildTypeId="bt2" startDate="20130430T173831+0600"
+           href="/httpAuth/app/rest/builds/id:40"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=40&amp;buildTypeId=bt2"/>
+    <build id="39" number="71" status="SUCCESS" buildTypeId="bt2" startDate="20130428T035912+0600"
+           href="/httpAuth/app/rest/builds/id:39"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=39&amp;buildTypeId=bt2"/>
+    <build id="38" number="70" status="SUCCESS" buildTypeId="bt2" startDate="20130427T183209+0600"
+           href="/httpAuth/app/rest/builds/id:38"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=38&amp;buildTypeId=bt2"/>
+    <build id="37" number="69" status="SUCCESS" buildTypeId="bt2" startDate="20130427T183131+0600"
+           href="/httpAuth/app/rest/builds/id:37"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=37&amp;buildTypeId=bt2"/>
+    <build id="36" number="68" status="SUCCESS" buildTypeId="bt2" startDate="20130427T173903+0600"
+           href="/httpAuth/app/rest/builds/id:36"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=36&amp;buildTypeId=bt2"/>
+    <build id="35" number="67" status="SUCCESS" buildTypeId="bt2" startDate="20130427T170835+0600"
+           href="/httpAuth/app/rest/builds/id:35"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=35&amp;buildTypeId=bt2"/>
+    <build id="34" number="66" status="SUCCESS" buildTypeId="bt2" startDate="20130427T161818+0600"
+           href="/httpAuth/app/rest/builds/id:34"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=34&amp;buildTypeId=bt2"/>
+    <build id="33" number="65" status="SUCCESS" buildTypeId="bt2" startDate="20130427T161739+0600"
+           href="/httpAuth/app/rest/builds/id:33"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=33&amp;buildTypeId=bt2"/>
+    <build id="32" number="64" status="SUCCESS" buildTypeId="bt2" startDate="20130427T161701+0600"
+           href="/httpAuth/app/rest/builds/id:32"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=32&amp;buildTypeId=bt2"/>
+    <build id="31" number="63" status="SUCCESS" buildTypeId="bt2" startDate="20130427T161622+0600"
+           href="/httpAuth/app/rest/builds/id:31"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=31&amp;buildTypeId=bt2"/>
+    <build id="30" number="62" status="SUCCESS" buildTypeId="bt2" startDate="20130427T150501+0600"
+           href="/httpAuth/app/rest/builds/id:30"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=30&amp;buildTypeId=bt2"/>
+    <build id="29" number="61" status="SUCCESS" buildTypeId="bt2" startDate="20130427T144512+0600"
+           href="/httpAuth/app/rest/builds/id:29"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=29&amp;buildTypeId=bt2"/>
+    <build id="28" number="60" status="SUCCESS" buildTypeId="bt2" startDate="20130427T143704+0600"
+           href="/httpAuth/app/rest/builds/id:28"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=28&amp;buildTypeId=bt2"/>
+    <build id="27" number="59" status="SUCCESS" buildTypeId="bt2" startDate="20130427T141136+0600"
+           href="/httpAuth/app/rest/builds/id:27"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=27&amp;buildTypeId=bt2"/>
+    <build id="26" number="58" status="SUCCESS" buildTypeId="bt2" startDate="20130427T135947+0600"
+           href="/httpAuth/app/rest/builds/id:26"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=26&amp;buildTypeId=bt2"/>
+    <build id="25" number="57" status="SUCCESS" buildTypeId="bt2" startDate="20130427T133038+0600"
+           href="/httpAuth/app/rest/builds/id:25"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=25&amp;buildTypeId=bt2"/>
+    <build id="24" number="56" status="SUCCESS" buildTypeId="bt2" startDate="20130427T121659+0600"
+           href="/httpAuth/app/rest/builds/id:24"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=24&amp;buildTypeId=bt2"/>
+    <build id="23" number="55" status="SUCCESS" buildTypeId="bt2" startDate="20130427T121620+0600"
+           href="/httpAuth/app/rest/builds/id:23"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=23&amp;buildTypeId=bt2"/>
+    <build id="22" number="54" status="SUCCESS" buildTypeId="bt2" startDate="20130427T121541+0600"
+           href="/httpAuth/app/rest/builds/id:22"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=22&amp;buildTypeId=bt2"/>
+    <build id="21" number="53" status="SUCCESS" buildTypeId="bt2" startDate="20130427T121501+0600"
+           href="/httpAuth/app/rest/builds/id:21"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=21&amp;buildTypeId=bt2"/>
+    <build id="20" number="52" status="SUCCESS" buildTypeId="bt2" startDate="20130427T121013+0600"
+           href="/httpAuth/app/rest/builds/id:20"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=20&amp;buildTypeId=bt2"/>
+    <build id="19" number="51" status="SUCCESS" buildTypeId="bt2" startDate="20130427T103543+0600"
+           href="/httpAuth/app/rest/builds/id:19"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=19&amp;buildTypeId=bt2"/>
+    <build id="18" number="50" status="SUCCESS" buildTypeId="bt2" startDate="20130426T180206+0600"
+           href="/httpAuth/app/rest/builds/id:18"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=18&amp;buildTypeId=bt2"/>
+    <build id="17" number="49" status="SUCCESS" buildTypeId="bt2" startDate="20130426T175717+0600"
+           href="/httpAuth/app/rest/builds/id:17"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=17&amp;buildTypeId=bt2"/>
+    <build id="16" number="48" status="SUCCESS" buildTypeId="bt2" startDate="20130426T173728+0600"
+           href="/httpAuth/app/rest/builds/id:16"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=16&amp;buildTypeId=bt2"/>
+    <build id="15" number="47" status="SUCCESS" buildTypeId="bt2" startDate="20130426T172540+0600"
+           href="/httpAuth/app/rest/builds/id:15"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=15&amp;buildTypeId=bt2"/>
+    <build id="14" number="46" status="SUCCESS" buildTypeId="bt2" startDate="20130426T165410+0600"
+           href="/httpAuth/app/rest/builds/id:14"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=14&amp;buildTypeId=bt2"/>
+    <build id="13" number="45" status="SUCCESS" buildTypeId="bt2" startDate="20130426T163100+0600"
+           href="/httpAuth/app/rest/builds/id:13"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=13&amp;buildTypeId=bt2"/>
+    <build id="12" number="44" status="SUCCESS" buildTypeId="bt2" startDate="20130426T155721+0600"
+           href="/httpAuth/app/rest/builds/id:12"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=12&amp;buildTypeId=bt2"/>
+    <build id="11" number="43" status="SUCCESS" buildTypeId="bt2" startDate="20130426T155641+0600"
+           href="/httpAuth/app/rest/builds/id:11"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=11&amp;buildTypeId=bt2"/>
+    <build id="10" number="42" status="SUCCESS" buildTypeId="bt2" startDate="20130426T155558+0600"
+           href="/httpAuth/app/rest/builds/id:10"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=10&amp;buildTypeId=bt2"/>
+    <build id="9" number="41" status="SUCCESS" buildTypeId="bt2" startDate="20130425T225355+0600"
+           href="/httpAuth/app/rest/builds/id:9"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=9&amp;buildTypeId=bt2"/>
+    <build id="8" number="40" status="SUCCESS" buildTypeId="bt2" startDate="20130425T215653+0600"
+           href="/httpAuth/app/rest/builds/id:8"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=8&amp;buildTypeId=bt2"/>
+    <build id="7" number="39" status="SUCCESS" buildTypeId="bt2" startDate="20130423T232014+0600"
+           href="/httpAuth/app/rest/builds/id:7"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=7&amp;buildTypeId=bt2"/>
+    <build id="6" number="38" status="SUCCESS" buildTypeId="bt2" startDate="20130421T175309+0600"
+           href="/httpAuth/app/rest/builds/id:6"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=6&amp;buildTypeId=bt2"/>
+    <build id="5" number="37" status="SUCCESS" buildTypeId="bt2" startDate="20130417T231929+0600"
+           href="/httpAuth/app/rest/builds/id:5"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=5&amp;buildTypeId=bt2"/>
+    <build id="4" number="36" status="SUCCESS" buildTypeId="bt2" startDate="20130417T231846+0600"
+           href="/httpAuth/app/rest/builds/id:4"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=4&amp;buildTypeId=bt2"/>
+    <build id="3" number="35" status="SUCCESS" buildTypeId="bt2" startDate="20130416T080240+0600"
+           href="/httpAuth/app/rest/builds/id:3"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=3&amp;buildTypeId=bt2"/>
+    <build id="2" number="2" status="SUCCESS" buildTypeId="bt2" startDate="20130416T075741+0600"
+           href="/httpAuth/app/rest/builds/id:2"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=2&amp;buildTypeId=bt2"/>
+    <build id="1" number="1" status="SUCCESS" buildTypeId="bt2" startDate="20130416T075029+0600"
+           href="/httpAuth/app/rest/builds/id:1"
+           webUrl="http://teamcity.microcosmus.net/viewLog.html?buildId=1&amp;buildTypeId=bt2"/>
+</builds>
