@@ -44,8 +44,14 @@ public class MainActivity extends Activity {
 
         HelloClient.authorize();
 
+        final AppVersion appVersion = getAppVersion();
+
+        TextView versionInfoView = (TextView) findViewById(R.id.versionInfo);
+        versionInfoView.setText(appVersion.getVersionName() + " (Test)");
+
         if (isNetworkAvailable()) {
-            checkNewerVersion();
+
+            checkNewerVersion(appVersion);
 
             clearDiscountView();
             showWaiter();
@@ -113,7 +119,7 @@ public class MainActivity extends Activity {
     }
 
 
-    private View createCampaign(final Campaign d, ViewGroup parent) {
+    private View createCampaign(final Campaign с, ViewGroup parent) {
 
         View view = inflater.inflate(R.layout.campaign, parent, false);
 
@@ -121,17 +127,18 @@ public class MainActivity extends Activity {
         TextView placeView = (TextView) view.findViewById(R.id.discountPlace);
 //        TextView rateView = (TextView) view.findViewById(R.id.discountRate);
 
-        titleView.setText(d.getTitle());
-        placeView.setText(d.getPlace());
+        titleView.setText(с.getTitle());
+        placeView.setText(с.getPlace());
 //        rateView.setText("-" + d.getRate() + "%");
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-//                view.setBackgroundResource(
-//                        motionEvent.getAction() == MotionEvent.ACTION_DOWN ?
-//                                R.drawable.discount_row_touched :
-//                                R.drawable.discount_row);
+
+                view.setBackgroundResource(
+                        motionEvent.getAction() == MotionEvent.ACTION_DOWN ?
+                                R.drawable.discount_row_touched :
+                                R.drawable.discount_row);
                 return false;
             }
         });
@@ -139,7 +146,7 @@ public class MainActivity extends Activity {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDiscountActivity(d);
+                showDiscountActivity(с);
             }
         });
 
@@ -239,14 +246,14 @@ public class MainActivity extends Activity {
     }
 
     private void showDiscountActivity(Campaign c) {
+        if (c == null) return;
         Intent intent = new Intent(this, DiscountActivity.class);
         intent.putExtra("campaign", c);
         startActivity(intent);
     }
 
 
-    private void checkNewerVersion() {
-        final AppVersion appVersion = getAppVersion();
+    private void checkNewerVersion(final AppVersion appVersion) {
         Log.d(CAT, "Current app version: " + appVersion.getVersion() + " (" + appVersion.getVersionName() + ")");
 
         new AsyncTask<String, Void, AppVersion>() {
