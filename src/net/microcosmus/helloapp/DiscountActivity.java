@@ -204,18 +204,32 @@ public class DiscountActivity extends Activity {
             protected void onPostExecute(DiscountApplyResult result) {
                 if (result == null) return;
 
+                Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+                LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
+                LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+
                 if (result.getStatus() == DiscountApplyResult.Status.OK) {
-                    Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-                    LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
-                    LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
-                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-                    TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
 
                     confirmBtn.setVisibility(View.GONE);
                     scanResultPanel.setVisibility(View.VISIBLE);
                     applyResultPanel.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                     numberView.setText(Long.toString(result.getId()));
+                } else {
+                    TextView applyResult = (TextView) findViewById(R.id.ddApplyResult);
+
+                    confirmBtn.setVisibility(View.GONE);
+                    scanResultPanel.setVisibility(View.VISIBLE);
+                    applyResultPanel.setVisibility(View.VISIBLE);
+                    progressBar.setVisibility(View.GONE);
+
+                    int mesNo = getErMessage(result.getStatus());
+                    if (mesNo > 0) {
+                        applyResult.setText(getResources().getString(mesNo));
+                    }
+
                 }
             }
 
@@ -224,6 +238,24 @@ public class DiscountActivity extends Activity {
                 campaignId,
                 confirmCode
         ));
+    }
+
+    private static int getErMessage(DiscountApplyResult.Status status) {
+        switch (status) {
+            case NO_USER_FOUND:
+                return R.string.erNoUserFound;
+            case NO_CONFIRMER_FOUND:
+                return R.string.erNoConfirmerFound;
+            case NO_DISCOUNT_FOUND:
+                return R.string.erNoDiscountFound;
+            case CONFIRMER_IS_NOT_OF_THIS_COMPANY:
+                return R.string.erConfirmerIsNotOfThisCompany;
+            case COULD_NOT_APPLY:
+                return R.string.erCouldNotApply;
+
+        }
+
+        return -1;
     }
 
 

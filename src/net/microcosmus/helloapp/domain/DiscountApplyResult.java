@@ -3,7 +3,7 @@ package net.microcosmus.helloapp.domain;
 public class DiscountApplyResult {
 
     public static enum Status {
-        OK, ERRORS
+        OK, NO_USER_FOUND, NO_DISCOUNT_FOUND, NO_CONFIRMER_FOUND, CONFIRMER_IS_NOT_OF_THIS_COMPANY, COULD_NOT_APPLY
     }
 
     private Long id;

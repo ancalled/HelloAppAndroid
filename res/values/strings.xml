@@ -19,6 +19,12 @@
     <string name="no_thumbnail">Нет изображения</string>
     <string name="priceLabel">Стоимость:</string>
     <string name="priceWithDiscountLabel">После скидки:</string>
-    <string name="discountApplyResultLabel">Номер скидки:</string><string name="confirmerIdLabel">Подтверждатель:</string>
+    <string name="discountApplyResultLabel">Номер скидки:</string>
+    <string name="confirmerIdLabel">Подтверждатель:</string>
+    <string name="erNoUserFound">Не найден пользователь</string>
+    <string name="erNoDiscountFound">Не найдена скидка</string>
+    <string name="erNoConfirmerFound">Не найден подтверждатель</string>
+    <string name="erConfirmerIsNotOfThisCompany">Неверный подтверждатель</string>
+    <string name="erCouldNotApply">Не получилось применить скидку</string>
 
 </resources>
