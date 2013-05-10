@@ -99,7 +99,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -107,7 +106,7 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368192863881" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368031990824" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368213312094" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368213719181" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
@@ -349,19 +348,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="39" selection-start="1771" selection-end="1783" vertical-scroll-proportion="0.0">
+            <state line="59" column="39" selection-start="1771" selection-end="1783" vertical-scroll-proportion="-4.6526656">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DiscountActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DiscountActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="103" column="38" selection-start="3715" selection-end="3715" vertical-scroll-proportion="0.48465267">
+            <state line="103" column="38" selection-start="3715" selection-end="3715" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1126,7 +1125,11 @@
       <created>1368213315571</created>
       <updated>1368213315571</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="#149152891 Ничего не показываем, если ввод цены очистился, сейчас все еще показывает последню цену с дисконтом">
+      <created>1368213721358</created>
+      <updated>1368213721358</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1209,7 +1212,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="#149152891 Interger.parseInt() на пустую строку в расчете скидки, добавил проверку на пустоту" />
+    <option name="LAST_COMMIT_MESSAGE" value="#149152891 Ничего не показываем, если ввод цены очистился, сейчас все еще показывает последню цену с дисконтом" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1247,6 +1250,7 @@
     <MESSAGE value="поправочка 2" />
     <MESSAGE value="Вывод ошибок при применении скидки" />
     <MESSAGE value="#149152891 Interger.parseInt() на пустую строку в расчете скидки, добавил проверку на пустоту" />
+    <MESSAGE value="#149152891 Ничего не показываем, если ввод цены очистился, сейчас все еще показывает последню цену с дисконтом" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1356,13 +1360,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="39" selection-start="1771" selection-end="1783" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/DiscountApplyResult.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="90" selection-start="282" selection-end="282" vertical-scroll-proportion="0.0">
@@ -1379,10 +1376,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="103" column="38" selection-start="3715" selection-end="3715" vertical-scroll-proportion="0.48465267">
+        <state line="103" column="38" selection-start="3715" selection-end="3715" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="39" selection-start="1771" selection-end="1783" vertical-scroll-proportion="-4.6526656">
+          <folding />
         </state>
       </provider>
     </entry>
