@@ -133,7 +133,7 @@
               style="${page-home}/index.xsl"
               out="${page-home}/out/index.html">
             <param name="version" expression="${app-version}"/>
-            <param name="app-file" expression="${app-file}"/>
+            <param name="app-file" expression="helloapp-${app-version}.apk"/>
             <param name="whenBuilt" expression="${now}"/>
         </xslt>
 
