@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.*;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -112,7 +111,7 @@ public class MainActivity extends Activity {
             ImageView campaignThumbs = (ImageView) view.findViewById(R.id.campaignThumbnail);
             ImageView discountIcon = (ImageView) view.findViewById(R.id.discountIcon);
 
-            buildIconImage(discountIcon, c.getRate());
+            CanvasUtils.buildDiscountRateIcon(discountIcon, c.getRate(), 38);
             downloadIcon(c, campaignThumbs);
 
         }
@@ -130,6 +129,9 @@ public class MainActivity extends Activity {
         titleView.setText(с.getTitle());
         placeView.setText(с.getPlace());
 //        rateView.setText("-" + d.getRate() + "%");
+
+        ImageView edgeImg = (ImageView) view.findViewById(R.id.edgeImg);
+        CanvasUtils.buildBentEdge(edgeImg);
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -205,45 +207,6 @@ public class MainActivity extends Activity {
         }.execute(url);
     }
 
-
-    private void buildIconImage(ImageView img, int rate) {
-        img.setBackgroundColor(Color.TRANSPARENT);
-
-        int width = 42;
-        int height = 42;
-        int x = width / 2;
-        int y = height / 2;
-        int rad1 = width / 2;
-        int rad2 = width / 2 - 2;
-
-        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(bmp);
-
-        Paint p0 = new Paint();
-        p0.setARGB(256, 255, 255, 255);
-        RectF rectF = new RectF();
-        rectF.set(0,0, width, height);
-        c.drawRoundRect(rectF, 0, 0, p0);
-
-        Paint p1 = new Paint();
-        p1.setColor(Color.WHITE);
-        p1.setAntiAlias(true);
-        c.drawCircle(x, y, rad1, p1);
-
-        Paint p2 = new Paint();
-        p2.setColor(Color.parseColor("#DD3E53"));
-        p2.setAntiAlias(true);
-        c.drawCircle(x, y, rad2, p2);
-
-        float textHeight = 14;
-        p1.setTextSize(textHeight);
-        String rateText = rate + "%";
-        float textWidth = p1.measureText(rateText);
-        c.drawText(rateText, x - textWidth / 2, y + 5, p1);
-
-        img.setBackgroundDrawable(new BitmapDrawable(bmp));
-
-    }
 
     private void showDiscountActivity(Campaign c) {
         if (c == null) return;

@@ -104,7 +104,6 @@
             <regexp pattern="android:versionName=&quot;.*&quot;"/>
             <substitution expression="android:versionName=&quot;${major-version}.${minor-version}&quot;"/>
         </replaceregexp>
-
     </target>
 
     <target name="build-download-page">

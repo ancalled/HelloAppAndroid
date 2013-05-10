@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hello.kz</string>
-    <string name="main_page_title">hello.kz quality club</string>
+    <string name="main_page_title">Hello.kz Discount Club</string>
     <string name="filter_button">Фильтр</string>
     <string name="apply_disсount">Использовать скидку</string>
     <string name="internet_access">Интернет не доступен на данном девайсе!</string>
@@ -16,5 +16,9 @@
     <string name="force_update_to_newer_version">
         Данная версия приложения уже не поддерживается, пожалуйста, скачайте новую версию!
     </string>
+    <string name="no_thumbnail">Нет изображения</string>
+    <string name="priceLabel">Стоимость:</string>
+    <string name="priceWithDiscountLabel">После скидки:</string>
+    <string name="discountApplyResultLabel">Номер скидки:</string><string name="confirmerIdLabel">Подтверждатель:</string>
 
 </resources>

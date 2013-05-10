@@ -8,14 +8,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.*;
 import com.example.AndroidTest.R;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
@@ -29,6 +29,9 @@ import java.net.URISyntaxException;
 
 
 public class DiscountActivity extends Activity {
+
+    public static final String CAT = "DiscountActivity";
+
 
     public static final int INTENT_REQUEST_REF = 100;
 
@@ -55,33 +58,54 @@ public class DiscountActivity extends Activity {
         if (campaign == null) return;
 
         TextView placeView = (TextView) findViewById(R.id.ddPlace);
+        if (placeView == null) {
+            Log.e(CAT, "placeView is null!");
+            return;
+        }
         placeView.setText(campaign.getPlace());
 
         TextView descrView = (TextView) findViewById(R.id.ddDiscount);
         descrView.setText(campaign.getTitle());
 
-        TextView rateView = (TextView) findViewById(R.id.ddDiscountRate);
-        rateView.setText("-" + campaign.getRate() + "%");
-
-//        TextView expiresView = (TextView) findViewById(R.id.ddExpires);
-//        expiresView.setText("");
+        TextView discountRate = (TextView) findViewById(R.id.discountRate);
+        discountRate.setText("-" + campaign.getRate() + "%");
 
         Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-        TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
-        TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-        TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+        LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
+        LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+        EditText priceInput = (EditText) findViewById(R.id.priceInput);
+        final TextView prcDisc = (TextView) findViewById(R.id.priceWithDiscount);
 
         confirmBtn.setVisibility(View.VISIBLE);
-        scanResult.setVisibility(View.GONE);
-        messageView.setVisibility(View.GONE);
-        numberView.setVisibility(View.GONE);
+        scanResultPanel.setVisibility(View.GONE);
+        applyResultPanel.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
 
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showQRScanner(DiscountActivity.this, campaign, debugMode);
+            }
+        });
+
+        priceInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                char[] chars = new char[editable.length()];
+                editable.getChars(0, editable.length(), chars, 0);
+                String text = new String(chars);
+                int price = Integer.parseInt(text);
+                int withDiscount = price * (100 - campaign.getRate()) / 100;
+                prcDisc.setText("" + withDiscount);
             }
         });
 
@@ -130,14 +154,16 @@ public class DiscountActivity extends Activity {
                 String confCode = (String) data.getExtras().get("text");
 
                 Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-                TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
+                LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
+                LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
 
                 confirmBtn.setVisibility(View.GONE);
-                scanResult.setVisibility(View.VISIBLE);
-                scanResult.setText(confCode);
+                scanResultPanel.setVisibility(View.VISIBLE);
+                applyResultPanel.setVisibility(View.GONE);
                 progressBar.setVisibility(View.VISIBLE);
-                confirmBtn.setVisibility(View.GONE);
+                scanResult.setText(confCode);
 
                 applyDiscount(campaign.getId(), confCode);
             }
@@ -178,15 +204,17 @@ public class DiscountActivity extends Activity {
             protected void onPostExecute(DiscountApplyResult result) {
                 if (result == null) return;
 
-                TextView messageView = (TextView) findViewById(R.id.ddApplyResult);
-                TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-                ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-                messageView.clearComposingText();
-
                 if (result.getStatus() == DiscountApplyResult.Status.OK) {
+                    Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
+                    LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
+                    LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
+                    ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                    TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+
+                    confirmBtn.setVisibility(View.GONE);
+                    scanResultPanel.setVisibility(View.VISIBLE);
+                    applyResultPanel.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
-                    messageView.setVisibility(View.VISIBLE);
-                    numberView.setVisibility(View.VISIBLE);
                     numberView.setText(Long.toString(result.getId()));
                 }
             }

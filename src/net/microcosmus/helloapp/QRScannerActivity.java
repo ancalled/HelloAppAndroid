@@ -164,7 +164,9 @@ public class QRScannerActivity extends Activity {
     }
 
 
+    public static final String CODE_FORMAT = "[0-9]+";
+
     private static boolean checkCode(String data) {
-        return true;
+        return data.matches(CODE_FORMAT);
     }
 }

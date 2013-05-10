@@ -37,19 +37,15 @@ import java.util.List;
 public class HelloClient {
 
     public static final String SCHEME = "http";
-    //    public static final String HOST
-    // = "10.0.2.2";
-    //    public static final int PORT = 8080;
-    public static final String HOST = "helloapp.microcosmus.net";
-    public static final int PORT = 80;
 
+//    public static final String HOST = "helloapp.microcosmus.net";
+//    public static final int PORT = 80;
+
+    public static final String HOST = "10.0.2.2";
+    public static final int PORT = 8080;
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
-
-    //    public static final String SERVER_URL = "http://10.0.2.2:8080/customer";
-    //        public static final String SERVER_URL = "http://helloapp.microcosmus.net/customer";
     public static final String CAMPAIGNS_URL = SERVER_URL + "/customer/api/campaigns";
-
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
     public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
 
