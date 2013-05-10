@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import com.example.AndroidTest.R;
+import net.microcosmus.helloapp.HelloApp.R;
 import net.microcosmus.helloapp.domain.Campaign;
 
 

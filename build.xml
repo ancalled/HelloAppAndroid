@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="AndroidTest" default="help">
+<project name="HelloApp" default="help">
 
     <!-- The local.properties file is created and updated by the 'android' tool.
          It contains the path to the SDK. It should *NOT* be checked into
@@ -102,7 +102,7 @@
         </replaceregexp>
         <replaceregexp file="AndroidManifest.xml">
             <regexp pattern="android:versionName=&quot;.*&quot;"/>
-            <substitution expression="android:versionName=&quot;${major-version}.${minor-version}&quot;"/>
+            <substitution expression="android:versionName=&quot;${major-version}.${minor-version}.${build.number}&quot;"/>
         </replaceregexp>
     </target>
 
@@ -110,7 +110,7 @@
         <property name="bin" value="./bin"/>
         <property name="page-home" value="./data/download-page"/>
         <property name="app-version" value="${major-version}.${minor-version}.${build.number}"/>
-        <property name="app-file" value="AndroidTest-debug.apk"/>
+        <property name="app-file" value="HelloAppAndroid-debug.apk"/>
         <tstamp>
             <format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
         </tstamp>
@@ -118,7 +118,7 @@
         <delete dir="${page-home}/out"/>
         <mkdir dir="${page-home}/out"/>
         <copydir src="${page-home}/resources" dest="${page-home}/out"/>
-        <copy file="${bin}/${app-file}" todir="${page-home}/out" failonerror="false"/>
+        <copy file="${bin}/${app-file}" tofile="${page-home}/out/helloapp-${app-version}.apk" failonerror="false"/>
 
         <replace file="${page-home}/out/version.json">
             <replacefilter token="@version@" value="${build.number}"/>

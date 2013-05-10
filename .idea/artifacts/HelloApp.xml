@@ -9,7 +9,7 @@
       </options>
     </properties>
     <root id="archive" name="helloapp.apk">
-      <element id="android-final-package" facet="AndroidTest/android/Android" />
+      <element id="android-final-package" facet="HelloAppAndroid/android/Android" />
     </root>
   </artifact>
 </component>
