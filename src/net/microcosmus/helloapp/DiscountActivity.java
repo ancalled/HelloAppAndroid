@@ -100,6 +100,7 @@ public class DiscountActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if (editable == null || editable.length() == 0) return;
                 char[] chars = new char[editable.length()];
                 editable.getChars(0, editable.length(), chars, 0);
                 String text = new String(chars);
