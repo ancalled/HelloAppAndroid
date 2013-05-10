@@ -110,7 +110,7 @@
         <property name="bin" value="./bin"/>
         <property name="page-home" value="./data/download-page"/>
         <property name="app-version" value="${major-version}.${minor-version}.${build.number}"/>
-        <property name="app-file" value="HelloAppAndroid-debug.apk"/>
+        <property name="app-file" value="HelloApp-debug.apk"/>
         <tstamp>
             <format property="now" pattern="yyyy-MM-dd HH:mm:ss"/>
         </tstamp>
