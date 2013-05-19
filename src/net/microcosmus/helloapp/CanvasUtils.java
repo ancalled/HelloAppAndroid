@@ -26,7 +26,7 @@ public class CanvasUtils {
         c.drawRoundRect(rectF, 0, 0, p0);
 
         Paint p1 = new Paint();
-        p1.setColor(Color.WHITE);
+        p1.setColor(Color.parseColor("#fffffd"));
         p1.setAntiAlias(true);
         c.drawCircle(x, y, rad1, p1);
 
@@ -35,21 +35,20 @@ public class CanvasUtils {
         p2.setAntiAlias(true);
         c.drawCircle(x, y, rad2, p2);
 
-        float textHeight = 12;
+        float textHeight = 16;
         p1.setTextSize(textHeight);
         p1.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD));
         String rateText = rate + "%";
         float textWidth = p1.measureText(rateText);
-        c.drawText(rateText, x - textWidth / 2, y + 5, p1);
+        c.drawText(rateText, x - textWidth / 2, y + 6, p1);
 
         img.setBackgroundDrawable(new BitmapDrawable(bmp));
     }
 
-    public static void buildBentEdge(ImageView img) {
+    public static void buildBentEdge(ImageView img, int edge) {
         int width = 24;
         int height = 24;
 
-        int edge = 10;
 
         Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bmp);

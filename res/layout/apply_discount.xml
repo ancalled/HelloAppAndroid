@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/bg_with_stripes" android:baselineAligned="false"
+        >
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="12dp" android:background="#00a1d7">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="6dp" android:background="#000000">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" android:gravity="center_vertical|center_horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/ddApplyResultReverted" android:textStyle="bold" android:textSize="26dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="8dp"
+                android:layout_height="fill_parent" android:background="#222222">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="25dp"
+                android:layout_height="fill_parent" android:background="#252525">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:background="#dcdcdc" android:layout_marginRight="6dp">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/applySuccessPanel">
+                    <LinearLayout
+                            android:id="@id/discountApplyResultPanel"
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:layout_marginTop="10dp"
+                            android:background="#ececec" android:paddingLeft="15dp" android:paddingTop="20dp"
+                            android:paddingBottom="15dp">
+                        <TextView
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ddApplyResult" android:textSize="22dp"
+                                android:text="@string/purchase" android:textColor="#000000"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:text="@string/activated"
+                                android:id="@+id/textView" android:textColor="#000000" android:textSize="14dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" android:paddingLeft="15dp" android:layout_marginTop="5dp"
+
+                            >
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/purchaseCode"
+                                android:id="@+id/textView4" android:textColor="#000000" android:paddingRight="10dp"
+                                android:textSize="12sp"/>
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ddApplyResultNumber" android:gravity="center_horizontal" android:textSize="22dp"
+                                android:textColor="#000000" android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/applyErrorPanel">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:id="@+id/ddApplyError" android:textColor="#000000" android:paddingLeft="15dp"
+                            android:textSize="14dp"/>
+                </LinearLayout>
+                <ProgressBar
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp" android:visibility="visible"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

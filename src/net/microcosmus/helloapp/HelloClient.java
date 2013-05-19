@@ -3,6 +3,7 @@ package net.microcosmus.helloapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
+import android.util.Base64;
 import android.util.Log;
 import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
@@ -24,14 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 
 public class HelloClient {
@@ -227,6 +226,68 @@ public class HelloClient {
         }
 
         return null;
+    }
+
+
+    public static class RequestBuilder {
+
+        private static final Map<String, String> params = new TreeMap<String, String>();
+
+        private final String scheme;
+        private final String host;
+        private final int port;
+        private final String contextPath;
+        private final String token;
+
+//
+        private RequestBuilder(String scheme, String host, int port, String contextPath, String token) {
+            this.scheme = scheme;
+            this.host = host;
+            this.port = port;
+            this.contextPath = contextPath;
+            this.token = token;
+        }
+
+
+
+        public RequestBuilder param(String name, String value) {
+            params.put(name, value);
+            return this;
+        }
+
+        public String build() {
+            StringBuilder buf = new StringBuilder();
+            for (String key: params.keySet()) {
+                buf.append(key).append("=").append(params.get(key));
+            }
+
+            buf.append("h=").append(buildHash(buf.toString()));
+
+            return buf.toString();
+        }
+
+        private String buildHash(String url) {
+            try {
+                return calcHash(url + "token=" + token);
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        private String calcHash(String data) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] bytes = data.getBytes("UTF-8");
+            byte[] digest = md.digest(bytes);
+            return Base64.encodeToString(digest, Base64.DEFAULT);
+        }
+
+        public static RequestBuilder create(String scheme, String host, int port, String contextPath, String token) {
+            return new RequestBuilder(scheme, host, port, contextPath, token);
+        }
     }
 
 

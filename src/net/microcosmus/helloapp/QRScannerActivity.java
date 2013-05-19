@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.HelloApp.R;
@@ -51,11 +52,21 @@ public class QRScannerActivity extends Activity {
         mGaTracker = mGaInstance.getTracker("UA-40626076-1");
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            campaign = (Campaign) extras.getSerializable("campaign");
-        }
+        if (extras == null) return;
+
+        campaign = (Campaign) extras.getSerializable("campaign");
+        Integer price = (Integer) extras.getSerializable("price");
 
         setContentView(R.layout.scanner);
+
+        if (price != null) {
+            TextView priceTxt = (TextView) findViewById(R.id.qsPrice);
+            TextView priceRevTxt = (TextView) findViewById(R.id.qsPriceReverted);
+
+            priceTxt.setText("" + price);
+            priceRevTxt.setText("" + price);
+        }
+
         startScanner();
     }
 

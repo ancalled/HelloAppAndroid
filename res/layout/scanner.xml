@@ -3,26 +3,72 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" android:background="@drawable/bg_with_stripes">
 
-    <FrameLayout
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="12dp" android:background="#00a1d7">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="6dp" android:background="#000000">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" android:gravity="center_vertical|center_horizontal">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="2 000"
+                android:id="@+id/qsPriceReverted" android:textStyle="bold" android:textSize="26dp"/>
+    </LinearLayout>
+    <LinearLayout
             android:id="@+id/cameraPreview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            />
+            android:orientation="horizontal" android:background="#dcdcdc" android:layout_marginRight="10dp">
+        <LinearLayout
+                android:layout_width="12dp"
+                android:layout_height="fill_parent" android:background="#181818" android:orientation="vertical">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="25dp"
+                android:layout_height="fill_parent" android:background="#252525">
+        </LinearLayout>
+        <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:layout_marginTop="10dp">
+            <FrameLayout
+                    android:id="@+id/cameraPreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_above="@+id/linearLayout" android:background="#000000"/>
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp" android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true" android:layout_marginLeft="15dp"
+                    android:orientation="vertical" android:id="@+id/linearLayout" android:layout_marginTop="5dp">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:text="@string/buyPrice"
+                        android:id="@+id/textView2" android:textColor="#000000" android:textSize="14dp"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="2 000"
+                        android:id="@+id/qsPrice" android:textColor="#000000" android:textSize="20dp"
+                        android:layout_marginTop="5dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
-    <!--<TextView-->
-            <!--android:id="@+id/scanText"-->
-            <!--android:text="Scanning..."-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_width="match_parent">-->
-    <!--</TextView>-->
-    <!--<Button-->
-            <!--android:id="@+id/ScanButton"-->
-            <!--android:text="Scan"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--/>-->
+
 </LinearLayout>

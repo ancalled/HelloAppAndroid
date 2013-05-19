@@ -17,7 +17,7 @@
         Данная версия приложения уже не поддерживается, пожалуйста, скачайте новую версию!
     </string>
     <string name="no_thumbnail">Нет изображения</string>
-    <string name="priceLabel">Стоимость:</string>
+    <string name="priceLabel">Для продолжения введите сумму покупки:</string>
     <string name="priceWithDiscountLabel">После скидки:</string>
     <string name="discountApplyResultLabel">Номер скидки:</string>
     <string name="confirmerIdLabel">Подтверждатель:</string>
@@ -26,5 +26,11 @@
     <string name="erNoConfirmerFound">Не найден подтверждатель</string>
     <string name="erConfirmerIsNotOfThisCompany">Неверный подтверждатель</string>
     <string name="erCouldNotApply">Не получилось применить скидку</string>
+    <string name="confirmButton">Go!</string>
+    <string name="buyPrice">Сумма покупки</string>
+    <string name="purchase">Покупка</string>
+    <string name="activated">зарегистрирована</string>
+    <string name="purchaseCode">Код покупки</string>
+    <string name="unknownError">Произошла ошибка!</string>
 
 </resources>

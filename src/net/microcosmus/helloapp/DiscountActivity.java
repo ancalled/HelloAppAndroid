@@ -6,10 +6,9 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,49 +66,25 @@ public class DiscountActivity extends Activity {
         TextView descrView = (TextView) findViewById(R.id.ddDiscount);
         descrView.setText(campaign.getTitle());
 
-        TextView discountRate = (TextView) findViewById(R.id.discountRate);
-        discountRate.setText("-" + campaign.getRate() + "%");
+        ImageView campaignIcon = (ImageView) findViewById(R.id.ddCampaignImage);
+        downloadIcon(campaign, campaignIcon);
+
+        ImageView edgeImg = (ImageView) findViewById(R.id.edgeImg2);
+        CanvasUtils.buildBentEdge(edgeImg, 12);
+
+        ImageView discountIcon = (ImageView) findViewById(R.id.ddDiscRateIcon);
+        CanvasUtils.buildDiscountRateIcon(discountIcon, campaign.getRate(), 56);
+
+        final EditText priceInput = (EditText) findViewById(R.id.priceInput);
 
         Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-        LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
-        LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-        EditText priceInput = (EditText) findViewById(R.id.priceInput);
-        final TextView prcDisc = (TextView) findViewById(R.id.priceWithDiscount);
-
         confirmBtn.setVisibility(View.VISIBLE);
-        scanResultPanel.setVisibility(View.GONE);
-        applyResultPanel.setVisibility(View.GONE);
-        progressBar.setVisibility(View.GONE);
-
         confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showQRScanner(DiscountActivity.this, campaign, debugMode);
-            }
-        });
-
-        priceInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (editable == null || editable.length() == 0) {
-                    prcDisc.setText("");
-                    return;
-                }
-                char[] chars = new char[editable.length()];
-                editable.getChars(0, editable.length(), chars, 0);
-                String text = new String(chars);
-                int price = Integer.parseInt(text);
-                int withDiscount = price * (100 - campaign.getRate()) / 100;
-                prcDisc.setText("" + withDiscount);
+                String priceTxt = priceInput.getText().toString();
+                int price = Integer.parseInt(priceTxt);
+                showQRScanner(DiscountActivity.this, campaign, price, debugMode);
             }
         });
 
@@ -140,11 +115,12 @@ public class DiscountActivity extends Activity {
     }
 
 
-    private void showQRScanner(Context context, Campaign d, boolean debugMode) {
+    private void showQRScanner(Context context, Campaign d, int price, boolean debugMode) {
         Intent intent = new Intent(context, debugMode ?
                 FakeScannerActivity.class :
                 QRScannerActivity.class);
         intent.putExtra("campaign", d);
+        intent.putExtra("price", price);
         startActivityForResult(intent, INTENT_REQUEST_REF);
     }
 
@@ -154,20 +130,14 @@ public class DiscountActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == INTENT_REQUEST_REF) {
+
+            setContentView(R.layout.apply_discount);
+
             if (resultCode == RESULT_OK) {
                 String confCode = (String) data.getExtras().get("text");
 
-                Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-                LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
-                LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-                TextView scanResult = (TextView) findViewById(R.id.ddScanResult);
-
-                confirmBtn.setVisibility(View.GONE);
-                scanResultPanel.setVisibility(View.VISIBLE);
-                applyResultPanel.setVisibility(View.GONE);
                 progressBar.setVisibility(View.VISIBLE);
-                scanResult.setText(confCode);
 
                 applyDiscount(campaign.getId(), confCode);
             }
@@ -206,32 +176,39 @@ public class DiscountActivity extends Activity {
 
             @Override
             protected void onPostExecute(DiscountApplyResult result) {
-                if (result == null) return;
 
-                Button confirmBtn = (Button) findViewById(R.id.ddConfirmBtn);
-                LinearLayout scanResultPanel = (LinearLayout) findViewById(R.id.discountConfirmerPanel);
-                LinearLayout applyResultPanel = (LinearLayout) findViewById(R.id.discountApplyResultPanel);
+                LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
+                LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
+
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-                TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+                progressBar.setVisibility(View.GONE);
 
-                if (result.getStatus() == DiscountApplyResult.Status.OK) {
+                if (result != null && result.getStatus() == DiscountApplyResult.Status.OK) {
+                    successPanel.setVisibility(View.VISIBLE);
+                    errorPanel.setVisibility(View.GONE);
 
-                    confirmBtn.setVisibility(View.GONE);
-                    scanResultPanel.setVisibility(View.VISIBLE);
-                    applyResultPanel.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
-                    numberView.setText(Long.toString(result.getId()));
+                    TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+                    TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultReverted);
+
+                    String text = Long.toString(result.getId());
+                    numberView.setText(text);
+                    numberRevView.setText(text);
+
                 } else {
-                    TextView applyResult = (TextView) findViewById(R.id.ddApplyResult);
+                    successPanel.setVisibility(View.VISIBLE);
+                    errorPanel.setVisibility(View.GONE);
 
-                    confirmBtn.setVisibility(View.GONE);
-                    scanResultPanel.setVisibility(View.VISIBLE);
-                    applyResultPanel.setVisibility(View.VISIBLE);
-                    progressBar.setVisibility(View.GONE);
+                    TextView applyResult = (TextView) findViewById(R.id.ddApplyError);
 
-                    int mesNo = getErMessage(result.getStatus());
-                    if (mesNo > 0) {
-                        applyResult.setText(getResources().getString(mesNo));
+                    if (result != null) {
+                        int mesNo = getErMessage(result.getStatus());
+                        if (mesNo > 0) {
+                            applyResult.setText(getResources().getString(mesNo));
+                        } else {
+                            applyResult.setText(getResources().getString(R.string.unknownError));
+                        }
+                    } else {
+                        applyResult.setText(getResources().getString(R.string.unknownError));
                     }
 
                 }
@@ -285,4 +262,24 @@ public class DiscountActivity extends Activity {
         return null;
     }
 
+
+    private void downloadIcon(Campaign d, final ImageView imageView) {
+        String url = String.format(HelloClient.CAMPAIGN_ICON_URL, d.getId());
+
+        new AsyncTask<String, Void, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(String... params) {
+                return HelloClient.downloadBitmap(params[0]);
+            }
+
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                if (isCancelled()) {
+                    bitmap = null;
+                }
+
+                imageView.setImageBitmap(bitmap);
+            }
+        }.execute(url);
+    }
 }

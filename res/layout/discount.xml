@@ -3,19 +3,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#565656" android:baselineAligned="false">
+              android:layout_height="match_parent" android:background="@drawable/bg_with_stripes" android:baselineAligned="false">
 
     <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="42dp" android:background="#389ED2">
+            android:layout_height="94dp" android:background="#389ED2">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="20dp" android:background="#3594C4"
+                android:layout_height="28dp" android:background="#3594C4"
                 android:id="@+id/linearLayout"
                 android:layout_alignParentLeft="false"
-                android:layout_marginBottom="-4dp" android:layout_marginTop="22dp">
+                android:layout_marginBottom="-4dp" android:layout_marginTop="22dp" android:gravity="center_vertical">
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -23,11 +23,25 @@
                     android:textSize="14dp" android:typeface="sans"
                     android:textColor="#ffffff"
                     android:id="@+id/textView"
-                    android:textStyle="bold" android:gravity="center_horizontal"/>
+                    android:textStyle="bold" android:gravity="center_horizontal"
+                    />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp" android:layout_gravity="left|center_vertical" android:background="#fcfcfc"
+                android:layout_below="@+id/linearLayout" android:layout_alignRight="@+id/versionInfo"
+                android:id="@+id/linearLayout2">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="8dp" android:background="#000000"
+                android:layout_below="@+id/linearLayout2" android:layout_centerHorizontal="true">
         </LinearLayout>
         <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:id="@+id/helloIcon"
                 android:background="@drawable/hello_logo"
                 android:layout_alignParentLeft="true"
@@ -41,173 +55,124 @@
                 android:paddingRight="5dp"/>
     </RelativeLayout>
 
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="42dp">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ddPlace" android:text="Place"
+                android:gravity="center_horizontal" android:textColor="#ffffff" android:textSize="20dp"
+                android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+                android:textStyle="bold" android:paddingLeft="25dp" android:layout_gravity="center_vertical"/>
+    </LinearLayout>
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="280dp">
+            android:layout_height="fill_parent">
         <LinearLayout
                 android:id="@+id/discountContent"
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" android:layout_marginRight="6dp" android:layout_marginBottom="6dp"
-                android:layout_marginTop="6dp">
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="8dp"
-                    android:layout_height="fill_parent" android:background="#222222">
-            </LinearLayout>
+                >
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:paddingLeft="10dp" android:paddingTop="5dp"
+                    android:layout_height="fill_parent"
                     android:background="#ffffff"
 
-                    >
+                    android:layout_marginBottom="8dp">
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="160dp">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="12dp"
+                            android:layout_height="fill_parent" android:background="#181818">
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="25dp"
+                            android:layout_height="fill_parent" android:background="#252525">
+                    </LinearLayout>
+                    <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/ddCampaignImage" android:focusableInTouchMode="true"/>
+                </LinearLayout>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="150dp">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ddPlace" android:text="Place"
-                            android:gravity="center_horizontal" android:textColor="#389dd1" android:textSize="16dp"
-                            android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
-                            android:textStyle="bold"/>
+                        android:layout_height="wrap_content" android:background="#dcdcdc"
+                        android:paddingTop="5dp" android:paddingBottom="5dp">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/ddDiscount" android:text="Discount"
                             android:layout_centerHorizontal="true"
                             android:layout_alignParentTop="true"
-                            android:textColor="#000000" android:layout_marginTop="7dp"/>
+                            android:textColor="#000000" android:layout_marginLeft="75dp"
+                            android:layout_marginTop="5dp" android:layout_marginBottom="5dp"/>
                 </LinearLayout>
-                <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1dip"
-                        android:background="#cccccc" android:layout_marginRight="10dp"/>
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent" android:layout_marginLeft="40dp"
+                        android:layout_height="fill_parent" android:layout_marginLeft="23dp"
                         android:layout_marginTop="10dp">
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/priceLabel"
-                            android:id="@+id/textView1" android:textColor="#000000"/>
-                    <EditText
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/priceInput"
-                            android:textSize="18dp"
-                            android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
-                            android:numeric="integer" android:inputType="number"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
+                            android:id="@+id/textView1" android:textColor="#989898" android:textSize="12dp"/>
+                    <View
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content">
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/priceWithDiscountLabel"
-                                android:id="@+id/textView2" android:textColor="#000000" android:paddingTop="5dp"
-                                android:layout_marginRight="10dp"/>
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/priceWithDiscount" android:textColor="#000000" android:textStyle="bold"/>
+                            android:layout_height="3dip"
+                            android:background="#dcdcdc" android:layout_marginRight="30dp"
+                            android:layout_marginBottom="15dp"/>
+                    <LinearLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="50dp" android:orientation="horizontal">
+                        <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="6dp"
+                                android:layout_height="40dp" android:background="#00a1d7"
+                                >
+                        </LinearLayout>
+                        <EditText
+                                android:layout_width="172dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/priceInput"
+                                android:textSize="22dp"
+                                android:layout_centerHorizontal="true" android:layout_alignParentTop="true"
+                                android:numeric="integer" android:inputType="number" android:background="#dcdcdc"
+                                android:paddingLeft="10dp"/>
+                        <Button
+                                android:layout_width="75dp"
+                                android:layout_height="40dp"
+                                android:text="@string/confirmButton"
+                                android:id="@+id/ddConfirmBtn" android:background="#00a1d7"
+                                android:textColor="#ffffff" android:textSize="22dp" android:textStyle="bold"
+                                />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-        <TextView
-                android:layout_width="78dp"
-                android:layout_height="wrap_content"
-                android:text="- 30%"
-                android:id="@+id/discountRate" android:textColor="#b04229" android:textStyle="bold"
-                android:layout_toRightOf="@id/discountContent" android:layout_marginLeft="-78dp"
-                android:layout_marginTop="10dp"
-                android:textSize="24dp"/>
+        <ImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:id="@+id/ddDiscRateIcon" android:layout_gravity="left|center_vertical"
+                android:layout_marginTop="130dp" android:layout_marginLeft="4dp"/>
+        <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/edgeImg2"
+                android:layout_toRightOf="@id/discountContent"
+                android:layout_marginLeft="-30dp"
+                android:layout_alignParentBottom="true" android:layout_marginBottom="14dp"/>
     </RelativeLayout>
 
 
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="8dp"
-                android:layout_height="fill_parent" android:background="#222222">
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent" android:background="#ffffff" android:layout_marginRight="6dp">
-            <Button
-                    android:layout_width="230dp"
-                    android:layout_height="50dp"
-                    android:text="@string/confirm_discount"
-                    android:id="@+id/ddConfirmBtn" android:layout_gravity="center_horizontal"
-                    android:textSize="18dp" android:textStyle="bold"
-                    android:layout_marginTop="30dp" android:visibility="gone"/>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-                <LinearLayout
-                        android:id="@id/discountApplyResultPanel"
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" android:layout_marginTop="10dp">
-                    <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ddApplyResult" android:gravity="center_horizontal" android:textSize="20dp"
-                            android:text="Скидка активирована!" android:textColor="#000000"/>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content" android:paddingLeft="75dp" android:layout_marginTop="5dp"
-                            >
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/discountApplyResultLabel"
-                                android:id="@+id/textView4" android:textColor="#000000" android:paddingRight="10dp"
-                                android:textSize="12dp"/>
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/ddApplyResultNumber" android:gravity="center_horizontal" android:textSize="12dp"
-                                android:textColor="#000000" android:textStyle="bold"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content" android:paddingLeft="75dp"
-                        android:id="@id/discountConfirmerPanel" android:layout_marginTop="5dp">
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/confirmerIdLabel"
-                            android:id="@+id/textView5" android:textSize="12dp" android:textColor="#000000"
-                            android:paddingRight="10dp"/>
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ddScanResult" android:gravity="center_horizontal" android:textColor="#000000"
-                            android:textSize="12dp" android:textStyle="bold"
-                            />
-                </LinearLayout>
-                <ProgressBar
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="50dp" android:visibility="gone"/>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+
 
 </LinearLayout>

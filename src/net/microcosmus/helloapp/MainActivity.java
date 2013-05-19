@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.*;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -69,9 +69,6 @@ public class MainActivity extends Activity {
         super.onStart();
         EasyTracker.getInstance().activityStart(this);
         BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
-
-
-
     }
 
 
@@ -111,9 +108,8 @@ public class MainActivity extends Activity {
             ImageView campaignThumbs = (ImageView) view.findViewById(R.id.campaignThumbnail);
             ImageView discountIcon = (ImageView) view.findViewById(R.id.discountIcon);
 
-            CanvasUtils.buildDiscountRateIcon(discountIcon, c.getRate(), 38);
+            CanvasUtils.buildDiscountRateIcon(discountIcon, c.getRate(), 56);
             downloadIcon(c, campaignThumbs);
-
         }
     }
 
@@ -131,7 +127,7 @@ public class MainActivity extends Activity {
 //        rateView.setText("-" + d.getRate() + "%");
 
         ImageView edgeImg = (ImageView) view.findViewById(R.id.edgeImg);
-        CanvasUtils.buildBentEdge(edgeImg);
+        CanvasUtils.buildBentEdge(edgeImg, 10);
 
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -165,6 +161,15 @@ public class MainActivity extends Activity {
 
 
     private void retrieveDiscounts() {
+//        String testToken = "test_token";
+//        String url = HelloClient.RequestBuilder.create(
+//                HelloClient.SCHEME,
+//                HelloClient.HOST,
+//                HelloClient.PORT,
+//                "/customer/api/campaigns",
+//                testToken)
+//                .build();
+
         new AsyncTask<String, Void, List<Campaign>>() {
             @Override
             protected List<Campaign> doInBackground(String... params) {
@@ -183,7 +188,7 @@ public class MainActivity extends Activity {
                 addCampaigns(campaigns);
             }
 
-        }.execute(HelloClient.CAMPAIGNS_URL);
+        }.execute(HelloClient.CAMPAIGNS_URL /*url*/);
     }
 
 
@@ -294,6 +299,7 @@ public class MainActivity extends Activity {
         builder.create().show();
     }
 
+
     private void showForceDownloadNewerVersion(String newVersionName) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String mes = getResources().getString(R.string.force_update_to_newer_version);
@@ -316,7 +322,32 @@ public class MainActivity extends Activity {
 
         builder.create().show();
     }
-
+//
+//    private void authorize() {
+//        AccountManager am = AccountManager.get(this);
+//        Bundle options = new Bundle();
+//
+//        am.getAuthToken(
+//                myAccount_,                     // Account retrieved using getAccountsByType()
+//                "Manage your tasks",            // Auth scope
+//                options,                        // Authenticator-specific options
+//                this,                           // Your activity
+//                new OnTokenAcquired(),          // Callback called when a token is successfully acquired
+//                new Handler(new OnError()));    // Callback called if an error occurs
+//
+//    }
+//
+//    private class OnTokenAcquired implements AccountManagerCallback<Bundle> {
+//        @Override
+//        public void run(AccountManagerFuture<Bundle> result) {
+//            // Get the result of the operation from the AccountManagerFuture.
+//            Bundle bundle = result.getResult();
+//
+//            // The token is a named value in the bundle. The name of the value
+//            // is stored in the constant AccountManager.KEY_AUTHTOKEN.
+//            String token = bundle.getString(AccountManager.KEY_AUTHTOKEN);
+//        }
+//    }
 
 
 }

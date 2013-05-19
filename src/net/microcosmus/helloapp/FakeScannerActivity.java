@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import net.microcosmus.helloapp.HelloApp.R;
 import net.microcosmus.helloapp.domain.Campaign;
@@ -25,34 +26,44 @@ public class FakeScannerActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            campaign = (Campaign) extras.getSerializable("campaign");
-        }
+        if (extras == null) return;
+
+        campaign = (Campaign) extras.getSerializable("campaign");
+        Integer price = (Integer) extras.getSerializable("price");
 
         setContentView(R.layout.fake_scanner);
-        startFakeScanner();
-    }
 
+        if (price != null) {
+            TextView priceTxt = (TextView) findViewById(R.id.fsPrice);
+            TextView priceRevTxt = (TextView) findViewById(R.id.fsPriceReverted);
 
-    private void startFakeScanner() {
-        Log.d("QRScanner", "Starting fake scanner");
+            priceTxt.setText("" + price);
+            priceRevTxt.setText("" + price);
+        }
 
-        final TextView scanText = (TextView) findViewById(R.id.scanText);
-        scanText.setText("");
+        Button scanButton = (Button) findViewById(R.id.fsScanButton);
+        final ImageView scanView = (ImageView) findViewById(R.id.fsScanView);
 
-        Button scanButton = (Button) findViewById(R.id.ScanButton);
 
         scanButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (!barcodeScanned) {
+                    Log.d("QRScanner", "Starting fake scanner");
 
-                    scanText.setText("Scanning...");
+                    scanView.setImageResource(R.drawable.fake_detection);
+
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+
                     try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    scanText.setText("Done.");
 
                     String text = "100" + campaign.getId();
 
