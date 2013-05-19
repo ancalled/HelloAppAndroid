@@ -72,6 +72,10 @@ public class DiscountActivity extends Activity {
         ImageView edgeImg = (ImageView) findViewById(R.id.edgeImg2);
         CanvasUtils.buildBentEdge(edgeImg, 12);
 
+        ImageView btnTriang = (ImageView) findViewById(R.id.btnTriang);
+        CanvasUtils.buildBtnEdge(btnTriang, 15, 40);
+
+
         ImageView discountIcon = (ImageView) findViewById(R.id.ddDiscRateIcon);
         CanvasUtils.buildDiscountRateIcon(discountIcon, campaign.getRate(), 56);
 
@@ -83,7 +87,7 @@ public class DiscountActivity extends Activity {
             @Override
             public void onClick(View view) {
                 String priceTxt = priceInput.getText().toString();
-                int price = Integer.parseInt(priceTxt);
+                int price = priceTxt != null && !priceTxt.isEmpty() ? Integer.parseInt(priceTxt) : 0;
                 showQRScanner(DiscountActivity.this, campaign, price, debugMode);
             }
         });

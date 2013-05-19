@@ -67,13 +67,14 @@ public class QRScannerActivity extends Activity {
             priceRevTxt.setText("" + price);
         }
 
-        startScanner();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mGaTracker.sendView("QRScannerActivity: id: " + campaign.getId() + ", place: " + campaign.getPlace());
+
+        startScanner();
     }
 
 

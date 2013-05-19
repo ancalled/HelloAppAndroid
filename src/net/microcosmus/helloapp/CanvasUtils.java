@@ -73,4 +73,33 @@ public class CanvasUtils {
 
         img.setBackgroundDrawable(new BitmapDrawable(bmp));
     }
+
+
+    public static void buildBtnEdge(ImageView img, int width, int height) {
+
+
+        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bmp);
+
+        Paint p0 = new Paint();
+        p0.setARGB(256, 255, 255, 255);
+        RectF rectF = new RectF();
+        rectF.set(0,0, width, height);
+        c.drawRoundRect(rectF, 0, 0, p0);
+
+        Paint p1 = new Paint();
+        p1.setColor(Color.parseColor("#00A1D7"));
+        p1.setAntiAlias(true);
+        p1.setStyle(Paint.Style.FILL);
+
+        Path path = new Path();
+        path.moveTo(0, 0);
+        path.lineTo(width, height / 2);
+        path.lineTo(0, height);
+        path.lineTo(0, 0);
+        path.close();
+        c.drawPath(path, p1);
+
+        img.setBackgroundDrawable(new BitmapDrawable(bmp));
+    }
 }
