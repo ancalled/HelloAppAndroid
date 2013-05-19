@@ -132,7 +132,7 @@ public class QRScannerActivity extends Activity {
             }
         });
 
-        FrameLayout layout = (FrameLayout) findViewById(R.id.cameraPreview);
+        FrameLayout layout = (FrameLayout) findViewById(R.id.qsCameraPreview);
         layout.addView(preview);
     }
 

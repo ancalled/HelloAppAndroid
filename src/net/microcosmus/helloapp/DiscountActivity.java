@@ -137,7 +137,12 @@ public class DiscountActivity extends Activity {
                 String confCode = (String) data.getExtras().get("text");
 
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+                LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
+                LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
+
                 progressBar.setVisibility(View.VISIBLE);
+                successPanel.setVisibility(View.GONE);
+                errorPanel.setVisibility(View.GONE);
 
                 applyDiscount(campaign.getId(), confCode);
             }

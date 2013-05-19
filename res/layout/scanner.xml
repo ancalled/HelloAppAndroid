@@ -25,7 +25,6 @@
                 android:id="@+id/qsPriceReverted" android:textStyle="bold" android:textSize="26dp"/>
     </LinearLayout>
     <LinearLayout
-            android:id="@+id/cameraPreview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -43,7 +42,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" android:layout_marginTop="10dp">
             <FrameLayout
-                    android:id="@+id/cameraPreview"
+                    android:id="@+id/qsCameraPreview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
