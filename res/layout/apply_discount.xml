@@ -45,11 +45,11 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="fill_parent">
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/applySuccessPanel">
                     <LinearLayout
                             android:id="@id/discountApplyResultPanel"
@@ -92,7 +92,7 @@
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
+                        android:layout_height="wrap_content"
                         android:id="@+id/applyErrorPanel">
                     <TextView
                             android:layout_width="wrap_content"
@@ -106,6 +106,10 @@
                         android:layout_height="32dp"
                         android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
                         android:layout_marginTop="5dp" android:visibility="visible"/>
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
