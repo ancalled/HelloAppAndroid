@@ -109,7 +109,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" afterPath="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main.xml" afterPath="$PROJECT_DIR$/res/layout/main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -118,7 +117,7 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368668699587" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368859877233" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1369014539057" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1369014953979" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
@@ -365,10 +364,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="77" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.51209104">
+            <state line="47" column="75" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#1778#1828#0" expanded="true" />
                 <element signature="e#9047#9105#0" expanded="true" />
@@ -378,12 +377,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="100" selection-start="1842" selection-end="1842" vertical-scroll-proportion="-3.2727273">
+            <state line="32" column="40" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.21658987">
               <folding>
-                <marker date="1369014937000" expanded="true" signature="1411:1415" placeholder="{...}" />
+                <element signature="e#1183#1208#0" expanded="true" />
+                <marker date="1369015168000" expanded="true" signature="1411:1415" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -523,8 +523,8 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/res/layout/apply_discount.xml" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/DiscountActivity.java" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
       </list>
     </option>
   </component>
@@ -1176,12 +1176,16 @@
       <created>1369014541291</created>
       <updated>1369014541291</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Пробуем исправить таинсвенный ClassCast 2">
+      <created>1369014955509</created>
+      <updated>1369014955509</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32855093" sideWeight="0.46567163" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57427055" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1260,7 +1264,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Пробуем исправить таинсвенный ClassCast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пробуем исправить таинсвенный ClassCast 2" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1274,7 +1278,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Проверка новой версии приложения с сайта: если есть новеее, показываем диалог подтверждения и переходим по ссылке на страницу обновления" />
     <MESSAGE value="Исправил ошибку с Nullpointer-ом на возвращении в DiscountActivity" />
     <MESSAGE value="Проверим крон - деплоер" />
     <MESSAGE value="На страницу загрузки добавилось время сборки" />
@@ -1299,6 +1302,7 @@
     <MESSAGE value="echo в pre-build" />
     <MESSAGE value="Перевернутый текст" />
     <MESSAGE value="Пробуем исправить таинсвенный ClassCast" />
+    <MESSAGE value="Пробуем исправить таинсвенный ClassCast 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1446,27 +1450,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="100" selection-start="1842" selection-end="1842" vertical-scroll-proportion="-3.2727273">
-          <folding>
-            <marker date="1369014937000" expanded="true" signature="1411:1415" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="77" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.51209104">
+        <state line="47" column="75" selection-start="1480" selection-end="1480" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#1778#1828#0" expanded="true" />
             <element signature="e#9047#9105#0" expanded="true" />
             <element signature="e#10022#10086#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="40" selection-start="1782" selection-end="1782" vertical-scroll-proportion="0.21658987">
+          <folding>
+            <element signature="e#1183#1208#0" expanded="true" />
+            <marker date="1369015168000" expanded="true" signature="1411:1415" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>
