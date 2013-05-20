@@ -30,7 +30,7 @@
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp" android:layout_gravity="left|center_vertical" android:background="#fcfcfc"
-                android:layout_below="@+id/linearLayout" android:layout_alignRight="@+id/versionInfo"
+                android:layout_below="@id/linearLayout" android:layout_alignRight="@id/maVersionInfo"
                 android:id="@+id/linearLayout2">
         </LinearLayout>
         <LinearLayout
@@ -50,7 +50,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/versionInfo" android:textColor="#272424" android:textSize="12dp"
+                android:id="@+id/maVersionInfo" android:textColor="#272424" android:textSize="12dp"
                 android:layout_alignRight="@+id/linearLayout" android:layout_alignTop="@+id/helloIcon"
                 android:paddingRight="5dp"/>
     </RelativeLayout>

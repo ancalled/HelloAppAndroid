@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 
         final AppVersion appVersion = getAppVersion();
 
-        TextView versionInfoView = (TextView) findViewById(R.id.versionInfo);
+        TextView versionInfoView = (TextView) findViewById(R.id.maVersionInfo);
         versionInfoView.setText(appVersion.getVersionName() + " (Test)");
 
         if (isNetworkAvailable()) {
