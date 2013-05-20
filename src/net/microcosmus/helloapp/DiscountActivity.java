@@ -137,6 +137,10 @@ public class DiscountActivity extends Activity {
 
             setContentView(R.layout.apply_discount);
 
+            ImageView edgeImg = (ImageView) findViewById(R.id.triagEdge);
+            CanvasUtils.buildBentEdge(edgeImg, 12);
+
+
             if (resultCode == RESULT_OK) {
                 String confCode = (String) data.getExtras().get("text");
 

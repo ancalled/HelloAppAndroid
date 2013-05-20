@@ -19,7 +19,7 @@
         <view android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               class="net.microcosmus.helloapp.components.UpsideDownText" android:id="@+id/ddApplyResultInverted"
-              android:textSize="48dp" android:textColor="#fffffd"/>
+              android:textSize="48dp" android:textColor="#fffffd" android:singleLine="false"/>
     </LinearLayout>
 
 
@@ -104,10 +104,15 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp" android:visibility="visible"/>
+                        android:layout_marginTop="5dp" android:visibility="gone" android:layout_marginBottom="20dp"/>
                 <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
+                    <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:id="@+id/triagEdge" android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
