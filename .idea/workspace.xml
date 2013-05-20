@@ -109,8 +109,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9279c685-5b13-4027-a28f-758658109120" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/apply_discount.xml" afterPath="$PROJECT_DIR$/res/layout/apply_discount.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/hello_panel.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/discount_bottom.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/discount_top.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/left_cornered.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/sample_button.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/res/drawable/sample_left_btn.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AndroidTest.iws" />
@@ -118,7 +123,7 @@
     <file path="/fragment.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368668699587" ignored="false" />
     <file path="/MyActivity.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364613770387" ignored="false" />
     <file path="/HelloClient.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368859877233" ignored="false" />
-    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368988541412" ignored="false" />
+    <file path="/Dummy.txt" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368988814294" ignored="false" />
     <file path="/DiscountListAdaptor.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579863985" ignored="false" />
     <file path="/DiscountListAdapter.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364642871067" ignored="false" />
     <file path="/ImageDownloader.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1364579030463" ignored="false" />
@@ -227,7 +232,7 @@
     <file path="/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/web/WEB-INF/views/admin/partners.jsp" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406692138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367406874869" ignored="false" />
-    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1368182246039" ignored="false" />
+    <file path="/build.xml" changelist="9279c685-5b13-4027-a28f-758658109120" time="1369012470853" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407598822" ignored="false" />
     <file path="/DispatcherServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367422142138" ignored="false" />
     <file path="$PROJECT_DIR$/../HelloAppServer/src/kz/helloapp/view/customer/api/CampaignsServlet.java" changelist="9279c685-5b13-4027-a28f-758658109120" time="1367407746775" ignored="false" />
@@ -365,6 +370,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="13" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="116" column="27" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.7826087">
+              <folding>
+                <marker date="1369012503000" expanded="true" signature="6272:6294" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider editor-type-id="text-editor">
@@ -387,15 +412,6 @@
                 <element signature="e#7645#7692#0" expanded="true" />
                 <element signature="e#7794#7841#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CanvasUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/CanvasUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="4" selection-start="2314" selection-end="2314" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -434,15 +450,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="18" selection-start="1707" selection-end="1707" vertical-scroll-proportion="-18.6">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="scanner.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -458,19 +465,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QRScannerActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/QRScannerActivity.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="0" selection-start="2195" selection-end="2195" vertical-scroll-proportion="0.0">
+            <state line="15" column="63" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1885#1903#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="discount_row_old.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable/discount_row_old.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="22" selection-start="112" selection-end="457" vertical-scroll-proportion="-9.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <file leaf-file-name="hello_panel.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/drawable/hello_panel.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="112" selection-start="733" selection-end="733" vertical-scroll-proportion="0.21487603">
+            <state line="6" column="11" selection-start="175" selection-end="175" vertical-scroll-proportion="-3.6">
               <folding />
             </state>
           </provider>
@@ -495,8 +513,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/domain/DiscountApplyResult.java" />
-        <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java" />
         <option value="$PROJECT_DIR$/res/drawable/bg_with_stripes.xml" />
         <option value="$PROJECT_DIR$/res/layout/campaign.xml" />
         <option value="$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java" />
@@ -511,6 +527,8 @@
         <option value="$PROJECT_DIR$/res/layout/discount.xml" />
         <option value="$PROJECT_DIR$/res/layout/apply_discount.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/res/drawable/hello_panel.xml" />
+        <option value="$PROJECT_DIR$/build.xml" />
       </list>
     </option>
   </component>
@@ -1124,7 +1142,11 @@
       <created>1368988543848</created>
       <updated>1368988543848</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Забыл debugable">
+      <created>1368988816895</created>
+      <updated>1368988816895</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1136,7 +1158,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2912482" sideWeight="0.46567163" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998565" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32537314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32493368" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964131" sideWeight="0.6731343" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1153,7 +1175,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2159254" sideWeight="0.46684352" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2159254" sideWeight="0.3448276" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5331565" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1208,7 +1230,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Еще поправочки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Забыл debugable" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1222,7 +1244,6 @@
     <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
-    <MESSAGE value="Добавил фейковый сканнер, чтобы оттестировать взаимодействие экранов на эмуляторе" />
     <MESSAGE value="Взаимодействие активитис с qr" />
     <MESSAGE value="GoogleAnalytics + BugSense" />
     <MESSAGE value="Вынес обработку результата запроса скидок HelloClient-а в MainActivity" />
@@ -1247,6 +1268,7 @@
     <MESSAGE value="Дизайн остальных окон от Селина" />
     <MESSAGE value="Поправочка в qrscanner-е" />
     <MESSAGE value="Еще поправочки" />
+    <MESSAGE value="Забыл debugable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1263,48 +1285,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/HelloClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="0" selection-start="4180" selection-end="4180" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/bg_with_stripes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="41" selection-end="231" vertical-scroll-proportion="-1.8">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/campaign.xml">
-      <provider editor-type-id="text-editor">
-        <state line="96" column="16" selection-start="4353" selection-end="4505" vertical-scroll-proportion="-20.96">
-          <folding>
-            <marker date="1368973935000" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="301" column="0" selection-start="9857" selection-end="9857" vertical-scroll-proportion="-2.44">
-          <folding>
-            <element signature="e#9045#9103#0" expanded="true" />
-            <element signature="e#9295#9576#0" expanded="true" />
-            <element signature="e#9565#9566#0" expanded="true" />
-            <element signature="e#9639#9813#0" expanded="true" />
-            <element signature="e#9802#9803#0" expanded="true" />
-            <element signature="e#10020#10084#0" expanded="true" />
-            <element signature="e#10276#10557#0" expanded="true" />
-            <element signature="e#10546#10547#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable/fake_detection.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1335,29 +1315,6 @@
         <state line="31" column="18" selection-start="1707" selection-end="1707" vertical-scroll-proportion="-18.6">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1142" selection-end="1142" vertical-scroll-proportion="-2.4935064">
-          <folding>
-            <element signature="e#2941#2959#0" expanded="true" />
-            <marker date="1368986436000" expanded="true" signature="1072:1076" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="text-editor">
-        <state line="55" column="21" selection-start="424" selection-end="3023" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/QRScannerActivity.java">
@@ -1416,10 +1373,65 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/discount_row_old.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="22" selection-start="112" selection-end="457" vertical-scroll-proportion="-9.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/hello_panel.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="11" selection-start="175" selection-end="175" vertical-scroll-proportion="-3.6">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/scanner.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="0" selection-start="1142" selection-end="1142" vertical-scroll-proportion="-2.4935064">
+          <folding>
+            <element signature="e#2941#2959#0" expanded="true" />
+            <marker date="1368986436000" expanded="true" signature="1072:1076" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="text-editor">
+        <state line="55" column="21" selection-start="424" selection-end="3023" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="112" selection-start="733" selection-end="733" vertical-scroll-proportion="0.21487603">
+        <state line="15" column="63" selection-start="799" selection-end="799" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1885#1903#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/microcosmus/helloapp/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="13" selection-start="850" selection-end="850" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="116" column="27" selection-start="5036" selection-end="5036" vertical-scroll-proportion="0.7826087">
+          <folding>
+            <marker date="1369012503000" expanded="true" signature="6272:6294" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

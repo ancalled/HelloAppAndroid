@@ -96,6 +96,9 @@
     <property name="min.build.number" value="0"/>
 
     <target name="pre.build">
+        <echo>Set build number in AndroidManifest.xml...</echo>
+        <echo>Build version: ${major-version}.${minor-version}.${build.number}</echo>
+        <echo>Build number: ${build.number}</echo>
         <replaceregexp file="AndroidManifest.xml">
             <regexp pattern="android:versionCode=&quot;.*&quot;"/>
             <substitution expression="android:versionCode=&quot;${build.number}&quot;"/>
@@ -104,6 +107,15 @@
             <regexp pattern="android:versionName=&quot;.*&quot;"/>
             <substitution expression="android:versionName=&quot;${major-version}.${minor-version}.${build.number}&quot;"/>
         </replaceregexp>
+
+        <loadfile
+                property="manifest.data"
+                srcFile="AndroidManifest.xml"
+                failonerror="false"/>
+
+        <echo>After replacement:
+            ${manifest.data}
+        </echo>
     </target>
 
     <target name="build-download-page">
