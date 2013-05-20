@@ -11,6 +11,7 @@ import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -61,10 +62,14 @@ public class QRScannerActivity extends Activity {
 
         if (price != null) {
             TextView priceTxt = (TextView) findViewById(R.id.qsPrice);
-            TextView priceInvTxt = (TextView) findViewById(R.id.qsPriceInverted);
+            View priceInvView = findViewById(R.id.qsPriceInverted);
 
             priceTxt.setText("" + price);
-            priceInvTxt.setText("" + price);
+
+            if (priceInvView instanceof TextView) {
+                TextView priceInvTxt = (TextView) priceInvView;
+                priceInvTxt.setText("" + price);
+            }
         }
 
     }

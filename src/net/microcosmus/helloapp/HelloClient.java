@@ -151,6 +151,8 @@ public class HelloClient {
     }
 
     public static AppVersion parseVersion(String json) throws JSONException {
+        if (json == null) return null;
+
         JSONObject obj = new JSONObject(json);
 
         AppVersion result = new AppVersion();
