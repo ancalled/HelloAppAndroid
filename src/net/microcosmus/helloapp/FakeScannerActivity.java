@@ -35,7 +35,7 @@ public class FakeScannerActivity extends Activity {
 
         if (price != null) {
             TextView priceTxt = (TextView) findViewById(R.id.fsPrice);
-            TextView priceRevTxt = (TextView) findViewById(R.id.fsPriceReverted);
+            TextView priceRevTxt = (TextView) findViewById(R.id.fsPriceInverted);
 
             priceTxt.setText("" + price);
             priceRevTxt.setText("" + price);

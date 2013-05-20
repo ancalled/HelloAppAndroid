@@ -197,7 +197,7 @@ public class DiscountActivity extends Activity {
                     errorPanel.setVisibility(View.GONE);
 
                     TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-                    TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultReverted);
+                    TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
 
                     String text = Long.toString(result.getId());
                     numberView.setText(text);

@@ -61,10 +61,10 @@ public class QRScannerActivity extends Activity {
 
         if (price != null) {
             TextView priceTxt = (TextView) findViewById(R.id.qsPrice);
-            TextView priceRevTxt = (TextView) findViewById(R.id.qsPriceReverted);
+            TextView priceInvTxt = (TextView) findViewById(R.id.qsPriceInverted);
 
             priceTxt.setText("" + price);
-            priceRevTxt.setText("" + price);
+            priceInvTxt.setText("" + price);
         }
 
     }
