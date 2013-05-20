@@ -12,7 +12,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <application android:label="@string/app_name" android:icon="@drawable/hello_logo2" android:debuggable="false">
+    <application android:label="@string/app_name" android:icon="@drawable/hello_logo2" android:debuggable="true">
         <activity android:name="net.microcosmus.helloapp.MainActivity"
                   android:label="@string/app_name">
             <intent-filter>
