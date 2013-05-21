@@ -101,10 +101,10 @@
                             android:textSize="14dp"/>
                 </LinearLayout>
                 <ProgressBar
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
                         android:id="@+id/ddProgressBar" android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp" android:visibility="gone" android:layout_marginBottom="20dp"/>
+                        android:layout_marginTop="70dp" android:layout_marginBottom="25dp"/>
                 <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
