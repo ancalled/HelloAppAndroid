@@ -135,13 +135,14 @@ public class DiscountActivity extends Activity {
 
         if (requestCode == INTENT_REQUEST_REF) {
 
-            setContentView(R.layout.apply_discount);
-
-            ImageView edgeImg = (ImageView) findViewById(R.id.triagEdge);
-            CanvasUtils.buildBentEdge(edgeImg, 12);
-
-
             if (resultCode == RESULT_OK) {
+
+                setContentView(R.layout.apply_discount);
+
+                ImageView edgeImg = (ImageView) findViewById(R.id.triagEdge);
+                CanvasUtils.buildBentEdge(edgeImg, 12);
+
+
                 String confCode = (String) data.getExtras().get("text");
 
                 ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);

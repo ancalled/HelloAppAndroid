@@ -29,7 +29,8 @@ public class CampaignStorage extends SQLiteOpenHelper {
                     "place TEXT, " +
                     "rate INTEGER, " +
                     "startDate TEXT, " +
-                    "goodThrough TEXT" +
+                    "goodThrough TEXT," +
+                    "whenRetrieved TEXT" +
                     ")";
 
     private static final String DROP_TABLE =
@@ -53,19 +54,24 @@ public class CampaignStorage extends SQLiteOpenHelper {
 
     public List<Campaign> getCampaigns() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, new String[]{"id", "title", "place", "rate", "goodThrough", "startDate"}, null, null, null,
-                null, null);
+        Cursor cursor = db.query(TABLE_NAME, new String[]{"id", "title", "place", "rate", "goodThrough", "startDate"},
+                null, null, null, null, null);
         List<Campaign> res = new ArrayList<Campaign>();
-        while (cursor.moveToNext()) {
-            Campaign c = new Campaign();
-            c.setId(cursor.getLong(0));
-            c.setTitle(cursor.getString(1));
-            c.setPlace(cursor.getString(2));
-            c.setRate(cursor.getInt(3));
-            c.setGoodThrough(parseDate(cursor, 4));
-            c.setStartDate(parseDate(cursor, 5));
-            res.add(c);
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                Campaign c = new Campaign();
+                c.setId(cursor.getLong(0));
+                c.setTitle(cursor.getString(1));
+                c.setPlace(cursor.getString(2));
+                c.setRate(cursor.getInt(3));
+                c.setGoodThrough(parseDate(cursor, 4));
+                c.setStartFrom(parseDate(cursor, 5));
+                res.add(c);
+            }
+
+            cursor.close();
         }
+        db.close();
 
         return res;
     }
@@ -78,6 +84,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
     }
 
     public void persistCampaigns(List<Campaign> campaigns) {
+        if (campaigns == null) return;
         SQLiteDatabase db = getWritableDatabase();
 
         for (Campaign c : campaigns) {
@@ -89,9 +96,10 @@ public class CampaignStorage extends SQLiteOpenHelper {
             if (c.getGoodThrough() != null) {
                 cv.put("goodThrough", DATE_FORMAT.format(c.getGoodThrough()));
             }
-            if (c.getStartDate() != null) {
-                cv.put("startDate", DATE_FORMAT.format(c.getStartDate()));
+            if (c.getStartFrom() != null) {
+                cv.put("startDate", DATE_FORMAT.format(c.getStartFrom()));
             }
+
             db.insert(TABLE_NAME, null, cv);
         }
 
@@ -104,6 +112,19 @@ public class CampaignStorage extends SQLiteOpenHelper {
             String dateStr = cursor.getString(pos);
             if (dateStr != null) {
                 return DATE_FORMAT.parse(dateStr);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private Date parseDateTime(Cursor cursor, int pos) {
+        try {
+            String dateStr = cursor.getString(pos);
+            if (dateStr != null) {
+                return DATE_TIME_FORMAT.parse(dateStr);
             }
         } catch (ParseException e) {
             e.printStackTrace();

@@ -30,6 +30,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -51,6 +54,9 @@ public class HelloClient {
 
     public static final String APPLICATION_VERSION = "http://kinok.org/helloapp/builds/version.json";
     public static final String APPLICATION_DOWNLOAD_URL = "http://kinok.org/helloapp";
+
+    public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+
 
     private static User user;
 
@@ -142,7 +148,8 @@ public class HelloClient {
             с.setId(discountObj.getLong("id"));
             с.setTitle(discountObj.getString("title"));
             с.setRate(discountObj.getInt("rate"));
-//            с.setGoodThrough(obj.getString("goodThrough"));
+            с.setGoodThrough(parseDate(discountObj, "goodThrough"));
+            с.setStartFrom(parseDate(discountObj, "startFrom"));
 
             JSONObject companyObj = discountObj.getJSONObject("company");
             с.setPlace(companyObj.getString("name"));
@@ -152,6 +159,21 @@ public class HelloClient {
 
         return result;
     }
+
+    private static Date parseDate(JSONObject obj, String field) throws JSONException {
+        String value = obj.getString(field);
+        if (value != null) {
+            try {
+                return DATE_FORMAT.parse(value);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return null;
+
+    }
+
 
     public static DiscountApplyResult parseDiscountApplyResult(String json) throws JSONException {
         JSONObject obj = new JSONObject(json);

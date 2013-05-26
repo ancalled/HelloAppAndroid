@@ -28,14 +28,18 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends Activity {
 
     public static final String PREFS_NAME = "user-pref";
-
+    public static final String ICON_FILE_PATH_TMPL = "camp-%d-icon.jpg";
 
     public static final String CAT = "MainActivity";
+    public static final String PARAM_WHEN_DATA_RETRIEVED = "when-data-retrieved";
+    public static final long SECONDS_IN_DAY = 24 * 60 * 60;
+    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
 
     private LayoutInflater inflater;
     private CampaignStorage storage;
@@ -51,7 +55,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-        HelloClient.authorize();
+        HelloClient.authorize(); //todo this is test stuff!
 
         final AppVersion appVersion = getAppVersion();
 
@@ -60,22 +64,32 @@ public class MainActivity extends Activity {
 
         storage = new CampaignStorage(this);
 
+        boolean loadDataFromLocalStorage = true;
         networkAvailable = checkNetworkAvailable();
+
         if (networkAvailable) {
 
-            checkNewerVersion(appVersion);
+            Date time = getWhenDataRetrieved();
 
-            clearDiscountView();
-            showDownloadProgress();
-            retrieveDiscounts();
+            if (time == null || time.before(getExpirationLimit())) {
+                asyncCheckNewerVersion(appVersion);
 
-        } else {
+                Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
+                clearDiscountView();
+                showDownloadProgress();
+                downloadCampaigns();
+
+                loadDataFromLocalStorage = false;
+            }
+        }
+
+        if (loadDataFromLocalStorage) {
             Log.i(CAT, "Retrieving campaigns from storage...");
 
             List<Campaign> campaigns = storage.getCampaigns();
             if (campaigns != null && !campaigns.isEmpty()) {
                 Log.i(CAT, "Got " + campaigns.size() + " campaigns.");
-                addCampaigns(campaigns);
+                addCampaignsToView(campaigns);
 
             } else {
                 String erMes = getResources().getString(R.string.internet_access);
@@ -94,19 +108,24 @@ public class MainActivity extends Activity {
         BugSenseHandler.initAndStartSession(MainActivity.this, "49791bfe");
     }
 
-
-    private boolean checkNetworkAvailable() {
-        ConnectivityManager manager
-                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo info = manager.getActiveNetworkInfo();
-        return info != null && info.isConnected();
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EasyTracker.getInstance().activityStop(this);
+        BugSenseHandler.closeSession(MainActivity.this);
     }
 
+    //----------------------------------------------------
 
-    private void clearDiscountView() {
-        LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
-        listView.removeAllViews();
+
+    private void showDiscountActivity(Campaign c) {
+        if (c == null) return;
+        Intent intent = new Intent(this, DiscountActivity.class);
+        intent.putExtra("campaign", c);
+        startActivity(intent);
     }
+
+    //--------------------------------------------
 
 
     private void showDownloadProgress() {
@@ -114,19 +133,27 @@ public class MainActivity extends Activity {
         waiter.setVisibility(View.VISIBLE);
     }
 
-    private void hideWaiter() {
+    private void hideDownloadProgress() {
         ProgressBar waiter = (ProgressBar) findViewById(R.id.progressBar);
         waiter.setVisibility(View.GONE);
     }
 
-    private void addCampaigns(List<Campaign> campaigns) {
+    //--------------------------------------------
+
+
+    private void clearDiscountView() {
+        LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
+        listView.removeAllViews();
+    }
+
+    private void addCampaignsToView(List<Campaign> campaigns) {
         if (campaigns == null) return;
 
         LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
         for (Campaign c : campaigns) {
             Log.i(CAT, "Discount: " + c.getTitle() + "\t" + c.getPlace());
 
-            View view = createCampaign(c, listView);
+            View view = createCampaignView(c, listView);
             listView.addView(view);
 
             ImageView campaignThumbs = (ImageView) view.findViewById(R.id.campaignThumbnail);
@@ -134,30 +161,27 @@ public class MainActivity extends Activity {
 
             CanvasUtils.buildDiscountRateIcon(discountIcon, c.getRate(), 56);
 
-            Bitmap bitmap = getIcon(c.getId());
+            Bitmap bitmap = getIconFromFile(c.getId());
             if (bitmap != null) {
                 campaignThumbs.setImageBitmap(bitmap);
 
             } else {
                 if (networkAvailable) {
-                    downloadIcon(c, campaignThumbs);
+                    downloadCampaignIcon(c, campaignThumbs);
                 }
             }
         }
     }
 
-
-    private View createCampaign(final Campaign с, ViewGroup parent) {
+    private View createCampaignView(final Campaign с, ViewGroup parent) {
 
         View view = inflater.inflate(R.layout.campaign, parent, false);
 
         TextView titleView = (TextView) view.findViewById(R.id.discountTitle);
         TextView placeView = (TextView) view.findViewById(R.id.discountPlace);
-//        TextView rateView = (TextView) view.findViewById(R.id.discountRate);
 
         titleView.setText(с.getTitle());
         placeView.setText(с.getPlace());
-//        rateView.setText("-" + d.getRate() + "%");
 
         ImageView edgeImg = (ImageView) view.findViewById(R.id.edgeImg);
         CanvasUtils.buildBentEdge(edgeImg, 10);
@@ -185,24 +209,10 @@ public class MainActivity extends Activity {
     }
 
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        EasyTracker.getInstance().activityStop(this);
-        BugSenseHandler.closeSession(MainActivity.this);
-    }
+    //--------------------------------------------
 
 
-    private void retrieveDiscounts() {
-//        String testToken = "test_token";
-//        String url = HelloClient.RequestBuilder.create(
-//                HelloClient.SCHEME,
-//                HelloClient.HOST,
-//                HelloClient.PORT,
-//                "/customer/api/campaigns",
-//                testToken)
-//                .build();
-
+    private void downloadCampaigns() {
         new AsyncTask<String, Void, List<Campaign>>() {
             @Override
             protected List<Campaign> doInBackground(String... params) {
@@ -217,18 +227,21 @@ public class MainActivity extends Activity {
 
             @Override
             protected void onPostExecute(List<Campaign> campaigns) {
-                hideWaiter();
-                addCampaigns(campaigns);
 
-                storage.clearCampaigns();
-                storage.persistCampaigns(campaigns);
+                hideDownloadProgress();
+                if (campaigns != null) {
+                    addCampaignsToView(campaigns);
+                    storage.clearCampaigns();
+                    storage.persistCampaigns(campaigns);
+                    saveWhenDataRetrieved(new Date());
+                }
             }
 
         }.execute(HelloClient.CAMPAIGNS_URL /*url*/);
     }
 
 
-    private void downloadIcon(final Campaign c, final ImageView imageView) {
+    private void downloadCampaignIcon(final Campaign c, final ImageView imageView) {
         String url = String.format(HelloClient.CAMPAIGN_ICON_URL, c.getId());
 
         new AsyncTask<String, Void, Bitmap>() {
@@ -243,15 +256,35 @@ public class MainActivity extends Activity {
                     bitmap = null;
                 }
 
-                saveIcon(c.getId(), bitmap);
+                saveIconToFile(c.getId(), bitmap);
                 imageView.setImageBitmap(bitmap);
             }
         }.execute(url);
     }
 
+    private void saveWhenDataRetrieved(Date date) {
+        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putLong(PARAM_WHEN_DATA_RETRIEVED, date.getTime());
+        editor.commit();
+    }
 
-    private Bitmap getIcon(long campaignId) {
-        File file = new File(getAppFilesHome(), "camp-" + campaignId + "-icon.jpg");
+    private Date getWhenDataRetrieved() {
+        SharedPreferences pref = getSharedPreferences(PREFS_NAME, 0);
+        long time = pref.getLong(PARAM_WHEN_DATA_RETRIEVED, 0);
+        return time > 0 ? new Date(time) : null;
+    }
+
+    private Date getExpirationLimit() {
+        long now = System.currentTimeMillis();
+        return new Date(now - DATA_EXPIRES_AFTER_SECONDS * 1000);
+    }
+
+    //--------------------------------------------
+
+
+    private Bitmap getIconFromFile(long campaignId) {
+        File file = new File(getAppFilesHome(), String.format(ICON_FILE_PATH_TMPL, campaignId));
         if (file.exists()) {
             return BitmapFactory.decodeFile(file.getAbsolutePath());
         }
@@ -259,10 +292,9 @@ public class MainActivity extends Activity {
         return null;
     }
 
-
-    private void saveIcon(long campaignId, Bitmap bitmap) {
+    private void saveIconToFile(long campaignId, Bitmap bitmap) {
         if (bitmap == null) return;
-        File file = new File(getAppFilesHome(), "camp-" + campaignId + "-icon.jpg");
+        File file = new File(getAppFilesHome(), String.format(ICON_FILE_PATH_TMPL, campaignId));
         try {
             FileOutputStream out = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
@@ -272,7 +304,8 @@ public class MainActivity extends Activity {
     }
 
     private String getAppFilesHome() {
-        File appFiles = new File(Environment.getExternalStorageDirectory(), "/Android/data/" + getPackageName() + "/files");
+        File appFiles = new File(Environment.getExternalStorageDirectory(),
+                "/Android/data/" + getPackageName() + "/files");
         if (!appFiles.exists()) {
             if (!appFiles.mkdirs()) {
                 Log.w(CAT, "Could not create app files home!");
@@ -283,15 +316,20 @@ public class MainActivity extends Activity {
     }
 
 
-    private void showDiscountActivity(Campaign c) {
-        if (c == null) return;
-        Intent intent = new Intent(this, DiscountActivity.class);
-        intent.putExtra("campaign", c);
-        startActivity(intent);
+    //--------------------------------------------
+
+    private boolean checkNetworkAvailable() {
+        ConnectivityManager manager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info = manager.getActiveNetworkInfo();
+        return info != null && info.isConnected();
     }
 
 
-    private void checkNewerVersion(final AppVersion appVersion) {
+    //--------------------------------------------
+
+
+    private void asyncCheckNewerVersion(final AppVersion appVersion) {
         Log.d(CAT, "Current app version: " + appVersion.getVersion() + " (" + appVersion.getVersionName() + ")");
 
         new AsyncTask<String, Void, AppVersion>() {
@@ -327,7 +365,6 @@ public class MainActivity extends Activity {
         }.execute(HelloClient.APPLICATION_VERSION);
     }
 
-
     private AppVersion getAppVersion() {
         PackageManager pm = getPackageManager();
         final PackageInfo pinfo;
@@ -344,7 +381,6 @@ public class MainActivity extends Activity {
 
         return null;
     }
-
 
     private void showDownloadNewerVersion(String newVersionName) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -369,7 +405,6 @@ public class MainActivity extends Activity {
         builder.create().show();
     }
 
-
     private void showForceDownloadNewerVersion(String newVersionName) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         String mes = getResources().getString(R.string.force_update_to_newer_version);
@@ -392,6 +427,8 @@ public class MainActivity extends Activity {
 
         builder.create().show();
     }
+
+    //--------------------------------------------
 
 
     private boolean checkAuthorized() {
