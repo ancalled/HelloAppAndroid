@@ -9,6 +9,7 @@ public class Campaign implements Serializable {
     private String title;
     private String place;
     private Integer rate;
+    private Date startDate;
     private Date goodThrough;
 
     public Long getId() {
@@ -41,6 +42,14 @@ public class Campaign implements Serializable {
 
     public void setRate(Integer rate) {
         this.rate = rate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getGoodThrough() {

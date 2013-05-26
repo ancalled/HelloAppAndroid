@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/bg_with_stripes" android:baselineAligned="false"
+        >
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="12dp" android:background="#00a1d7">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="6dp" android:background="#000000">
+    </LinearLayout>
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp" android:gravity="center_vertical|center_horizontal">
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="300dp">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="8dp"
+                android:layout_height="fill_parent" android:background="#222222">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="25dp"
+                android:layout_height="fill_parent" android:background="#252525">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:background="#dcdcdc" android:layout_marginRight="6dp">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="230dp"
+                        android:visibility="visible" android:paddingLeft="40dp" android:paddingTop="20dp">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="@string/loginLabel"
+                            android:id="@+id/textView" android:textColor="#000000"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:ems="10"
+                            android:id="@+id/athLogin"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:text="@string/passLabel"
+                            android:id="@+id/textView2" android:textColor="#000000"/>
+                    <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:ems="10"
+                            android:id="@+id/athPass"/>
+                    <Button
+                            android:layout_width="100dp"
+                            android:layout_height="45dp"
+                            android:text="@string/authLabel"
+                            android:id="@+id/athButton" android:layout_marginTop="10dp" android:background="#00a1d7"
+                            android:textColor="#ffffff" android:textSize="24dp" android:textStyle="bold"
+                            />
+                </LinearLayout>
+                <ProgressBar
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:id="@+id/athProgressBar" android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp" android:layout_marginBottom="25dp"/>
+                <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:id="@+id/triagEdge" android:layout_alignParentBottom="true"
+                            android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -44,6 +44,7 @@ public class HelloClient {
 //    public static final int PORT = 8080;
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
+    public static final String AUTH_URL = SERVER_URL + "/customer/api/auth?l=%s&p=%s";
     public static final String CAMPAIGNS_URL = SERVER_URL + "/customer/api/campaigns";
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
     public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
@@ -111,6 +112,24 @@ public class HelloClient {
         }
         return null;
     }
+
+
+//    ---------------------------------------------------------
+
+    public static User parseUser(String json) throws JSONException {
+        JSONObject jsonObj = new JSONObject(json);
+        String status = jsonObj.getString("status");
+        if ("OK".equals(status)) {
+            User user = new User();
+
+            user.setToken(jsonObj.getString("token"));
+
+            return user;
+        }
+
+        return null;
+    }
+
 
     public static List<Campaign> parseCampaigns(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);

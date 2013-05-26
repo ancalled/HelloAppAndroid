@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hello.kz</string>
-    <string name="main_page_title">Hello.kz Discount Club</string>
+    <string name="main_page_title">Hello.kz Quality Club</string>
     <string name="filter_button">Фильтр</string>
     <string name="apply_disсount">Использовать скидку</string>
     <string name="internet_access">Интернет не доступен на данном девайсе!</string>
@@ -31,6 +31,6 @@
     <string name="purchase">Покупка</string>
     <string name="activated">зарегистрирована</string>
     <string name="purchaseCode">Код покупки</string>
-    <string name="unknownError">Произошла ошибка!</string>
+    <string name="unknownError">Произошла ошибка!</string><string name="authLabel">Войти</string><string name="loginLabel">Логин</string><string name="passLabel">Пароль</string><string name="athOnClick">athOnClick</string>
 
 </resources>

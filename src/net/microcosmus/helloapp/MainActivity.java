@@ -5,14 +5,17 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.*;
 import android.widget.*;
@@ -23,13 +26,20 @@ import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
 import org.json.JSONException;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 
 public class MainActivity extends Activity {
 
+    public static final String PREFS_NAME = "user-pref";
+
+
     public static final String CAT = "MainActivity";
 
     private LayoutInflater inflater;
+    private CampaignStorage storage;
+    private boolean networkAvailable;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,18 +58,31 @@ public class MainActivity extends Activity {
         TextView versionInfoView = (TextView) findViewById(R.id.maVersionInfo);
         versionInfoView.setText(appVersion.getVersionName() + " (Test)");
 
-        if (isNetworkAvailable()) {
+        storage = new CampaignStorage(this);
+
+        networkAvailable = checkNetworkAvailable();
+        if (networkAvailable) {
 
             checkNewerVersion(appVersion);
 
             clearDiscountView();
-            showWaiter();
+            showDownloadProgress();
             retrieveDiscounts();
 
         } else {
-            String erMes = getResources().getString(R.string.internet_access);
-            Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
-            toast.show();
+            Log.i(CAT, "Retrieving campaigns from storage...");
+
+            List<Campaign> campaigns = storage.getCampaigns();
+            if (campaigns != null && !campaigns.isEmpty()) {
+                Log.i(CAT, "Got " + campaigns.size() + " campaigns.");
+                addCampaigns(campaigns);
+
+            } else {
+                String erMes = getResources().getString(R.string.internet_access);
+                Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
+                toast.show();
+            }
+
         }
     }
 
@@ -72,7 +95,7 @@ public class MainActivity extends Activity {
     }
 
 
-    private boolean isNetworkAvailable() {
+    private boolean checkNetworkAvailable() {
         ConnectivityManager manager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo info = manager.getActiveNetworkInfo();
@@ -86,7 +109,7 @@ public class MainActivity extends Activity {
     }
 
 
-    private void showWaiter() {
+    private void showDownloadProgress() {
         ProgressBar waiter = (ProgressBar) findViewById(R.id.progressBar);
         waiter.setVisibility(View.VISIBLE);
     }
@@ -102,6 +125,7 @@ public class MainActivity extends Activity {
         LinearLayout listView = (LinearLayout) findViewById(R.id.listView);
         for (Campaign c : campaigns) {
             Log.i(CAT, "Discount: " + c.getTitle() + "\t" + c.getPlace());
+
             View view = createCampaign(c, listView);
             listView.addView(view);
 
@@ -109,7 +133,16 @@ public class MainActivity extends Activity {
             ImageView discountIcon = (ImageView) view.findViewById(R.id.discountIcon);
 
             CanvasUtils.buildDiscountRateIcon(discountIcon, c.getRate(), 56);
-            downloadIcon(c, campaignThumbs);
+
+            Bitmap bitmap = getIcon(c.getId());
+            if (bitmap != null) {
+                campaignThumbs.setImageBitmap(bitmap);
+
+            } else {
+                if (networkAvailable) {
+                    downloadIcon(c, campaignThumbs);
+                }
+            }
         }
     }
 
@@ -186,14 +219,17 @@ public class MainActivity extends Activity {
             protected void onPostExecute(List<Campaign> campaigns) {
                 hideWaiter();
                 addCampaigns(campaigns);
+
+                storage.clearCampaigns();
+                storage.persistCampaigns(campaigns);
             }
 
         }.execute(HelloClient.CAMPAIGNS_URL /*url*/);
     }
 
 
-    private void downloadIcon(Campaign d, final ImageView imageView) {
-        String url = String.format(HelloClient.CAMPAIGN_ICON_URL, d.getId());
+    private void downloadIcon(final Campaign c, final ImageView imageView) {
+        String url = String.format(HelloClient.CAMPAIGN_ICON_URL, c.getId());
 
         new AsyncTask<String, Void, Bitmap>() {
             @Override
@@ -207,9 +243,43 @@ public class MainActivity extends Activity {
                     bitmap = null;
                 }
 
+                saveIcon(c.getId(), bitmap);
                 imageView.setImageBitmap(bitmap);
             }
         }.execute(url);
+    }
+
+
+    private Bitmap getIcon(long campaignId) {
+        File file = new File(getAppFilesHome(), "camp-" + campaignId + "-icon.jpg");
+        if (file.exists()) {
+            return BitmapFactory.decodeFile(file.getAbsolutePath());
+        }
+
+        return null;
+    }
+
+
+    private void saveIcon(long campaignId, Bitmap bitmap) {
+        if (bitmap == null) return;
+        File file = new File(getAppFilesHome(), "camp-" + campaignId + "-icon.jpg");
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+        } catch (Exception e) {
+            Log.w(CAT, "Error writing " + file, e);
+        }
+    }
+
+    private String getAppFilesHome() {
+        File appFiles = new File(Environment.getExternalStorageDirectory(), "/Android/data/" + getPackageName() + "/files");
+        if (!appFiles.exists()) {
+            if (!appFiles.mkdirs()) {
+                Log.w(CAT, "Could not create app files home!");
+            }
+        }
+
+        return appFiles.getAbsolutePath();
     }
 
 
@@ -322,32 +392,13 @@ public class MainActivity extends Activity {
 
         builder.create().show();
     }
-//
-//    private void authorize() {
-//        AccountManager am = AccountManager.get(this);
-//        Bundle options = new Bundle();
-//
-//        am.getAuthToken(
-//                myAccount_,                     // Account retrieved using getAccountsByType()
-//                "Manage your tasks",            // Auth scope
-//                options,                        // Authenticator-specific options
-//                this,                           // Your activity
-//                new OnTokenAcquired(),          // Callback called when a token is successfully acquired
-//                new Handler(new OnError()));    // Callback called if an error occurs
-//
-//    }
-//
-//    private class OnTokenAcquired implements AccountManagerCallback<Bundle> {
-//        @Override
-//        public void run(AccountManagerFuture<Bundle> result) {
-//            // Get the result of the operation from the AccountManagerFuture.
-//            Bundle bundle = result.getResult();
-//
-//            // The token is a named value in the bundle. The name of the value
-//            // is stored in the constant AccountManager.KEY_AUTHTOKEN.
-//            String token = bundle.getString(AccountManager.KEY_AUTHTOKEN);
-//        }
-//    }
+
+
+    private boolean checkAuthorized() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        long userId = settings.getLong("user-id", -1);
+        return userId > 0;
+    }
 
 
 }
