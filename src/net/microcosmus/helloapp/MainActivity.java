@@ -283,7 +283,7 @@ public class MainActivity extends Activity {
     //--------------------------------------------
 
 
-    private Bitmap getIconFromFile(long campaignId) {
+    public static Bitmap getIconFromFile(long campaignId) {
         File file = new File(getAppFilesHome(), String.format(ICON_FILE_PATH_TMPL, campaignId));
         if (file.exists()) {
             return BitmapFactory.decodeFile(file.getAbsolutePath());
@@ -292,7 +292,7 @@ public class MainActivity extends Activity {
         return null;
     }
 
-    private void saveIconToFile(long campaignId, Bitmap bitmap) {
+    public static void saveIconToFile(long campaignId, Bitmap bitmap) {
         if (bitmap == null) return;
         File file = new File(getAppFilesHome(), String.format(ICON_FILE_PATH_TMPL, campaignId));
         try {
@@ -303,9 +303,9 @@ public class MainActivity extends Activity {
         }
     }
 
-    private String getAppFilesHome() {
+    public static String getAppFilesHome() {
         File appFiles = new File(Environment.getExternalStorageDirectory(),
-                "/Android/data/" + getPackageName() + "/files");
+                "/Android/data/net.microcosmus.helloapp/files");
         if (!appFiles.exists()) {
             if (!appFiles.mkdirs()) {
                 Log.w(CAT, "Could not create app files home!");

@@ -67,7 +67,10 @@ public class DiscountActivity extends Activity {
         descrView.setText(campaign.getTitle());
 
         ImageView campaignIcon = (ImageView) findViewById(R.id.ddCampaignImage);
-        downloadIcon(campaign, campaignIcon);
+        Bitmap bitmap = MainActivity.getIconFromFile(campaign.getId());
+        if (bitmap != null) {
+            campaignIcon.setImageBitmap(bitmap);
+        }
 
         ImageView edgeImg = (ImageView) findViewById(R.id.edgeImg2);
         CanvasUtils.buildBentEdge(edgeImg, 12);
@@ -277,23 +280,5 @@ public class DiscountActivity extends Activity {
     }
 
 
-    private void downloadIcon(Campaign d, final ImageView imageView) {
-        String url = String.format(HelloClient.CAMPAIGN_ICON_URL, d.getId());
 
-        new AsyncTask<String, Void, Bitmap>() {
-            @Override
-            protected Bitmap doInBackground(String... params) {
-                return HelloClient.downloadBitmap(params[0]);
-            }
-
-            @Override
-            protected void onPostExecute(Bitmap bitmap) {
-                if (isCancelled()) {
-                    bitmap = null;
-                }
-
-                imageView.setImageBitmap(bitmap);
-            }
-        }.execute(url);
-    }
 }
