@@ -11,6 +11,7 @@ public class Campaign implements Serializable {
     private Integer rate;
     private Date startFrom;
     private Date goodThrough;
+    private boolean needConfirm = true;
 
     public Long getId() {
         return id;
@@ -60,4 +61,11 @@ public class Campaign implements Serializable {
         this.goodThrough = goodThrough;
     }
 
+    public boolean getNeedConfirm() {
+        return needConfirm;
+    }
+
+    public void setNeedConfirm(boolean needConfirm) {
+        this.needConfirm = needConfirm;
+    }
 }

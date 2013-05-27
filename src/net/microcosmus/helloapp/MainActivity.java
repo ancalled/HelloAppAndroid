@@ -39,7 +39,8 @@ public class MainActivity extends Activity {
     public static final String CAT = "MainActivity";
     public static final String PARAM_WHEN_DATA_RETRIEVED = "when-data-retrieved";
     public static final long SECONDS_IN_DAY = 24 * 60 * 60;
-    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
+//    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
+    public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 15;  //15 minutes
 
     private LayoutInflater inflater;
     private CampaignStorage storage;
@@ -67,11 +68,13 @@ public class MainActivity extends Activity {
         boolean loadDataFromLocalStorage = true;
         networkAvailable = checkNetworkAvailable();
 
+        List<Campaign> campaigns = storage.getCampaigns();
+
         if (networkAvailable) {
 
             Date time = getWhenDataRetrieved();
 
-            if (time == null || time.before(getExpirationLimit())) {
+            if (time == null || time.before(getExpirationLimit()) || campaigns == null || campaigns.isEmpty()) {
                 asyncCheckNewerVersion(appVersion);
 
                 Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
@@ -86,12 +89,11 @@ public class MainActivity extends Activity {
         if (loadDataFromLocalStorage) {
             Log.i(CAT, "Retrieving campaigns from storage...");
 
-            List<Campaign> campaigns = storage.getCampaigns();
             if (campaigns != null && !campaigns.isEmpty()) {
                 Log.i(CAT, "Got " + campaigns.size() + " campaigns.");
                 addCampaignsToView(campaigns);
 
-            } else {
+            } else if (!networkAvailable) {
                 String erMes = getResources().getString(R.string.internet_access);
                 Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
                 toast.show();

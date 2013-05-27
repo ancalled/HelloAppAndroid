@@ -19,25 +19,26 @@ public class CampaignStorage extends SQLiteOpenHelper {
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     public static final DateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-    public static final int DB_VERSION = 1;
-    public static final String TABLE_NAME = "campaign";
+    public static final int DB_VERSION = 2;
+    public static final String TABLE_CAMPAIGNS = "campaign";
 
     private static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_NAME + " (" +
+            "CREATE TABLE " + TABLE_CAMPAIGNS + " (" +
                     "id INTEGER, " +
                     "title TEXT, " +
                     "place TEXT, " +
                     "rate INTEGER, " +
                     "startDate TEXT, " +
+                    "needConfirm INTEGER, " +
                     "goodThrough TEXT," +
                     "whenRetrieved TEXT" +
                     ")";
 
     private static final String DROP_TABLE =
-            "DROP TABLE IF EXISTS " + TABLE_NAME;
+            "DROP TABLE IF EXISTS " + TABLE_CAMPAIGNS;
 
     public CampaignStorage(Context context) {
-        super(context, TABLE_NAME, null, DB_VERSION);
+        super(context, TABLE_CAMPAIGNS, null, DB_VERSION);
     }
 
     @Override
@@ -48,14 +49,22 @@ public class CampaignStorage extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//        onCreate(db);
+        if (oldVersion == 1) {
+            final String ALTER_TBL =
+                    "ALTER TABLE " + TABLE_CAMPAIGNS +
+                            " ADD COLUMN needConfirm INTEGER;";
+            db.execSQL(ALTER_TBL);
+        }
     }
 
 
     public List<Campaign> getCampaigns() {
+//        String now = Long.toString(System.currentTimeMillis());
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_NAME, new String[]{"id", "title", "place", "rate", "goodThrough", "startDate"},
-                null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_CAMPAIGNS, new String[]{"id", "title", "place", "rate", "needConfirm", "goodThrough", "startDate"},
+//                "startDate < ? AND ? < goodThough", new String[]{now, now},
+                null, null,
+                null, null, null);
         List<Campaign> res = new ArrayList<Campaign>();
         if (cursor != null) {
             while (cursor.moveToNext()) {
@@ -64,8 +73,9 @@ public class CampaignStorage extends SQLiteOpenHelper {
                 c.setTitle(cursor.getString(1));
                 c.setPlace(cursor.getString(2));
                 c.setRate(cursor.getInt(3));
-                c.setGoodThrough(parseDate(cursor, 4));
-                c.setStartFrom(parseDate(cursor, 5));
+                c.setNeedConfirm(cursor.getInt(4) > 0);
+                c.setGoodThrough(parseDate(cursor, 5));
+                c.setStartFrom(parseDate(cursor, 6));
                 res.add(c);
             }
 
@@ -93,6 +103,8 @@ public class CampaignStorage extends SQLiteOpenHelper {
             cv.put("title", c.getTitle());
             cv.put("place", c.getPlace());
             cv.put("rate", c.getRate());
+            cv.put("needConfirm", c.getNeedConfirm());
+
             if (c.getGoodThrough() != null) {
                 cv.put("goodThrough", DATE_FORMAT.format(c.getGoodThrough()));
             }
@@ -100,7 +112,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
                 cv.put("startDate", DATE_FORMAT.format(c.getStartFrom()));
             }
 
-            db.insert(TABLE_NAME, null, cv);
+            db.insert(TABLE_CAMPAIGNS, null, cv);
         }
 
         db.close();

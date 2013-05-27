@@ -144,17 +144,18 @@ public class HelloClient {
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject discountObj = jsonArray.getJSONObject(i);
-            Campaign с = new Campaign();
-            с.setId(discountObj.getLong("id"));
-            с.setTitle(discountObj.getString("title"));
-            с.setRate(discountObj.getInt("rate"));
-            с.setGoodThrough(parseDate(discountObj, "goodThrough"));
-            с.setStartFrom(parseDate(discountObj, "startFrom"));
+            Campaign c = new Campaign();
+            c.setId(discountObj.getLong("id"));
+            c.setTitle(discountObj.getString("title"));
+            c.setRate(discountObj.getInt("rate"));
+            c.setGoodThrough(parseDate(discountObj, "goodThrough"));
+            c.setStartFrom(parseDate(discountObj, "startFrom"));
+            c.setNeedConfirm(discountObj.getBoolean("needConfirm"));
 
             JSONObject companyObj = discountObj.getJSONObject("company");
-            с.setPlace(companyObj.getString("name"));
+            c.setPlace(companyObj.getString("name"));
 
-            result.add(с);
+            result.add(c);
         }
 
         return result;

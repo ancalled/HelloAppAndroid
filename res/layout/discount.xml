@@ -129,7 +129,7 @@
         <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:id="@+id/edgeImg2"
+                android:id="@+id/ddEdgeImg"
                 android:layout_toRightOf="@id/discountContent"
                 android:layout_marginLeft="-30dp"
                 android:layout_alignParentBottom="true" android:layout_marginBottom="14dp"/>

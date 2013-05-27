@@ -72,7 +72,7 @@ public class DiscountActivity extends Activity {
             campaignIcon.setImageBitmap(bitmap);
         }
 
-        ImageView edgeImg = (ImageView) findViewById(R.id.edgeImg2);
+        ImageView edgeImg = (ImageView) findViewById(R.id.ddEdgeImg);
         CanvasUtils.buildBentEdge(edgeImg, 12);
 
         ImageView btnTriang = (ImageView) findViewById(R.id.btnTriang);
@@ -91,7 +91,13 @@ public class DiscountActivity extends Activity {
             public void onClick(View view) {
                 String priceTxt = priceInput.getText().toString();
                 int price = priceTxt != null && !priceTxt.isEmpty() ? Integer.parseInt(priceTxt) : 0;
-                showQRScanner(DiscountActivity.this, campaign, price, debugMode);
+
+                if (campaign.getNeedConfirm()) {
+                    showQRScanner(DiscountActivity.this, campaign, price, debugMode);
+                } else {
+                    showApplyView();
+                    applyDiscount(campaign.getId(), null);
+                }
             }
         });
 
@@ -140,27 +146,32 @@ public class DiscountActivity extends Activity {
 
             if (resultCode == RESULT_OK) {
 
-                setContentView(R.layout.apply_discount);
+                showApplyView();
 
-                ImageView edgeImg = (ImageView) findViewById(R.id.triagEdge);
-                CanvasUtils.buildBentEdge(edgeImg, 12);
-
-
-                String confCode = (String) data.getExtras().get("text");
-
-                ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
-                LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
-                LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
-
-                progressBar.setVisibility(View.VISIBLE);
-                successPanel.setVisibility(View.GONE);
-                errorPanel.setVisibility(View.GONE);
-
-                applyDiscount(campaign.getId(), confCode);
+                String confirmCode = (String) data.getExtras().get("text");
+                applyDiscount(campaign.getId(), confirmCode);
             }
         }
-
     }
+
+    private void showApplyView() {
+        setContentView(R.layout.apply_discount);
+
+        ImageView edgeImg = (ImageView) findViewById(R.id.triagEdge);
+        CanvasUtils.buildBentEdge(edgeImg, 12);
+
+
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+        LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
+        LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
+
+        progressBar.setVisibility(View.VISIBLE);
+        successPanel.setVisibility(View.GONE);
+        errorPanel.setVisibility(View.GONE);
+    }
+
+
+
 
     private boolean getIsDebug() {
         PackageManager pm = getPackageManager();
@@ -238,6 +249,8 @@ public class DiscountActivity extends Activity {
         ));
     }
 
+
+
     private static int getErMessage(DiscountApplyResult.Status status) {
         switch (status) {
             case NO_USER_FOUND:
@@ -265,7 +278,8 @@ public class DiscountActivity extends Activity {
                     HelloClient.HOST,
                     HelloClient.PORT,
                     "/helloapp/customer/api/apply-campaign",
-                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, campaignId, confirmerCode),
+                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, campaignId,
+                            confirmerCode != null ? confirmerCode : "none"),
                     null
             );
             return uri.toURL().toString();
