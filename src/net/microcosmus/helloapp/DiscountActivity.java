@@ -7,7 +7,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,11 +19,11 @@ import com.google.analytics.tracking.android.Tracker;
 import net.microcosmus.helloapp.HelloApp.R;
 import net.microcosmus.helloapp.domain.Campaign;
 import net.microcosmus.helloapp.domain.DiscountApplyResult;
+import net.microcosmus.helloapp.domain.User;
 import org.json.JSONException;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import static net.microcosmus.helloapp.HelloClient.ACTION_APPLY_DISCOUNT;
+import static net.microcosmus.helloapp.HelloClient.RequestType.POST;
 
 
 public class DiscountActivity extends Activity {
@@ -36,9 +35,10 @@ public class DiscountActivity extends Activity {
 
     private Tracker mGaTracker;
 
-
     private Campaign campaign;
     private boolean debugMode;
+
+    private final HelloClient helloClient = new HelloClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,11 @@ public class DiscountActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         campaign = (Campaign) extras.getSerializable("campaign");
-        if (campaign == null) return;
+        User user = (User) extras.getSerializable("user");
+
+        if (campaign == null || user == null) return;
+
+        helloClient.setUser(user);
 
         TextView placeView = (TextView) findViewById(R.id.ddPlace);
         if (placeView == null) {
@@ -171,8 +175,6 @@ public class DiscountActivity extends Activity {
     }
 
 
-
-
     private boolean getIsDebug() {
         PackageManager pm = getPackageManager();
         final PackageInfo pinfo;
@@ -189,21 +191,20 @@ public class DiscountActivity extends Activity {
 
     private void applyDiscount(long campaignId, String confirmCode) {
 
-        new AsyncTask<String, Void, DiscountApplyResult>() {
+        Log.i(CAT, "Applying discount: campId: " + campaignId + ", confirmCode: " + confirmCode);
 
+        helloClient.apiCall(new HelloClient.ApiTask(POST, ACTION_APPLY_DISCOUNT) {
             @Override
-            protected DiscountApplyResult doInBackground(String... params) {
-                String response = HelloClient.doPost(params[0]);
+            protected void onResponse(String response) {
+                if (response == null) return;
+
+
+                DiscountApplyResult result = null;
                 try {
-                    return HelloClient.parseDiscountApplyResult(response);
+                    result = HelloClient.parseDiscountApplyResult(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(DiscountApplyResult result) {
 
                 LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
                 LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
@@ -240,15 +241,14 @@ public class DiscountActivity extends Activity {
                     }
 
                 }
+
             }
+        }.param("campaignId", campaignId)
+                .param("userId", helloClient.getUser().getId())
+                .param("confirmerCode", confirmCode != null ? confirmCode : "none")
+        );
 
-        }.execute(buildUrl(
-                HelloClient.getUser().getId(),
-                campaignId,
-                confirmCode
-        ));
     }
-
 
 
     private static int getErMessage(DiscountApplyResult.Status status) {
@@ -268,31 +268,6 @@ public class DiscountActivity extends Activity {
 
         return -1;
     }
-
-
-    private static String buildUrl(long userId, long campaignId, String confirmerCode) {
-        try {
-            URI uri = new URI(
-                    HelloClient.SCHEME,
-                    null,
-                    HelloClient.HOST,
-                    HelloClient.PORT,
-                    "/helloapp/customer/api/apply-campaign",
-                    String.format("userId=%d&campaignId=%d&confirmerCode=%s", userId, campaignId,
-                            confirmerCode != null ? confirmerCode : "none"),
-                    null
-            );
-            return uri.toURL().toString();
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        return null;
-    }
-
 
 
 }

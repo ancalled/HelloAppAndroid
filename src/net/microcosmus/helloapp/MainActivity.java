@@ -24,12 +24,16 @@ import com.google.analytics.tracking.android.EasyTracker;
 import net.microcosmus.helloapp.HelloApp.R;
 import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
+import net.microcosmus.helloapp.domain.User;
 import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 import java.util.List;
+
+import static net.microcosmus.helloapp.HelloClient.ACTION_CAMPAIGNS;
+import static net.microcosmus.helloapp.HelloClient.RequestType.GET;
 
 public class MainActivity extends Activity {
 
@@ -39,12 +43,23 @@ public class MainActivity extends Activity {
     public static final String CAT = "MainActivity";
     public static final String PARAM_WHEN_DATA_RETRIEVED = "when-data-retrieved";
     public static final long SECONDS_IN_DAY = 24 * 60 * 60;
-//    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
+    //    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
     public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 15;  //15 minutes
 
     private LayoutInflater inflater;
     private CampaignStorage storage;
     private boolean networkAvailable;
+
+    private final HelloClient helloClient = new HelloClient();
+    private User user;
+
+    {
+        //todo this is test stuff
+        user = new User();
+        user.setId(1L);
+        user.setName("testuser1");
+        user.setToken("test_token1");
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +71,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-        HelloClient.authorize(); //todo this is test stuff!
 
         final AppVersion appVersion = getAppVersion();
 
@@ -75,6 +89,8 @@ public class MainActivity extends Activity {
             Date time = getWhenDataRetrieved();
 
             if (time == null || time.before(getExpirationLimit()) || campaigns == null || campaigns.isEmpty()) {
+                helloClient.setUser(user);
+
                 asyncCheckNewerVersion(appVersion);
 
                 Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
@@ -124,6 +140,7 @@ public class MainActivity extends Activity {
         if (c == null) return;
         Intent intent = new Intent(this, DiscountActivity.class);
         intent.putExtra("campaign", c);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 
@@ -191,7 +208,6 @@ public class MainActivity extends Activity {
         view.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-
                 view.setBackgroundResource(
                         motionEvent.getAction() == MotionEvent.ACTION_DOWN ?
                                 R.drawable.discount_row_touched :
@@ -215,20 +231,16 @@ public class MainActivity extends Activity {
 
 
     private void downloadCampaigns() {
-        new AsyncTask<String, Void, List<Campaign>>() {
+        helloClient.apiCall(new HelloClient.ApiTask(GET, ACTION_CAMPAIGNS) {
             @Override
-            protected List<Campaign> doInBackground(String... params) {
-                String response = HelloClient.doGet(params[0]);
+            protected void onResponse(String response) {
+                if (response == null) return;
+                List<Campaign> campaigns = null;
                 try {
-                    return HelloClient.parseCampaigns(response);
+                    campaigns = HelloClient.parseCampaigns(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(List<Campaign> campaigns) {
 
                 hideDownloadProgress();
                 if (campaigns != null) {
@@ -237,9 +249,10 @@ public class MainActivity extends Activity {
                     storage.persistCampaigns(campaigns);
                     saveWhenDataRetrieved(new Date());
                 }
-            }
 
-        }.execute(HelloClient.CAMPAIGNS_URL /*url*/);
+            }
+        });
+
     }
 
 
@@ -433,11 +446,11 @@ public class MainActivity extends Activity {
     //--------------------------------------------
 
 
-    private boolean checkAuthorized() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        long userId = settings.getLong("user-id", -1);
-        return userId > 0;
-    }
+//    private boolean checkAuthorized() {
+//        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+//        long userId = settings.getLong("user-id", -1);
+//        return userId > 0;
+//    }
 
 
 }

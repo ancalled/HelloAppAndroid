@@ -3,17 +3,13 @@ package net.microcosmus.helloapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
+import android.os.AsyncTask;
 import android.util.Base64;
 import android.util.Log;
 import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
 import net.microcosmus.helloapp.domain.DiscountApplyResult;
 import net.microcosmus.helloapp.domain.User;
-import oauth.signpost.OAuthConsumer;
-import oauth.signpost.basic.DefaultOAuthConsumer;
-import oauth.signpost.exception.OAuthCommunicationException;
-import oauth.signpost.exception.OAuthExpectationFailedException;
-import oauth.signpost.exception.OAuthMessageSignerException;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -25,9 +21,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
@@ -40,40 +39,115 @@ public class HelloClient {
 
     public static final String SCHEME = "http";
 
-    public static final String HOST = "helloapp.microcosmus.net";
-    public static final int PORT = 80;
+//    public static final String HOST = "helloapp.microcosmus.net";
+//    public static final int PORT = 80;
 
-//    public static final String HOST = "10.0.2.2";
-//    public static final int PORT = 8080;
+    public static final String HOST = "10.0.2.2";
+    public static final int PORT = 8080;
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
-    public static final String AUTH_URL = SERVER_URL + "/customer/api/auth?l=%s&p=%s";
-    public static final String CAMPAIGNS_URL = SERVER_URL + "/customer/api/campaigns";
+
+    public static final String API_URL = SERVER_URL + "/customer/api/";
+
+    public static final String ACTION_AUTH = "auth";
+    public static final String ACTION_CAMPAIGNS = "campaigns";
+    public static final String ACTION_APPLY_DISCOUNT = "apply-campaign";
+
+//    public static final String AUTH_URL = API_URL + "/auth?l=%s&p=%s";
+//    public static final String CAMPAIGNS_URL = API_URL + "/campaigns";
+
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
-    public static final String APPLY_CAMPAIGN_URL = SERVER_URL + "/customer/api/apply-campaign?userId=%d&campaignId=%d&confirmerCode=%s";
 
     public static final String APPLICATION_VERSION = "http://kinok.org/helloapp/builds/version.json";
     public static final String APPLICATION_DOWNLOAD_URL = "http://kinok.org/helloapp";
 
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    public static final DateFormat TIMESTAMP_FORMAT = new SimpleDateFormat("yyyyMMddhhmmss");
 
 
-    private static User user;
+    private User user;
 
 
-    private HelloClient() {
+    public HelloClient() {
     }
 
-    public static void authorize() {
-        //todo auth request
-
-        user = new User();
-        user.setId(1L);
-        user.setName("testuser1");
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public static User getUser() {
+    public User getUser() {
         return user;
+    }
+
+
+
+
+    public static enum RequestType {
+        GET, POST
+    }
+
+    public void authorize() {
+
+    }
+
+
+    public void apiCall(ApiTask task) {
+        task.param("uid", Long.toString(user.getId()))
+                .param("t", TIMESTAMP_FORMAT.format(new Date()))
+                .execute(user.getToken());
+    }
+
+
+    public static String doGet(String url) {
+        return doRequest(url, RequestType.GET);
+    }
+
+    public static String doPost(String url) {
+        return doRequest(url, RequestType.POST);
+    }
+
+    public static String doRequest(String url, RequestType requestType) {
+        try {
+            // Create a new HTTP Client
+            DefaultHttpClient client = new DefaultHttpClient();
+            // Setup the get request
+
+            HttpRequestBase request;
+            if (requestType == RequestType.GET) {
+                request = new HttpGet(url);
+            } else {
+                request = new HttpPost(url);
+            }
+
+            // Execute the request in the client
+            HttpResponse response = client.execute(request);
+            // Grab the response
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    response.getEntity().getContent(), "UTF-8"));
+
+            StringBuilder buf = new StringBuilder();
+            while (true) {
+                String line = reader.readLine();
+
+                if (line == null) break;
+
+                buf.append(line).append("\n");
+            }
+
+            String respText = buf.toString();
+
+            Log.i("Client", "Got response: \n" + respText);
+
+            // Instantiate a JSON object from the request response
+
+            return respText;
+
+        } catch (Exception e) {
+            // In your production code handle any errors and catch the individual exceptions
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
@@ -181,6 +255,9 @@ public class HelloClient {
         DiscountApplyResult result = new DiscountApplyResult();
 
         String strStatus = obj.getString("status");
+
+        if ("auth-error".equals(strStatus)) return null;
+
         DiscountApplyResult.Status status = DiscountApplyResult.Status.valueOf(strStatus);
         result.setStatus(status);
 
@@ -211,64 +288,39 @@ public class HelloClient {
     }
 
 
-    //    --------------------------------------------------------------
+    public abstract static class ApiTask extends AsyncTask<String, Void, String> {
 
+        private final RequestBuilder builder;
+        private final RequestType type;
 
-    public static enum RequestType {
-        GET, POST
-    }
-
-
-    public static String doGet(String url) {
-        return doRequest(url, RequestType.GET);
-    }
-
-    public static String doPost(String url) {
-        return doRequest(url, RequestType.POST);
-    }
-
-    public static String doRequest(String url, RequestType requestType) {
-        try {
-            // Create a new HTTP Client
-            DefaultHttpClient client = new DefaultHttpClient();
-            // Setup the get request
-
-            HttpRequestBase request;
-            if (requestType == RequestType.GET) {
-                request = new HttpGet(url);
-            } else {
-                request = new HttpPost(url);
-            }
-
-            // Execute the request in the client
-            HttpResponse response = client.execute(request);
-            // Grab the response
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    response.getEntity().getContent(), "UTF-8"));
-
-            StringBuilder buf = new StringBuilder();
-            while (true) {
-                String line = reader.readLine();
-
-                if (line == null) break;
-
-                buf.append(line).append("\n");
-            }
-
-            String respText = buf.toString();
-
-            Log.i("Client", "Got response: \n" + respText);
-
-            // Instantiate a JSON object from the request response
-
-            return respText;
-
-        } catch (Exception e) {
-            // In your production code handle any errors and catch the individual exceptions
-            e.printStackTrace();
+        public ApiTask(RequestType type, String action) {
+            this.builder = new RequestBuilder(API_URL + action);
+            this.type = type;
         }
 
-        return null;
+        public ApiTask param(String name, Object value) {
+            builder.param(name, value.toString());
+            return this;
+        }
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String token = params[0];
+            builder.setToken(token);
+
+            String url = builder.build();
+
+            Log.i("HelloClient", "Sending " + type + "-request to " + url);
+            return doRequest(url, type);
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            onResponse(s);
+        }
+
+        protected abstract void onResponse(String s);
     }
 
 
@@ -276,45 +328,54 @@ public class HelloClient {
 
         private static final Map<String, String> params = new TreeMap<String, String>();
 
-        private final String scheme;
-        private final String host;
-        private final int port;
-        private final String contextPath;
-        private final String token;
+        private final String url;
+        private String token;
 
-//
-        private RequestBuilder(String scheme, String host, int port, String contextPath, String token) {
-            this.scheme = scheme;
-            this.host = host;
-            this.port = port;
-            this.contextPath = contextPath;
-            this.token = token;
+        public RequestBuilder(String url) {
+            this.url = url;
         }
-
-
 
         public RequestBuilder param(String name, String value) {
             params.put(name, value);
             return this;
         }
 
-        public String build() {
-            StringBuilder buf = new StringBuilder();
-            for (String key: params.keySet()) {
-                buf.append(key).append("=").append(params.get(key));
-            }
-
-            buf.append("h=").append(buildHash(buf.toString()));
-
-            return buf.toString();
+        public void setToken(String token) {
+            this.token = token;
         }
 
-        private String buildHash(String url) {
+        public String build() {
+            StringBuilder paramBuf = new StringBuilder();
+            int i = 0;
+            for (String key : params.keySet()) {
+                paramBuf.append(key).append("=").append(params.get(key));
+                if (++i < params.size()) {
+                    paramBuf.append("&");
+                }
+            }
+            String params = paramBuf.toString();
+
+            StringBuilder urlBuf = new StringBuilder();
+            urlBuf.append(url).append("?");
+            String hash = buildHash(params);
+            urlBuf.append(params).append("&h=").append(encode(hash));
+            return urlBuf.toString();
+        }
+
+        public static String encode(String text) {
             try {
-                return calcHash(url + "token=" + token);
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
+                return URLEncoder.encode(text, "UTF-8");
             } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        private String buildHash(String params) {
+            try {
+                String data = params + "&token=" + token;
+                return calcHash(data);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -325,44 +386,49 @@ public class HelloClient {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] bytes = data.getBytes("UTF-8");
             byte[] digest = md.digest(bytes);
-            return Base64.encodeToString(digest, Base64.DEFAULT);
+//            String hash = Base64.encodeToString(digest, Base64.DEFAULT);
+//            if (hash.endsWith("\n")) {
+//                hash = hash.substring(0, hash.length() - 1);
+//            }
+            return toHex(digest);
         }
 
-        public static RequestBuilder create(String scheme, String host, int port, String contextPath, String token) {
-            return new RequestBuilder(scheme, host, port, contextPath, token);
+        public String toHex(byte[] bytes) {
+            return String.format("%040x", new BigInteger(bytes));
         }
+
     }
 
 
 //------------------------------------------------------------
 
 
-    public static final String CONSUMER_KEY = "1243";
-    public static final String CONSUMER_SECRET = "abgb";
-    public static final String ACCESS_TOKEN = "12434";
-    public static final String TOKEN_SECRET = "3535";
-
-
-    public static void signWithOAuth() throws IOException,
-            OAuthCommunicationException,
-            OAuthExpectationFailedException,
-            OAuthMessageSignerException {
-
-        // create a consumer object and configure it with the access
-        // token and token secret obtained from the service provider
-        OAuthConsumer consumer = new DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
-        consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
-
-        // create an HTTP request to a protected resource
-        URL url = new URL("http://example.com/protected");
-        HttpURLConnection request = (HttpURLConnection) url.openConnection();
-
-        // sign the request
-        consumer.sign(request);
-
-        // send the request
-        request.connect();
-    }
+//    public static final String CONSUMER_KEY = "1243";
+//    public static final String CONSUMER_SECRET = "abgb";
+//    public static final String ACCESS_TOKEN = "12434";
+//    public static final String TOKEN_SECRET = "3535";
+//
+//
+//    public static void signWithOAuth() throws IOException,
+//            OAuthCommunicationException,
+//            OAuthExpectationFailedException,
+//            OAuthMessageSignerException {
+//
+//        // create a consumer object and configure it with the access
+//        // token and token secret obtained from the service provider
+//        OAuthConsumer consumer = new DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+//        consumer.setTokenWithSecret(ACCESS_TOKEN, TOKEN_SECRET);
+//
+//        // create an HTTP request to a protected resource
+//        URL url = new URL("http://example.com/protected");
+//        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+//
+//        // sign the request
+//        consumer.sign(request);
+//
+//        // send the request
+//        request.connect();
+//    }
 
 
 }

@@ -43,28 +43,28 @@ public class AuthActivity extends Activity {
     }
 
     private void authorize(String login, String pass) {
-        String url = String.format(HelloClient.AUTH_URL, login, pass);
-
-        new AsyncTask<String, Void, User>() {
-            @Override
-            protected User doInBackground(String... params) {
-                try {
-                    return HelloClient.parseUser(params[0]);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(User user) {
-                if (isCancelled()) {
-                    user = null;
-                }
-
-                installUser(user);
-            }
-        }.execute(url);
+//        String url = String.format(HelloClient.AUTH_URL, login, pass);
+//
+//        new AsyncTask<String, Void, User>() {
+//            @Override
+//            protected User doInBackground(String... params) {
+//                try {
+//                    return HelloClient.parseUser(params[0]);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                return null;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(User user) {
+//                if (isCancelled()) {
+//                    user = null;
+//                }
+//
+//                installUser(user);
+//            }
+//        }.execute(url);
     }
 
     private void installUser(User user) {
