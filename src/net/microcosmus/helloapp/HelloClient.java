@@ -39,11 +39,11 @@ public class HelloClient {
 
     public static final String SCHEME = "http";
 
-//    public static final String HOST = "helloapp.microcosmus.net";
-//    public static final int PORT = 80;
+    public static final String HOST = "helloapp.microcosmus.net";
+    public static final int PORT = 80;
 
-    public static final String HOST = "10.0.2.2";
-    public static final int PORT = 8080;
+//    public static final String HOST = "10.0.2.2";
+//    public static final int PORT = 8080;
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
 
