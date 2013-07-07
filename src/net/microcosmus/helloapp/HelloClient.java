@@ -91,10 +91,12 @@ public class HelloClient {
     public void apiCall(ApiTask task) {
         if (user != null && user.getId() != null && user.getToken() != null) {
             task.param("uid", Long.toString(user.getId()))
+                    .param("t", TIMESTAMP_FORMAT.format(new Date()))
                     .execute(user.getToken());
+        } else {
+            task.param("t", TIMESTAMP_FORMAT.format(new Date()))
+                    .execute();
         }
-
-        task.param("t", TIMESTAMP_FORMAT.format(new Date()));
     }
 
 
