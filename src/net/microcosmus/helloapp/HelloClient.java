@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
 import android.os.AsyncTask;
-import android.util.Base64;
 import android.util.Log;
 import net.microcosmus.helloapp.domain.AppVersion;
 import net.microcosmus.helloapp.domain.Campaign;
@@ -80,8 +79,6 @@ public class HelloClient {
     }
 
 
-
-
     public static enum RequestType {
         GET, POST
     }
@@ -92,9 +89,12 @@ public class HelloClient {
 
 
     public void apiCall(ApiTask task) {
-        task.param("uid", Long.toString(user.getId()))
-                .param("t", TIMESTAMP_FORMAT.format(new Date()))
-                .execute(user.getToken());
+        if (user != null && user.getId() != null && user.getToken() != null) {
+            task.param("uid", Long.toString(user.getId()))
+                    .execute(user.getToken());
+        }
+
+        task.param("t", TIMESTAMP_FORMAT.format(new Date()));
     }
 
 
@@ -199,9 +199,11 @@ public class HelloClient {
     public static User parseUser(String json) throws JSONException {
         JSONObject jsonObj = new JSONObject(json);
         String status = jsonObj.getString("status");
-        if ("OK".equals(status)) {
+        if ("ok".equalsIgnoreCase(status)) {
             User user = new User();
 
+            user.setId(jsonObj.getLong("userId"));
+            user.setName(jsonObj.getString("login"));
             user.setToken(jsonObj.getString("token"));
 
             return user;
@@ -294,7 +296,11 @@ public class HelloClient {
         private final RequestType type;
 
         public ApiTask(RequestType type, String action) {
-            this.builder = new RequestBuilder(API_URL + action);
+            this(type, API_URL, action);
+        }
+
+        public ApiTask(RequestType type, String apiUrl, String action) {
+            this.builder = new RequestBuilder(apiUrl + action);
             this.type = type;
         }
 
@@ -306,8 +312,10 @@ public class HelloClient {
 
         @Override
         protected String doInBackground(String... params) {
-            String token = params[0];
-            builder.setToken(token);
+            if (params != null && params.length > 0) {
+                String token = params[0];
+                builder.setToken(token);
+            }
 
             String url = builder.build();
 
@@ -357,8 +365,12 @@ public class HelloClient {
 
             StringBuilder urlBuf = new StringBuilder();
             urlBuf.append(url).append("?");
-            String hash = buildHash(params);
-            urlBuf.append(params).append("&h=").append(encode(hash));
+            urlBuf.append(params);
+
+            if (token != null) {
+                String hash = buildHash(params, token);
+                urlBuf.append("&h=").append(encode(hash));
+            }
             return urlBuf.toString();
         }
 
@@ -371,7 +383,7 @@ public class HelloClient {
             return null;
         }
 
-        private String buildHash(String params) {
+        private String buildHash(String params, String token) {
             try {
                 String data = params + "&token=" + token;
                 return calcHash(data);
@@ -382,21 +394,22 @@ public class HelloClient {
             return null;
         }
 
-        private String calcHash(String data) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            byte[] bytes = data.getBytes("UTF-8");
-            byte[] digest = md.digest(bytes);
+
+    }
+
+    public static String calcHash(String data) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] bytes = data.getBytes("UTF-8");
+        byte[] digest = md.digest(bytes);
 //            String hash = Base64.encodeToString(digest, Base64.DEFAULT);
 //            if (hash.endsWith("\n")) {
 //                hash = hash.substring(0, hash.length() - 1);
 //            }
-            return toHex(digest);
-        }
+        return toHex(digest);
+    }
 
-        public String toHex(byte[] bytes) {
-            return String.format("%040x", new BigInteger(bytes));
-        }
-
+    public static String toHex(byte[] bytes) {
+        return String.format("%040x", new BigInteger(bytes));
     }
 
 

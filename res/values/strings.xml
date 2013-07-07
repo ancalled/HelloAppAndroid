@@ -30,7 +30,9 @@
     <string name="buyPrice">Сумма покупки</string>
     <string name="purchase">Покупка</string>
     <string name="activated">зарегистрирована</string>
-    <string name="purchaseCode">Код покупки</string>
+    <string name="purchaseCode">Код скидки</string>
+    <string name="priceWODiscountLabel">(цена без скидки)</string>
+    <string name="priceTenge">%d тенге</string>
     <string name="unknownError">Произошла ошибка!</string><string name="authLabel">Войти</string><string name="loginLabel">Логин</string><string name="passLabel">Пароль</string><string name="athOnClick">athOnClick</string>
 
 </resources>

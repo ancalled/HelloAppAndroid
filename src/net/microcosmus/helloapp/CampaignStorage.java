@@ -19,7 +19,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
     public static final DateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     public static final DateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
     public static final String TABLE_CAMPAIGNS = "campaign";
 
     private static final String CREATE_TABLE =
@@ -30,6 +30,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
                     "rate INTEGER, " +
                     "startDate TEXT, " +
                     "needConfirm INTEGER, " +
+                    "needSign INTEGER, " +
                     "goodThrough TEXT," +
                     "whenRetrieved TEXT" +
                     ")";
@@ -49,10 +50,17 @@ public class CampaignStorage extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion == 1) {
+        if (oldVersion < 2) {
             final String ALTER_TBL =
                     "ALTER TABLE " + TABLE_CAMPAIGNS +
                             " ADD COLUMN needConfirm INTEGER;";
+            db.execSQL(ALTER_TBL);
+        }
+
+        if (oldVersion < 3) {
+            final String ALTER_TBL =
+                    "ALTER TABLE " + TABLE_CAMPAIGNS +
+                            " ADD COLUMN needSign INTEGER;";
             db.execSQL(ALTER_TBL);
         }
     }
@@ -61,7 +69,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
     public List<Campaign> getCampaigns() {
 //        String now = Long.toString(System.currentTimeMillis());
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query(TABLE_CAMPAIGNS, new String[]{"id", "title", "place", "rate", "needConfirm", "goodThrough", "startDate"},
+        Cursor cursor = db.query(TABLE_CAMPAIGNS, new String[]{"id", "title", "place", "rate", "needConfirm", "needSign", "goodThrough", "startDate"},
 //                "startDate < ? AND ? < goodThough", new String[]{now, now},
                 null, null,
                 null, null, null);
@@ -74,8 +82,9 @@ public class CampaignStorage extends SQLiteOpenHelper {
                 c.setPlace(cursor.getString(2));
                 c.setRate(cursor.getInt(3));
                 c.setNeedConfirm(cursor.getInt(4) > 0);
-                c.setGoodThrough(parseDate(cursor, 5));
-                c.setStartFrom(parseDate(cursor, 6));
+                c.setNeedSign(cursor.getInt(5) > 0);
+                c.setGoodThrough(parseDate(cursor, 6));
+                c.setStartFrom(parseDate(cursor, 7));
                 res.add(c);
             }
 
@@ -104,6 +113,7 @@ public class CampaignStorage extends SQLiteOpenHelper {
             cv.put("place", c.getPlace());
             cv.put("rate", c.getRate());
             cv.put("needConfirm", c.getNeedConfirm());
+            cv.put("needSign", c.getNeedSign());
 
             if (c.getGoodThrough() != null) {
                 cv.put("goodThrough", DATE_FORMAT.format(c.getGoodThrough()));

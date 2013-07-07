@@ -22,6 +22,9 @@ import net.microcosmus.helloapp.domain.DiscountApplyResult;
 import net.microcosmus.helloapp.domain.User;
 import org.json.JSONException;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import static net.microcosmus.helloapp.HelloClient.ACTION_APPLY_DISCOUNT;
 import static net.microcosmus.helloapp.HelloClient.RequestType.POST;
 
@@ -32,6 +35,7 @@ public class DiscountActivity extends Activity {
 
 
     public static final int INTENT_REQUEST_REF = 100;
+    public static final int SIGN_LENGTH = 7;
 
     private Tracker mGaTracker;
 
@@ -54,7 +58,7 @@ public class DiscountActivity extends Activity {
 
         Bundle extras = getIntent().getExtras();
         campaign = (Campaign) extras.getSerializable("campaign");
-        User user = (User) extras.getSerializable("user");
+        final User user = (User) extras.getSerializable("user");
 
         if (campaign == null || user == null) return;
 
@@ -98,6 +102,12 @@ public class DiscountActivity extends Activity {
 
                 if (campaign.getNeedConfirm()) {
                     showQRScanner(DiscountActivity.this, campaign, price, debugMode);
+
+                } else if (campaign.getNeedSign()) {
+                    String sign = generateSign(campaign, user, price);
+                    showApplyView();
+                    showSign(sign, price);
+
                 } else {
                     showApplyView();
                     applyDiscount(campaign.getId(), null);
@@ -149,7 +159,6 @@ public class DiscountActivity extends Activity {
         if (requestCode == INTENT_REQUEST_REF) {
 
             if (resultCode == RESULT_OK) {
-
                 showApplyView();
 
                 String confirmCode = (String) data.getExtras().get("text");
@@ -248,6 +257,52 @@ public class DiscountActivity extends Activity {
                 .param("confirmerCode", confirmCode != null ? confirmCode : "none")
         );
 
+    }
+
+    private void showSign(String sign, int price) {
+        LinearLayout successPanel = (LinearLayout) findViewById(R.id.applySuccessPanel);
+        LinearLayout errorPanel = (LinearLayout) findViewById(R.id.applyErrorPanel);
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.ddProgressBar);
+
+//        if (successPanel != null && errorPanel != null && progressBar != null) {
+        successPanel.setVisibility(View.VISIBLE);
+        errorPanel.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
+//        }
+
+        TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
+        TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
+        TextView purchaseText = (TextView) findViewById(R.id.ddApplyResult);
+        TextView ddActivated = (TextView) findViewById(R.id.ddActivated);
+
+        numberView.setText(sign);
+        numberRevView.setText(sign);
+
+        String priceWODiscountLabel = getResources().getString(R.string.priceWODiscountLabel);
+        String priceTenge = getResources().getString(R.string.priceTenge);
+
+        purchaseText.setText(String.format(priceTenge, price));
+        ddActivated.setText(priceWODiscountLabel);
+    }
+
+    private static String generateSign(Campaign campaign, User user, int price) {
+        if (campaign == null || user == null) return null;
+        String data = campaign.getId() + ":" + user.getId() + ":" + user.getToken() + ":" + price;
+
+        String hash = null;
+        try {
+            hash = HelloClient.calcHash(data);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if (hash != null && hash.length() > SIGN_LENGTH) {
+            return hash.substring(hash.length() - SIGN_LENGTH, hash.length());
+        }
+
+        return null;
     }
 
 

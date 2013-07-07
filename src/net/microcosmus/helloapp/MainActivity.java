@@ -51,15 +51,9 @@ public class MainActivity extends Activity {
     private boolean networkAvailable;
 
     private final HelloClient helloClient = new HelloClient();
+
     private User user;
 
-    {
-        //todo this is test stuff
-        user = new User();
-        user.setId(1L);
-        user.setName("testuser1");
-        user.setToken("test_token1");
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,51 +65,24 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-
         final AppVersion appVersion = getAppVersion();
-
         TextView versionInfoView = (TextView) findViewById(R.id.maVersionInfo);
         versionInfoView.setText(appVersion.getVersionName() + " (Test)");
 
-        storage = new CampaignStorage(this);
-
-        boolean loadDataFromLocalStorage = true;
         networkAvailable = checkNetworkAvailable();
+        storage = new CampaignStorage(this);
+        user = getUser();
 
-        List<Campaign> campaigns = storage.getCampaigns();
+        if (!installUser()) {
+            return;
+        }
+
+        installData();
 
         if (networkAvailable) {
-
-            Date time = getWhenDataRetrieved();
-
-            if (time == null || time.before(getExpirationLimit()) || campaigns == null || campaigns.isEmpty()) {
-                helloClient.setUser(user);
-
-                asyncCheckNewerVersion(appVersion);
-
-                Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
-                clearDiscountView();
-                showDownloadProgress();
-                downloadCampaigns();
-
-                loadDataFromLocalStorage = false;
-            }
+            asyncCheckNewerVersion(appVersion);
         }
 
-        if (loadDataFromLocalStorage) {
-            Log.i(CAT, "Retrieving campaigns from storage...");
-
-            if (campaigns != null && !campaigns.isEmpty()) {
-                Log.i(CAT, "Got " + campaigns.size() + " campaigns.");
-                addCampaignsToView(campaigns);
-
-            } else if (!networkAvailable) {
-                String erMes = getResources().getString(R.string.internet_access);
-                Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
-                toast.show();
-            }
-
-        }
     }
 
 
@@ -131,6 +98,50 @@ public class MainActivity extends Activity {
         super.onStop();
         EasyTracker.getInstance().activityStop(this);
         BugSenseHandler.closeSession(MainActivity.this);
+    }
+
+    private boolean installUser() {
+        if (user == null) {
+            if (networkAvailable) {
+                showLoginActivity();
+
+            } else {
+                String erMes = getResources().getString(R.string.internet_access);
+                Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+            return false;
+
+        } else {
+            helloClient.setUser(user);
+        }
+
+        return true;
+    }
+
+
+    private void installData() {
+        Date dataRetrieved = getWhenDataRetrieved();
+        Date expirationLimit = getExpirationLimit();
+
+        if (dataRetrieved == null || dataRetrieved.before(expirationLimit)) {
+
+            if (networkAvailable) {
+                Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
+                asyncGetCampaignsFromServer();
+                showDownloadProgress();
+
+            } else {
+                String erMes = getResources().getString(R.string.internet_access);
+                Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
+                toast.show();
+            }
+
+        } else {
+            List<Campaign> campaigns = storage.getCampaigns();
+            addCampaignsToView(campaigns);
+        }
     }
 
     //----------------------------------------------------
@@ -230,7 +241,7 @@ public class MainActivity extends Activity {
     //--------------------------------------------
 
 
-    private void downloadCampaigns() {
+    private void asyncGetCampaignsFromServer() {
         helloClient.apiCall(new HelloClient.ApiTask(GET, ACTION_CAMPAIGNS) {
             @Override
             protected void onResponse(String response) {
@@ -446,12 +457,60 @@ public class MainActivity extends Activity {
     //--------------------------------------------
 
 
-//    private boolean checkAuthorized() {
-//        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-//        long userId = settings.getLong("user-id", -1);
-//        return userId > 0;
-//    }
+    private User getUser() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        if (!settings.contains("user-id")) return null;
 
+        User u = new User();
+        u.setId(settings.getLong("user-id", -1));
+        u.setName(settings.getString("user-login", null));
+        u.setToken(settings.getString("user-token", null));
+
+        return u;
+    }
+
+    public static final int AUTH_REQUEST_REF = 7694;
+
+
+    private void showLoginActivity() {
+        Intent intent = new Intent(this, AuthActivity.class);
+        startActivityForResult(intent, AUTH_REQUEST_REF);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == AUTH_REQUEST_REF) {
+
+            if (resultCode == RESULT_OK) {
+
+                User user = (User) data.getExtras().get("user");
+                this.user = user;
+                helloClient.setUser(user);
+                saveUser(user);
+
+                installData();
+
+            }
+        }
+    }
+
+
+    private void saveUser(User user) {
+        SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);
+
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putLong("user-id", user.getId());
+        editor.putString("user-name", user.getName());
+        editor.putString("user-token", user.getToken());
+
+        // Commit the edits!
+        editor.commit();
+
+
+    }
 
 }
 

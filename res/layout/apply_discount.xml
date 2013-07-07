@@ -67,7 +67,7 @@
                                 android:layout_height="wrap_content"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:text="@string/activated"
-                                android:id="@+id/textView" android:textColor="#000000" android:textSize="14dp"/>
+                                android:id="@+id/ddActivated" android:textColor="#000000" android:textSize="14dp"/>
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="vertical"
