@@ -10,6 +10,9 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -45,6 +48,7 @@ public class MainActivity extends Activity {
     public static final long SECONDS_IN_DAY = 24 * 60 * 60;
     //    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
     public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 15;  //15 minutes
+    public static final int CAMPAIGN_HEIGHT = 100;
 
     private LayoutInflater inflater;
     private CampaignStorage storage;
@@ -125,21 +129,21 @@ public class MainActivity extends Activity {
         Date dataRetrieved = getWhenDataRetrieved();
         Date expirationLimit = getExpirationLimit();
 
-        if (dataRetrieved == null || dataRetrieved.before(expirationLimit)) {
+        if ((dataRetrieved == null || dataRetrieved.before(expirationLimit)) && networkAvailable) {
 
-            if (networkAvailable) {
-                Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
-                asyncGetCampaignsFromServer();
-                showDownloadProgress();
+            Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
+            asyncGetCampaignsFromServer();
+            showDownloadProgress();
 
-            } else {
+        } else {
+            List<Campaign> campaigns = storage.getCampaigns();
+
+            if ((campaigns == null || campaigns.isEmpty()) && !networkAvailable) {
                 String erMes = getResources().getString(R.string.internet_access);
                 Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
                 toast.show();
             }
 
-        } else {
-            List<Campaign> campaigns = storage.getCampaigns();
             addCampaignsToView(campaigns);
         }
     }
@@ -194,6 +198,7 @@ public class MainActivity extends Activity {
             Bitmap bitmap = getIconFromFile(c.getId());
             if (bitmap != null) {
                 campaignThumbs.setImageBitmap(bitmap);
+                scaleImage(campaignThumbs, CAMPAIGN_HEIGHT);
 
             } else {
                 if (networkAvailable) {
@@ -284,8 +289,52 @@ public class MainActivity extends Activity {
 
                 saveIconToFile(c.getId(), bitmap);
                 imageView.setImageBitmap(bitmap);
+                scaleImage(imageView, CAMPAIGN_HEIGHT);
+
             }
         }.execute(url);
+    }
+
+
+    private void scaleImage(ImageView view, int boundBoxInDp) {
+        // Get the ImageView and its bitmap
+        Drawable drawing = view.getDrawable();
+        Bitmap bitmap = ((BitmapDrawable) drawing).getBitmap();
+
+        // Get current dimensions
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+
+        // Determine how much to scale: the dimension requiring less scaling is
+        // closer to the its side. This way the image always stays inside your
+        // bounding box AND either x/y axis touches it.
+        float xScale = ((float) boundBoxInDp) / width;
+        float yScale = ((float) boundBoxInDp) / height;
+        float scale = (xScale <= yScale) ? xScale : yScale;
+
+        // Create a matrix for the scaling and add the scaling data
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap and convert it to a format understood by the ImageView
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+        BitmapDrawable result = new BitmapDrawable(scaledBitmap);
+        width = scaledBitmap.getWidth();
+        height = scaledBitmap.getHeight();
+
+        // Apply the scaled bitmap
+        view.setImageDrawable(result);
+
+        // Now change ImageView's dimensions to match the scaled image
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
+        params.width = width;
+        params.height = height;
+        view.setLayoutParams(params);
+    }
+
+    private int dpToPx(int dp) {
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
     }
 
     private void saveWhenDataRetrieved(Date date) {

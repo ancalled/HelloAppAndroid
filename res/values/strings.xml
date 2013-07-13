@@ -17,7 +17,7 @@
         Данная версия приложения уже не поддерживается, пожалуйста, скачайте новую версию!
     </string>
     <string name="no_thumbnail">Нет изображения</string>
-    <string name="priceLabel">Для продолжения введите сумму покупки:</string>
+    <string name="priceLabel">Для продолжения введите полную сумму покупки в тенге:</string>
     <string name="priceWithDiscountLabel">После скидки:</string>
     <string name="discountApplyResultLabel">Номер скидки:</string>
     <string name="confirmerIdLabel">Подтверждатель:</string>

@@ -226,11 +226,11 @@ public class DiscountActivity extends Activity {
                     errorPanel.setVisibility(View.GONE);
 
                     TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-                    TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
+//                    TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
 
                     String text = Long.toString(result.getId());
                     numberView.setText(text);
-                    numberRevView.setText(text);
+//                    numberRevView.setText(text);
 
                 } else {
                     successPanel.setVisibility(View.VISIBLE);
@@ -271,12 +271,12 @@ public class DiscountActivity extends Activity {
 //        }
 
         TextView numberView = (TextView) findViewById(R.id.ddApplyResultNumber);
-        TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
+//        TextView numberRevView = (TextView) findViewById(R.id.ddApplyResultInverted);
         TextView purchaseText = (TextView) findViewById(R.id.ddApplyResult);
         TextView ddActivated = (TextView) findViewById(R.id.ddActivated);
 
         numberView.setText(sign);
-        numberRevView.setText(sign);
+//        numberRevView.setText(sign);
 
         String priceWODiscountLabel = getResources().getString(R.string.priceWODiscountLabel);
         String priceTenge = getResources().getString(R.string.priceTenge);

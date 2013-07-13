@@ -14,7 +14,7 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="fill_parent" android:background="#8c8c8c">
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="10dp"
@@ -36,7 +36,7 @@
                     android:background="#ffffff">
             </LinearLayout>
             <ImageView
-                    android:layout_width="120dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:id="@+id/campaignThumbnail"
                     android:contentDescription="@string/no_thumbnail"/>
@@ -45,7 +45,7 @@
                           android:layout_width="2dp"
                           android:layout_height="fill_parent"
                           android:background="#cccccc"
-                    />
+                          android:visibility="gone"/>
         </LinearLayout>
         <ImageView
                 android:layout_width="56dp"
