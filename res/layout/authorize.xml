@@ -15,14 +15,14 @@
     </LinearLayout>
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="60dp" android:gravity="center_vertical|center_horizontal">
+            android:layout_height="30dp" android:gravity="center_vertical|center_horizontal">
     </LinearLayout>
 
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="300dp">
+            android:layout_height="330dp">
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="8dp"
@@ -44,7 +44,7 @@
                 <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="230dp"
+                        android:layout_height="260dp"
                         android:visibility="visible" android:paddingLeft="40dp" android:paddingTop="20dp">
                     <TextView
                             android:layout_width="wrap_content"
@@ -75,23 +75,30 @@
                             android:layout_height="45dp"
                             android:text="@string/authLabel"
                             android:id="@+id/athButton" android:layout_marginTop="10dp" android:background="#00a1d7"
-                            android:textColor="#ffffff" android:textSize="24dp" android:textStyle="bold"
+                            android:textColor="#ffffff" android:textSize="16dp" android:textStyle="bold"
                             />
+                    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/registerLabel"
+                            android:id="@+id/regButton" android:layout_marginTop="15dp" android:background="#005683"
+                            android:textColor="#ffffff" android:textSize="16dp" android:textStyle="bold"
+                            android:paddingLeft="14dp" android:paddingRight="14dp"
+                            android:paddingTop="7dp" android:paddingBottom="7dp" android:layout_marginBottom="10dp"/>
                 </LinearLayout>
-                <ProgressBar
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:id="@+id/athProgressBar" android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp" android:layout_marginBottom="25dp"/>
-                <RelativeLayout
+                <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
-                    <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:id="@+id/triagEdge" android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"/>
-                </RelativeLayout>
+                    <ProgressBar
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:id="@+id/athProgressBar" android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp" android:layout_marginBottom="25dp"
+                            android:visibility="gone"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/authResult" android:textColor="#690006" android:layout_marginLeft="40dp"
+                            android:singleLine="false" android:visibility="gone"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

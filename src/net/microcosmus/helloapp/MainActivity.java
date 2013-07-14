@@ -332,10 +332,10 @@ public class MainActivity extends Activity {
         view.setLayoutParams(params);
     }
 
-    private int dpToPx(int dp) {
-        float density = getApplicationContext().getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
-    }
+//    private int dpToPx(int dp) {
+//        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+//        return Math.round((float) dp * density);
+//    }
 
     private void saveWhenDataRetrieved(Date date) {
         SharedPreferences settings = getSharedPreferences(MainActivity.PREFS_NAME, 0);

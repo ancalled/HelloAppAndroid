@@ -38,22 +38,20 @@ public class HelloClient {
 
     public static final String SCHEME = "http";
 
-    public static final String HOST = "helloapp.microcosmus.net";
-    public static final int PORT = 80;
+//    public static final String HOST = "helloapp.microcosmus.net";
+//    public static final int PORT = 80;
 
-//    public static final String HOST = "10.0.2.2";
-//    public static final int PORT = 8080;
+    public static final String HOST = "10.0.2.2";
+    public static final int PORT = 8080;
 
     public static final String SERVER_URL = SCHEME + "://" + HOST + ":" + PORT + "/helloapp";
 
-    public static final String API_URL = SERVER_URL + "/customer/api/";
+    public static final String API_URL = SERVER_URL + "/customer/api";
 
-    public static final String ACTION_AUTH = "auth";
-    public static final String ACTION_CAMPAIGNS = "campaigns";
-    public static final String ACTION_APPLY_DISCOUNT = "apply-campaign";
-
-//    public static final String AUTH_URL = API_URL + "/auth?l=%s&p=%s";
-//    public static final String CAMPAIGNS_URL = API_URL + "/campaigns";
+    public static final String ACTION_REGISTER = "-register";
+    public static final String ACTION_AUTH = "-auth";
+    public static final String ACTION_CAMPAIGNS = "/campaigns";
+    public static final String ACTION_APPLY_DISCOUNT = "/apply-campaign";
 
     public static final String CAMPAIGN_ICON_URL = SERVER_URL + "/images/camp-prev/%d.png";
 
@@ -198,10 +196,18 @@ public class HelloClient {
 
 //    ---------------------------------------------------------
 
-    public static User parseUser(String json) throws JSONException {
-        JSONObject jsonObj = new JSONObject(json);
-        String status = jsonObj.getString("status");
-        if ("ok".equalsIgnoreCase(status)) {
+    public static String parseStatus(String json) {
+        try {
+            JSONObject jsonObj = new JSONObject(json);
+            return jsonObj.getString("status");
+        } catch (JSONException e) {
+            return null;
+        }
+    }
+
+    public static User parseUser(String json) {
+        try {
+            JSONObject jsonObj = new JSONObject(json);
             User user = new User();
 
             user.setId(jsonObj.getLong("userId"));
@@ -209,9 +215,9 @@ public class HelloClient {
             user.setToken(jsonObj.getString("token"));
 
             return user;
+        } catch (JSONException e) {
+            return null;
         }
-
-        return null;
     }
 
 

@@ -35,4 +35,10 @@
     <string name="priceTenge">%d тенге</string>
     <string name="unknownError">Произошла ошибка!</string><string name="authLabel">Войти</string><string name="loginLabel">Логин</string><string name="passLabel">Пароль</string><string name="athOnClick">athOnClick</string>
 
+    <string name="authOk">Авторизован</string>
+    <string name="authFail">Неверный логин или пароль!</string>
+    <string name="authError">Произошла ошибка, попрбуйте еще раз!</string>
+    <string name="authAlreadyExists">Такой пользователь уже зарегистрирован!</string>
+    <string name="registerLabel">Зарегистрироваться</string>
+
 </resources>
