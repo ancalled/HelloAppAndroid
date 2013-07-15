@@ -39,6 +39,8 @@
     <string name="authFail">Неверный логин или пароль!</string>
     <string name="authError">Произошла ошибка, попрбуйте еще раз!</string>
     <string name="authAlreadyExists">Такой пользователь уже зарегистрирован!</string>
+    <string name="authShortLogin">Логин должен быть длиннее 5 символов!</string>
+    <string name="authShortPass">Пароль должен быть длиннее 5 символов!</string>
     <string name="registerLabel">Зарегистрироваться</string>
 
 </resources>

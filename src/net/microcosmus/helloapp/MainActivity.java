@@ -47,7 +47,7 @@ public class MainActivity extends Activity {
     public static final String PARAM_WHEN_DATA_RETRIEVED = "when-data-retrieved";
     public static final long SECONDS_IN_DAY = 24 * 60 * 60;
     //    public static final long DATA_EXPIRES_AFTER_SECONDS = SECONDS_IN_DAY;
-    public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 15;  //15 minutes
+    public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 60 * 1;  //1 hour
     public static final int CAMPAIGN_HEIGHT = 100;
 
     private LayoutInflater inflater;

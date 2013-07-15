@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +30,7 @@ public class AuthActivity extends Activity {
 
 
     private ProgressBar progressBar;
+    private String imei;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,19 @@ public class AuthActivity extends Activity {
                 String pass = passText.getText().toString();
 
                 if (!login.isEmpty() && !pass.isEmpty()) {
+                    if (login.length() < 5) {
+                        TextView authResult = (TextView) findViewById(R.id.authResult);
+                        authResult.setVisibility(View.VISIBLE);
+                        authResult.setText(getResources().getText(R.string.authShortLogin));
+                        return;
+                    }
+                    if (pass.length() < 5) {
+                        TextView authResult = (TextView) findViewById(R.id.authResult);
+                        authResult.setVisibility(View.VISIBLE);
+                        authResult.setText(getResources().getText(R.string.authShortPass));
+                        return;
+                    }
+
                     hideKeyboard(passText);
                     register(login.trim(), pass.trim());
                 }
@@ -92,6 +107,11 @@ public class AuthActivity extends Activity {
 
         progressBar = (ProgressBar) findViewById(R.id.athProgressBar);
         progressBar.setVisibility(View.GONE);
+
+        TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        if (tm != null) {
+            imei = tm.getDeviceId();
+        }
     }
 
 
@@ -125,6 +145,7 @@ public class AuthActivity extends Activity {
             }
         }.param("l", login)
                 .param("p", pass)
+                .param("i", imei)
                 .execute();
     }
 

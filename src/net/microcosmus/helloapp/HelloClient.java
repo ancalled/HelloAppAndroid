@@ -313,7 +313,7 @@ public class HelloClient {
         }
 
         public ApiTask param(String name, Object value) {
-            builder.param(name, value.toString());
+            builder.param(name, value != null ? value.toString() : "");
             return this;
         }
 
