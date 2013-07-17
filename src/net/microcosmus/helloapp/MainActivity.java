@@ -50,6 +50,10 @@ public class MainActivity extends Activity {
     public static final long DATA_EXPIRES_AFTER_SECONDS = 60 * 60 * 1;  //1 hour
     public static final int CAMPAIGN_HEIGHT = 100;
 
+    public static final String USER_ID = "user-id";
+    public static final String USER_LOGIN = "user-login";
+    public static final String USER_TOKEN = "user-token";
+
     private LayoutInflater inflater;
     private CampaignStorage storage;
     private boolean networkAvailable;
@@ -126,10 +130,10 @@ public class MainActivity extends Activity {
 
 
     private void installData() {
-        Date dataRetrieved = getWhenDataRetrieved();
-        Date expirationLimit = getExpirationLimit();
+        Date retrieved = getWhenDataRetrieved();
+        Date limit = getExpirationLimit();
 
-        if ((dataRetrieved == null || dataRetrieved.before(expirationLimit)) && networkAvailable) {
+        if ((retrieved == null || retrieved.before(limit)) && networkAvailable) {
 
             Log.i(CAT, "Campaigns are out of date, sending request for newer data...");
             asyncGetCampaignsFromServer();
@@ -138,13 +142,22 @@ public class MainActivity extends Activity {
         } else {
             List<Campaign> campaigns = storage.getCampaigns();
 
-            if ((campaigns == null || campaigns.isEmpty()) && !networkAvailable) {
-                String erMes = getResources().getString(R.string.internet_access);
-                Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
-                toast.show();
+            if (campaigns != null && !campaigns.isEmpty()) {
+                addCampaignsToView(campaigns);
+
+            } else {
+                if (networkAvailable) {
+                    Log.i(CAT, "No campaigns in store, sending request for newer data...");
+                    asyncGetCampaignsFromServer();
+                    showDownloadProgress();
+
+                } else {
+                    String erMes = getResources().getString(R.string.internet_access);
+                    Toast toast = Toast.makeText(this, erMes, Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
 
-            addCampaignsToView(campaigns);
         }
     }
 
@@ -507,13 +520,13 @@ public class MainActivity extends Activity {
 
 
     private User getUser() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        if (!settings.contains("user-id")) return null;
+        SharedPreferences p = getSharedPreferences(PREFS_NAME, 0);
+        if (!p.contains(USER_ID)) return null;
 
         User u = new User();
-        u.setId(settings.getLong("user-id", -1));
-        u.setName(settings.getString("user-login", null));
-        u.setToken(settings.getString("user-token", null));
+        u.setId(p.getLong(USER_ID, -1));
+        u.setName(p.getString(USER_LOGIN, null));
+        u.setToken(p.getString(USER_TOKEN, null));
 
         return u;
     }
