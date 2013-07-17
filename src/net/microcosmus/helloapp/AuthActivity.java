@@ -114,6 +114,10 @@ public class AuthActivity extends Activity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        //Do nothing, preventing going back to MainActivity before registration/authorization is finished
+    }
 
     private void authorize(String login, String pass) {
         progressBar.setVisibility(View.VISIBLE);
