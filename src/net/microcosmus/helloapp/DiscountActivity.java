@@ -64,7 +64,7 @@ public class DiscountActivity extends Activity {
 
         helloClient.setUser(user);
 
-        TextView placeView = (TextView) findViewById(R.id.ddPlace);
+        TextView placeView = (TextView) findViewById(R.id.ddPlaceView);
         if (placeView == null) {
             Log.e(CAT, "placeView is null!");
             return;
